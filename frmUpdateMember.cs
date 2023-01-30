@@ -17,16 +17,6 @@ namespace GymSYS
             InitializeComponent();
         }
 
-        private void txtForename_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtSurname_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void backToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -93,45 +83,55 @@ namespace GymSYS
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //Validate data
-            //Validate Forename
-            String forename = txtForename.Text;
+            //Validate forename
+            if (txtForename.Text.Equals(""))
+            {
+                MessageBox.Show("Forename must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtForename.Focus();
+                return;
+            }
             for (int i = 0; i < txtForename.TextLength; i++)
             {
-                if (forename.Any(char.IsDigit) == true)
+                if (txtForename.Text.Any(char.IsDigit) == true)
                 {
-                    txtIssue.Visible = true;
-                    txtIssue.Text = ("Forename contains a digit.");
+                    MessageBox.Show("Forename contains a digit", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtForename.Focus();
+                    return;
                 }
-                else if (forename.Any(char.IsDigit) == false)
-                {
-                    txtIssue.Visible = false;
-                    txtIssue.Clear();
-                }
+
             }
 
-            //Validate Surname
-            String surname = txtSurname.Text;
+            //Validate surname
+            if (txtSurname.Text.Equals(""))
+            {
+                MessageBox.Show("Surname must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSurname.Focus();
+                return;
+            }
             for (int i = 0; i < txtSurname.TextLength; i++)
             {
-                if (surname.Any(char.IsDigit) == true)
+                if (txtSurname.Text.Any(char.IsDigit) == true)
                 {
-                    txtIssue.Visible = true;
-                    txtIssue.Text = ("Surname contains a digit.");
-                }
-                else
-                {
-                    txtIssue.Visible = false;
-                    txtIssue.Clear();
+                    MessageBox.Show("Surname contains a digit", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtSurname.Focus();
+                    return;
                 }
             }
             //End of Validation
 
+            //Create Member Object
+            Member updateMember = new Member();
+
+            //extract the id
+            int memberId = Convert.ToInt32(txtMemberId.Text);
+
             //change the data
+
 
             //update the data
 
             //Display Confirmation Message
-            MessageBox.Show("Member has been update successfully", "Success",
+            MessageBox.Show("Member has been updated successfully", "Success",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI

@@ -44,7 +44,6 @@ namespace GymSYS
             this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtIssue = new System.Windows.Forms.TextBox();
             this.txtForename = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSurname = new System.Windows.Forms.TextBox();
@@ -182,17 +181,6 @@ namespace GymSYS
             this.backToolStripMenuItem.Text = "<--Back";
             this.backToolStripMenuItem.Click += new System.EventHandler(this.backToolStripMenuItem_Click);
             // 
-            // txtIssue
-            // 
-            this.txtIssue.BackColor = System.Drawing.SystemColors.Window;
-            this.txtIssue.ForeColor = System.Drawing.Color.Black;
-            this.txtIssue.Location = new System.Drawing.Point(544, 92);
-            this.txtIssue.Name = "txtIssue";
-            this.txtIssue.ReadOnly = true;
-            this.txtIssue.Size = new System.Drawing.Size(163, 20);
-            this.txtIssue.TabIndex = 32;
-            this.txtIssue.Visible = false;
-            // 
             // txtForename
             // 
             this.txtForename.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -200,7 +188,6 @@ namespace GymSYS
             this.txtForename.Name = "txtForename";
             this.txtForename.Size = new System.Drawing.Size(150, 23);
             this.txtForename.TabIndex = 19;
-            this.txtForename.TextChanged += new System.EventHandler(this.txtForename_TextChanged);
             // 
             // label2
             // 
@@ -219,7 +206,6 @@ namespace GymSYS
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(150, 23);
             this.txtSurname.TabIndex = 21;
-            this.txtSurname.TextChanged += new System.EventHandler(this.txtSurname_TextChanged);
             // 
             // txtEircode
             // 
@@ -305,7 +291,7 @@ namespace GymSYS
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 380);
+            this.label3.Location = new System.Drawing.Point(445, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 34;
@@ -314,7 +300,7 @@ namespace GymSYS
             // txtMemberId
             // 
             this.txtMemberId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtMemberId.Location = new System.Drawing.Point(157, 377);
+            this.txtMemberId.Location = new System.Drawing.Point(562, 77);
             this.txtMemberId.Name = "txtMemberId";
             this.txtMemberId.Size = new System.Drawing.Size(150, 23);
             this.txtMemberId.TabIndex = 35;
@@ -327,7 +313,6 @@ namespace GymSYS
             this.Controls.Add(this.txtMemberId);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.txtIssue);
             this.Controls.Add(this.cboPaymentType);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtEmail);
@@ -365,7 +350,6 @@ namespace GymSYS
         private System.Windows.Forms.ToolStripMenuItem analysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yearlyRevenueAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
-        private System.Windows.Forms.TextBox txtIssue;
         private System.Windows.Forms.TextBox txtForename;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSurname;
