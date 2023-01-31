@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using Oracle.ManagedDataAccess.Client;
 
 namespace GymSYS
@@ -132,6 +133,63 @@ namespace GymSYS
 
             //close database
             conn.Close();
+        }
+
+        public void updateMember()
+        {
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+            String sqlQuery = "UPDATE Members SET " +
+                "MemberId = " + this.memberId + "," +
+                "Forename = '" + this.forename + "'," +
+                "Surname = '" + this.surname + "'," +
+                "DateOfBirth = '" + this.dateOfBirth + "'," +
+                "Eircode = '" + this.eircode + "'" +
+                "Email = '" + this.email + "'," +
+                "PaymentType = '" + this.paymentType + "'," +
+                "MemberWallet = " + this.memberWallet +
+                "WHERE ProductId = " + this.memberId;
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            //close database
+            conn.Close();
+        }
+
+        public static DataSet findMember(int memberId)
+        {
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+            String sqlQuery = "SELECT MemberId, Forename, Surname, DateOfBirth, Eircode, Email, PaymentType, MemberWallet " +
+                "FROM Members WHERE MemberId = " + memberId;
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            OracleDataReader dr = cmd.ExecuteReader();
+            if (!dr.Read())
+            {
+                MessageBox
+            }
+
+            conn.Open();
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "memb");
+
+            //close database
+            conn.Close();
+
+            return ds;
         }
     }
 }

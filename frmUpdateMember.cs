@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 
 namespace GymSYS
 {
@@ -80,6 +81,55 @@ namespace GymSYS
             yearlyRevenueAnalysis.Show();
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            //valiadte memberId
+            if (txtMemberId.Text.Equals(""))
+            {
+                MessageBox.Show("MemberId must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMemberId.Focus();
+                return;
+            }
+            for(int i = 0; i < txtMemberId.TextLength; i++)
+            {
+                if(txtMemberId.Text.Any(char.IsLetter) == true)
+                {
+                    MessageBox.Show("MemberId contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtMemberId.Focus();
+                    return;
+                }
+            }
+            //end of validation
+
+            //get data from memberId
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+            String sqlQuery = "SELECT MemberId, Forename, Surname, DateOfBirth, Eircode, Email, PaymentType, MemberWallet " +
+                "FROM Members WHERE MemberId = " + Convert.ToInt32(txtMemberId);
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            OracleDataReader dr = cmd.ExecuteReader();
+            if (!dr.Read())
+            {
+                MessageBox.Show();
+            }
+
+            conn.Open();
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "memb");
+
+            //close database
+            conn.Close();
+
+            return ds;
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //Validate data
@@ -135,12 +185,12 @@ namespace GymSYS
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
+            txtMemberId.Clear();
             txtForename.Clear();
             txtSurname.Clear();
             txtEircode.Clear();
             txtEmail.Clear();
             cboPaymentType.SelectedIndex = -1;
-            txtMemberId.Clear();
         }
     }
 }

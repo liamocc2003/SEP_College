@@ -120,7 +120,8 @@ namespace GymSYS
             //End of Validation
 
             //Create Member instance with values from form
-            Member registerMember = new Member(10000, txtForename.Text, txtSurname.Text, dtpDOB.Value.ToString("dd-MMM-yyyy"),
+            Member registerMember = new Member(10000, txtForename.Text, txtSurname.Text,
+                dtpDOB.Value.ToString("dd-MMM-yyyy"),
                 txtEircode.Text, txtEmail.Text, cboPaymentType.Text.Substring(0, 2), 0);
 
             MessageBox.Show("Date is " + dtpDOB.Value.ToString("dd-MMM-yyyy"));
