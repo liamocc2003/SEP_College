@@ -142,15 +142,15 @@ namespace GymSYS
 
             //define sql query
             String sqlQuery = "UPDATE Members SET " +
-                "MemberId = " + this.memberId + "," +
+                "Member_Id = " + this.memberId + "," +
                 "Forename = '" + this.forename + "'," +
                 "Surname = '" + this.surname + "'," +
-                "DateOfBirth = '" + this.dateOfBirth + "'," +
-                "Eircode = '" + this.eircode + "'" +
+                "Date_Of_Birth = '" + this.dateOfBirth + "'," +
+                "Eircode = '" + this.eircode + "'," +
                 "Email = '" + this.email + "'," +
-                "PaymentType = '" + this.paymentType + "'," +
-                "MemberWallet = " + this.memberWallet +
-                "WHERE ProductId = " + this.memberId;
+                "Payment_Type = '" + this.paymentType + "'," +
+                "Member_Wallet = " + this.memberWallet +
+                "WHERE Member_Id = " + this.memberId;
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -173,11 +173,6 @@ namespace GymSYS
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-            OracleDataReader dr = cmd.ExecuteReader();
-            if (!dr.Read())
-            {
-                MessageBox
-            }
 
             conn.Open();
 
@@ -190,6 +185,23 @@ namespace GymSYS
             conn.Close();
 
             return ds;
+        }
+
+        public static int getNextMemberId()
+        {
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            //close database
+            conn.Close();
         }
     }
 }

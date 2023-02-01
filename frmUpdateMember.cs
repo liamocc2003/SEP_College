@@ -101,33 +101,31 @@ namespace GymSYS
             }
             //end of validation
 
-            //get data from memberId
             //conect to database
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query
-            String sqlQuery = "SELECT MemberId, Forename, Surname, DateOfBirth, Eircode, Email, PaymentType, MemberWallet " +
-                "FROM Members WHERE MemberId = " + Convert.ToInt32(txtMemberId);
+            String sqlQuery = "SELECT Member_Id, Forename, Surname, Date_Of_Birth, Eircode, Email, Payment_Type, Member_Wallet " +
+                "FROM Members WHERE Member_Id = " + Convert.ToInt32(txtMemberId.Text);
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
             OracleDataReader dr = cmd.ExecuteReader();
             if (!dr.Read())
             {
-                MessageBox.Show();
+                MessageBox.Show("There are no members found with that Member ID");
+            }
+            else
+            {
+                txtForename.Text = dr.GetString(1);
+                txtSurname.Text = dr.GetString(2);
+                txtEircode.Text = dr.GetString(4);
+                txtEmail.Text = dr.GetString(5);
+                cboPaymentType.Text = dr.GetString(6);
             }
 
-            conn.Open();
-
-            OracleDataAdapter da = new OracleDataAdapter(cmd);
-
-            DataSet ds = new DataSet();
-            da.Fill(ds, "memb");
-
-            //close database
             conn.Close();
-
-            return ds;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -148,7 +146,6 @@ namespace GymSYS
                     txtForename.Focus();
                     return;
                 }
-
             }
 
             //Validate surname
@@ -172,13 +169,15 @@ namespace GymSYS
             //Create Member Object
             Member updateMember = new Member();
 
-            //extract the id
-            int memberId = Convert.ToInt32(txtMemberId.Text);
-
             //change the data
-
+            updateMember.setForename(txtForename.Text);
+            updateMember.setSurname(txtSurname.Text);
+            updateMember.setEircode(txtEircode.Text);
+            updateMember.setEmail(txtEmail.Text);
+            updateMember.setPaymentType(cboPaymentType.Text);
 
             //update the data
+            updateMember.updateMember();
 
             //Display Confirmation Message
             MessageBox.Show("Member has been updated successfully", "Success",
