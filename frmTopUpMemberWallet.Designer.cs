@@ -49,7 +49,9 @@ namespace GymSYS
             this.btnAddMoney = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
-            this.txtCheckTotal = new System.Windows.Forms.TextBox();
+            this.txtCurrentAmount = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,14 +119,14 @@ namespace GymSYS
             // updateClassToolStripMenuItem
             // 
             this.updateClassToolStripMenuItem.Name = "updateClassToolStripMenuItem";
-            this.updateClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.updateClassToolStripMenuItem.Text = "Update Class";
             this.updateClassToolStripMenuItem.Click += new System.EventHandler(this.updateClassToolStripMenuItem_Click);
             // 
             // cancelClassToolStripMenuItem
             // 
             this.cancelClassToolStripMenuItem.Name = "cancelClassToolStripMenuItem";
-            this.cancelClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cancelClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cancelClassToolStripMenuItem.Text = "Cancel Class";
             this.cancelClassToolStripMenuItem.Click += new System.EventHandler(this.cancelClassToolStripMenuItem_Click);
             // 
@@ -140,14 +142,14 @@ namespace GymSYS
             // makeBookingToolStripMenuItem
             // 
             this.makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
-            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.makeBookingToolStripMenuItem.Text = "Make Booking";
             this.makeBookingToolStripMenuItem.Click += new System.EventHandler(this.makeBookingToolStripMenuItem_Click);
             // 
             // cancelBookingToolStripMenuItem
             // 
             this.cancelBookingToolStripMenuItem.Name = "cancelBookingToolStripMenuItem";
-            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.cancelBookingToolStripMenuItem.Text = "Cancel Booking";
             this.cancelBookingToolStripMenuItem.Click += new System.EventHandler(this.cancelBookingToolStripMenuItem_Click);
             // 
@@ -207,7 +209,7 @@ namespace GymSYS
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 141);
+            this.label2.Location = new System.Drawing.Point(40, 242);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 20);
             this.label2.TabIndex = 22;
@@ -216,27 +218,48 @@ namespace GymSYS
             // txtAmount
             // 
             this.txtAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmount.Location = new System.Drawing.Point(162, 139);
+            this.txtAmount.Location = new System.Drawing.Point(162, 240);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(133, 22);
             this.txtAmount.TabIndex = 23;
             // 
-            // txtCheckTotal
+            // txtCurrentAmount
             // 
-            this.txtCheckTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCheckTotal.Location = new System.Drawing.Point(523, 96);
-            this.txtCheckTotal.Name = "txtCheckTotal";
-            this.txtCheckTotal.Size = new System.Drawing.Size(217, 22);
-            this.txtCheckTotal.TabIndex = 25;
-            this.txtCheckTotal.Text = "Total amount is €";
-            this.txtCheckTotal.Visible = false;
+            this.txtCurrentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentAmount.Location = new System.Drawing.Point(194, 149);
+            this.txtCurrentAmount.Name = "txtCurrentAmount";
+            this.txtCurrentAmount.Size = new System.Drawing.Size(101, 22);
+            this.txtCurrentAmount.TabIndex = 25;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(334, 65);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 22);
+            this.btnSearch.TabIndex = 26;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(40, 151);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(148, 20);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Current amount is €";
             // 
             // frmTopUpMemberWallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtCheckTotal);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtCurrentAmount);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAddMoney);
@@ -274,6 +297,8 @@ namespace GymSYS
         private System.Windows.Forms.Button btnAddMoney;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtAmount;
-        private System.Windows.Forms.TextBox txtCheckTotal;
+        private System.Windows.Forms.TextBox txtCurrentAmount;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label3;
     }
 }

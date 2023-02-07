@@ -98,7 +98,6 @@ namespace GymSYS
                     txtForename.Focus();
                     return;
                 }
-             
             }
 
             //Validate surname
@@ -120,11 +119,9 @@ namespace GymSYS
             //End of Validation
 
             //Create Member instance with values from form
-            Member registerMember = new Member(, txtForename.Text, txtSurname.Text,
+            Member registerMember = new Member(Convert.ToInt32(txtMemberId.Text), txtForename.Text, txtSurname.Text,
                 dtpDOB.Value.ToString("dd-MMM-yyyy"),
                 txtEircode.Text, txtEmail.Text, cboPaymentType.Text, 0);
-
-            MessageBox.Show("Date is " + dtpDOB.Value.ToString("dd-MMM-yyyy"));
 
             //invoke method to add data to Members Table
             registerMember.addMember();
@@ -134,17 +131,23 @@ namespace GymSYS
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //reset UI
+            txtMemberId.Text = Member.getNextMemberId().ToString("00000");
             txtForename.Clear();
             txtSurname.Clear();
             dtpDOB.Text = string.Empty;
             txtEircode.Clear();
             txtEmail.Clear();
             cboPaymentType.SelectedIndex = -1;
+            txtForename.Focus();
         }
 
         private void frmRegisterMember_Load(object sender, EventArgs e)
         {
+            //set max date to 16 years ago
             dtpDOB.MaxDate = DateTime.Today.AddYears(-16);
+
+            //get next MemberId
+            txtMemberId.Text = Member.getNextMemberId().ToString("00000");
         }
     }
 }

@@ -193,15 +193,31 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query
+            String sqlQuery="SELECT MAX(Member_Id) FROM Members";
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
             conn.Open();
 
-            cmd.ExecuteNonQuery();
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int nextId;
+            dr.Read();
+
+            if (dr.IsDBNull(0))
+            {
+                nextId = 10000;
+            }
+            else
+            {
+                nextId = dr.GetInt32(0) + 1;
+            }
 
             //close database
             conn.Close();
+
+            return nextId;
         }
     }
 }

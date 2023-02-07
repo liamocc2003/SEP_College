@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 
 namespace GymSYS
 {
@@ -83,17 +84,42 @@ namespace GymSYS
         private void btnAddMoney_Click(object sender, EventArgs e)
         {
             //Validate data
-            //Validate MemberId
-            //Must be in database
-
-            //Amount must be numeric or include only one '.'
+            int count = 0;
+            if (txtAmount.Text.Equals(""))
+            {
+                MessageBox.Show("Amount must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAmount.Focus();
+                return;
+            }
+            for(int i=0; i<txtAmount.TextLength; i++)
+            {
+                if(txtAmount.Text.Any(char.IsLetter) == true)
+                {
+                    MessageBox.Show("Amount must be numerical", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtAmount.Focus();
+                    return;
+                }
+                if(txtAmount.Text.Any(char.IsPunctuation) == true)
+                {
+                    count++;
+                }
+                if(count > 1)
+                {
+                    MessageBox.Show("Amount cannot have more than 1 punctuation", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtAmount.Focus();
+                    return;
+                }
+            }
             //End of Validation
 
-            //change amount
-            txtCheckTotal.Visible = true;
-            txtCheckTotal.Text += "starting amount and amount.";
+            //create Member Object
+            Member topUpMemberWallet = new Member();
 
-            //update amount
+            //change data
+            topUpMemberWallet.setMemberWallet(Convert.ToInt32(txtCurrentAmount.Text) + Convert.ToInt32(txtAmount.Text));
+
+            //update the data
+            topUpMemberWallet.updateMember();
 
             //Display Confirmation Message
             MessageBox.Show("Member has updated wallet successfully", "Success",
@@ -102,7 +128,50 @@ namespace GymSYS
             //Reset UI
             txtMemberId.Clear();
             txtAmount.Clear();
-            txtCheckTotal.Text = "Total amount is € ";
+            txtCurrentAmount.Clear();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            //Validate data
+            //Validate MemberId
+            if (txtMemberId.Text.Equals(""))
+            {
+                MessageBox.Show("MemberId must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMemberId.Focus();
+                return;
+            }
+            for (int i = 0; i < txtMemberId.TextLength; i++)
+            {
+                if (txtMemberId.Text.Any(char.IsLetter) == true)
+                {
+                    MessageBox.Show("MemberId contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtMemberId.Focus();
+                    return;
+                }
+            }
+            //end of validation
+
+            //connect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //sql query
+            String sqlQuery = "SELECT Member_Wallet FROM Members WHERE Member_Id = " + Convert.ToInt32(txtMemberId.Text);
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+            OracleDataReader dr = cmd.ExecuteReader();
+            if (!dr.Read())
+            {
+                MessageBox.Show("There are no members found with that Member ID");
+            }
+            else
+            {
+                txtCurrentAmount.Text = Convert.ToString(dr.GetFloat(8));
+            }
+
+            conn.Close();
         }
     }
 }
