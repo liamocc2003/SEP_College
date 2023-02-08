@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 
 namespace GymSYS
 {
@@ -78,6 +79,40 @@ namespace GymSYS
             this.Hide();
             frmYearlyRevenueAnalysis yearlyRevenueAnalysis = new frmYearlyRevenueAnalysis();
             yearlyRevenueAnalysis.Show();
+        }
+
+        private void btnCancelClass_Click(object sender, EventArgs e)
+        {
+            //connect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //sql query
+            String sqlQuery = "SELECT * FROM Classes WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+            OracleDataReader dr = cmd.ExecuteReader();
+            if (!dr.Read())
+            {
+                MessageBox.Show("There are no classes found with that Class ID");
+                return;
+            }
+
+            //create Class Object
+            Classes cancelClass = new Classes();
+
+            //remove the data
+            cancelClass.cancelClass();
+
+            //Display Confirmation Message
+            MessageBox.Show("Class has cancelled successfully", "Success",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Reset UI
+            txtClassId.Clear();
+
+            conn.Close();
         }
     }
 }

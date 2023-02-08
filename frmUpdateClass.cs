@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 
 namespace GymSYS
 {
@@ -78,6 +79,76 @@ namespace GymSYS
             this.Hide();
             frmYearlyRevenueAnalysis yearlyRevenueAnalysis = new frmYearlyRevenueAnalysis();
             yearlyRevenueAnalysis.Show();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            //valiadte memberId
+            if (txtClassId.Text.Equals(""))
+            {
+                MessageBox.Show("Class ID must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClassId.Focus();
+                return;
+            }
+            for (int i = 0; i < txtClassId.TextLength; i++)
+            {
+                if (txtClassId.Text.Any(char.IsLetter) == true)
+                {
+                    MessageBox.Show("Class ID contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClassId.Focus();
+                    return;
+                }
+            }
+            //end of validation
+
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+            String sqlQuery = "SELECT * " +
+                "FROM Classes WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+            OracleDataReader dr = cmd.ExecuteReader();
+            if (!dr.Read())
+            {
+                MessageBox.Show("There are no classes found with that Class ID");
+            }
+            else
+            {
+                txtClassName.Text = dr.GetString(1);
+                txtClassTeacher.Text = dr.GetString(2);
+                txtClassFee.Text = dr.GetString(3);
+            }
+
+            conn.Close();
+        }
+
+        private void btnUpdateClass_Click(object sender, EventArgs e)
+        {
+            //Create Class Object
+            Classes updateClass = new Classes();
+
+            //change the data
+            updateClass.setClassId(Convert.ToInt32(txtClassId.Text));
+            updateClass.setClassName(txtClassName.Text);
+            updateClass.setClassTeacher(txtClassTeacher.Text);
+            updateClass.setClassFee(Convert.ToInt32(txtClassFee.Text));
+
+            //update the data
+            updateClass.updateClass();
+
+            //Display Confirmation Message
+            MessageBox.Show("Class has been updated successfully", "Success",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Reset UI
+            txtClassId.Clear();
+            txtClassName.Clear();
+            txtClassTeacher.Clear();
+            txtClassFee.Clear();
         }
     }
 }

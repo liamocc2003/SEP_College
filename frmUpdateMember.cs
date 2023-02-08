@@ -86,7 +86,7 @@ namespace GymSYS
             //valiadte memberId
             if (txtMemberId.Text.Equals(""))
             {
-                MessageBox.Show("MemberId must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Member ID must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMemberId.Focus();
                 return;
             }
@@ -94,7 +94,7 @@ namespace GymSYS
             {
                 if(txtMemberId.Text.Any(char.IsLetter) == true)
                 {
-                    MessageBox.Show("MemberId contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Member ID contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtMemberId.Focus();
                     return;
                 }
@@ -105,7 +105,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query
-            String sqlQuery = "SELECT Member_Id, Forename, Surname, Date_Of_Birth, Eircode, Email, Payment_Type, Member_Wallet " +
+            String sqlQuery = "SELECT * " +
                 "FROM Members WHERE Member_Id = " + Convert.ToInt32(txtMemberId.Text);
 
             //execute query
@@ -170,6 +170,7 @@ namespace GymSYS
             Member updateMember = new Member();
 
             //change the data
+            updateMember.setMemberId(Convert.ToInt32(txtMemberId.Text));
             updateMember.setForename(txtForename.Text);
             updateMember.setSurname(txtSurname.Text);
             updateMember.setEircode(txtEircode.Text);

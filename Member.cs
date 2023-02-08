@@ -162,31 +162,6 @@ namespace GymSYS
             conn.Close();
         }
 
-        public static DataSet findMember(int memberId)
-        {
-            //conect to database
-            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
-
-            //define sql query
-            String sqlQuery = "SELECT MemberId, Forename, Surname, DateOfBirth, Eircode, Email, PaymentType, MemberWallet " +
-                "FROM Members WHERE MemberId = " + memberId;
-
-            //execute query
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            conn.Open();
-
-            OracleDataAdapter da = new OracleDataAdapter(cmd);
-
-            DataSet ds = new DataSet();
-            da.Fill(ds, "memb");
-
-            //close database
-            conn.Close();
-
-            return ds;
-        }
-
         public static int getNextMemberId()
         {
             //conect to database

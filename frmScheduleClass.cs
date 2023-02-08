@@ -79,5 +79,67 @@ namespace GymSYS
             frmYearlyRevenueAnalysis yearlyRevenueAnalysis = new frmYearlyRevenueAnalysis();
             yearlyRevenueAnalysis.Show();
         }
+
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            //Validate all data
+            //Validate forename
+            /*if (txtForename.Text.Equals(""))
+            {
+                MessageBox.Show("Forename must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtForename.Focus();
+                return;
+            }
+            for (int i = 0; i < txtForename.TextLength; i++)
+            {
+                if (txtForename.Text.Any(char.IsDigit) == true)
+                {
+                    MessageBox.Show("Forename contains a digit", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtForename.Focus();
+                    return;
+                }
+            }
+
+            //Validate surname
+            if (txtSurname.Text.Equals(""))
+            {
+                MessageBox.Show("Surname must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSurname.Focus();
+                return;
+            }
+            for (int i = 0; i < txtSurname.TextLength; i++)
+            {
+                if (txtSurname.Text.Any(char.IsDigit) == true)
+                {
+                    MessageBox.Show("Surname contains a digit", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtSurname.Focus();
+                    return;
+                }
+            }*/
+            //End of Validation
+
+            //Create Member instance with values from form
+            Classes scheduleClass = new Classes(Convert.ToInt32(txtClassId.Text), txtClassName.Text,
+                txtClassTeacher.Text, Convert.ToInt32(txtClassFee.Text));
+
+            //invoke method to add data to Members Table
+            scheduleClass.addClass();
+
+            //Confirmation Message
+            MessageBox.Show("Class has been scheduled successfully", "Success",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //reset UI
+            txtClassId.Text = Classes.getNextClassId().ToString("000");
+            txtClassName.Clear();
+            txtClassTeacher.Clear();
+            txtClassFee.Clear();
+        }
+
+        private void frmScheduleClass_Load(object sender, EventArgs e)
+        {
+            //get next ClassId
+            txtClassId.Text = Classes.getNextClassId().ToString("000");
+        }
     }
 }

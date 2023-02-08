@@ -71,7 +71,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query
-            String sqlQuery = "INSERT INTO MEMBERS VALUES (" +
+            String sqlQuery = "INSERT INTO CLASSES VALUES (" +
                 this.classId + ",'" +
                 this.className + "','" +
                 this.classTeacher + "'," +
@@ -98,7 +98,7 @@ namespace GymSYS
                 "Class_Name = '" + this.className + "'," +
                 "Class_Teacher = '" + this.classTeacher + "'," +
                 "Class_Fee = " + this.classFee +
-                "WHERE Member_Id = " + this.classId;
+                "WHERE Class_Id = " + this.classId;
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -109,9 +109,56 @@ namespace GymSYS
             //close database
             conn.Close();
         }
-        public static DataSet findClass(int classId)
+
+        public static int getNextClassId()
         {
-            return;
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+            String sqlQuery = "SELECT MAX(Class_Id) FROM Classes";
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int nextId;
+            dr.Read();
+
+            if (dr.IsDBNull(0))
+            {
+                nextId = 100;
+            }
+            else
+            {
+                nextId = dr.GetInt32(0) + 1;
+            }
+
+            //close database
+            conn.Close();
+
+            return nextId;
+        }
+
+        public void cancelClass()
+        {
+            //connect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+            String sqlQuery = "DELETE FROM Classes WHERE Class_Id = " + this.classId;
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            //close database
+            conn.Close();
         }
     }
 }

@@ -51,6 +51,9 @@ namespace GymSYS
             this.txtClassTeacher = new System.Windows.Forms.TextBox();
             this.txtClassFee = new System.Windows.Forms.TextBox();
             this.btnUpdateClass = new System.Windows.Forms.Button();
+            this.txtClassId = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,20 +115,20 @@ namespace GymSYS
             // scheduleClassToolStripMenuItem
             // 
             this.scheduleClassToolStripMenuItem.Name = "scheduleClassToolStripMenuItem";
-            this.scheduleClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.scheduleClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.scheduleClassToolStripMenuItem.Text = "Schedule Class";
             this.scheduleClassToolStripMenuItem.Click += new System.EventHandler(this.scheduleClassToolStripMenuItem_Click);
             // 
             // updateClassToolStripMenuItem
             // 
             this.updateClassToolStripMenuItem.Name = "updateClassToolStripMenuItem";
-            this.updateClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.updateClassToolStripMenuItem.Text = "Update Class";
             // 
             // cancelClassToolStripMenuItem
             // 
             this.cancelClassToolStripMenuItem.Name = "cancelClassToolStripMenuItem";
-            this.cancelClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cancelClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cancelClassToolStripMenuItem.Text = "Cancel Class";
             this.cancelClassToolStripMenuItem.Click += new System.EventHandler(this.cancelClassToolStripMenuItem_Click);
             // 
@@ -141,14 +144,14 @@ namespace GymSYS
             // makeBookingToolStripMenuItem
             // 
             this.makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
-            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.makeBookingToolStripMenuItem.Text = "Make Booking";
             this.makeBookingToolStripMenuItem.Click += new System.EventHandler(this.makeBookingToolStripMenuItem_Click);
             // 
             // cancelBookingToolStripMenuItem
             // 
             this.cancelBookingToolStripMenuItem.Name = "cancelBookingToolStripMenuItem";
-            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.cancelBookingToolStripMenuItem.Text = "Cancel Booking";
             this.cancelBookingToolStripMenuItem.Click += new System.EventHandler(this.cancelBookingToolStripMenuItem_Click);
             // 
@@ -235,12 +238,44 @@ namespace GymSYS
             this.btnUpdateClass.TabIndex = 26;
             this.btnUpdateClass.Text = "Update";
             this.btnUpdateClass.UseVisualStyleBackColor = true;
+            this.btnUpdateClass.Click += new System.EventHandler(this.btnUpdateClass_Click);
+            // 
+            // txtClassId
+            // 
+            this.txtClassId.Location = new System.Drawing.Point(596, 68);
+            this.txtClassId.Name = "txtClassId";
+            this.txtClassId.Size = new System.Drawing.Size(163, 20);
+            this.txtClassId.TabIndex = 28;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(496, 68);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 20);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Class ID:";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(677, 113);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(82, 34);
+            this.btnSearch.TabIndex = 29;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // frmUpdateClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtClassId);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnUpdateClass);
             this.Controls.Add(this.txtClassFee);
             this.Controls.Add(this.txtClassTeacher);
@@ -282,5 +317,8 @@ namespace GymSYS
         private System.Windows.Forms.TextBox txtClassTeacher;
         private System.Windows.Forms.TextBox txtClassFee;
         private System.Windows.Forms.Button btnUpdateClass;
+        private System.Windows.Forms.TextBox txtClassId;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
