@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,7 +89,29 @@ namespace GymSYS
 
         public void updateClass()
         {
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
+            //define sql query
+            String sqlQuery = "UPDATE Classes SET " +
+                "Class_Id = " + this.classId + "," +
+                "Class_Name = '" + this.className + "'," +
+                "Class_Teacher = '" + this.classTeacher + "'," +
+                "Class_Fee = " + this.classFee +
+                "WHERE Member_Id = " + this.classId;
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            //close database
+            conn.Close();
+        }
+        public static DataSet findClass(int classId)
+        {
+            return;
         }
     }
 }
