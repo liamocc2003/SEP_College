@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="frmCancelBooking.cs">
       <SubType>Form</SubType>
