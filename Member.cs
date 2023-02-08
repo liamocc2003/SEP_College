@@ -21,7 +21,7 @@ namespace GymSYS
 
         public Member()
         {
-            this.memberId = 0;
+            this.memberId = 10000;
             this.forename = "";
             this.surname = "";
             this.dateOfBirth = Convert.ToString(DateTime.Today);

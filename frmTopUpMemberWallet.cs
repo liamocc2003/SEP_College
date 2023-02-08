@@ -156,7 +156,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //sql query
-            String sqlQuery = "SELECT Member_Wallet FROM Members WHERE Member_Id = " + Convert.ToInt32(txtMemberId.Text);
+            String sqlQuery = "SELECT * FROM Members WHERE Member_Id = " + Convert.ToInt32(txtMemberId.Text);
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -168,7 +168,7 @@ namespace GymSYS
             }
             else
             {
-                txtCurrentAmount.Text = Convert.ToString(dr.GetFloat(8));
+                txtCurrentAmount.Text = Convert.ToString(dr.GetInt32(7));
             }
 
             conn.Close();
