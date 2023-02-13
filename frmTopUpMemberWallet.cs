@@ -116,6 +116,11 @@ namespace GymSYS
             Member topUpMemberWallet = new Member();
 
             //change data
+            topUpMemberWallet.setMemberId(Convert.ToInt32(txtMemberId.Text));
+            string forename = topUpMemberWallet.getForename();
+            topUpMemberWallet.setForename(forename);
+            string surname = topUpMemberWallet.getSurname();
+            topUpMemberWallet.setSurname(surname);
             topUpMemberWallet.setMemberWallet(Convert.ToInt32(txtCurrentAmount.Text) + Convert.ToInt32(txtAmount.Text));
 
             //update the data
@@ -169,6 +174,7 @@ namespace GymSYS
             else
             {
                 txtCurrentAmount.Text = Convert.ToString(dr.GetInt32(7));
+                dtpDOB.Value = dr.GetDateTime(3);
             }
 
             conn.Close();

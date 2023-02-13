@@ -120,6 +120,7 @@ namespace GymSYS
             {
                 txtForename.Text = dr.GetString(1);
                 txtSurname.Text = dr.GetString(2);
+                dtpDOB.Value = dr.GetDateTime(3);
                 txtEircode.Text = dr.GetString(4);
                 txtEmail.Text = dr.GetString(5);
                 cboPaymentType.Text = dr.GetString(6);
@@ -173,9 +174,12 @@ namespace GymSYS
             updateMember.setMemberId(Convert.ToInt32(txtMemberId.Text));
             updateMember.setForename(txtForename.Text);
             updateMember.setSurname(txtSurname.Text);
+            updateMember.setDateOfBirth(dtpDOB.Value.ToString("dd-MMM-yyyy"));
             updateMember.setEircode(txtEircode.Text);
             updateMember.setEmail(txtEmail.Text);
             updateMember.setPaymentType(cboPaymentType.Text);
+            int membWallet = Convert.ToInt32(updateMember.getMemberWallet());
+            updateMember.setMemberWallet(membWallet);
 
             //update the data
             updateMember.updateMember();

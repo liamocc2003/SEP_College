@@ -89,6 +89,9 @@ namespace GymSYS
             //sql query
             String sqlQuery = "SELECT * FROM Classes WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
 
+            //create Class Object
+            Session cancelClass = new Session();
+
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
             conn.Open();
@@ -98,9 +101,10 @@ namespace GymSYS
                 MessageBox.Show("There are no classes found with that Class ID");
                 return;
             }
-
-            //create Class Object
-            Classes cancelClass = new Classes();
+            else
+            {
+                cancelClass.setClassId(Convert.ToInt32(txtClassId.Text));
+            }
 
             //remove the data
             cancelClass.cancelClass();

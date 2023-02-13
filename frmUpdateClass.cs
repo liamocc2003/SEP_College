@@ -129,7 +129,7 @@ namespace GymSYS
         private void btnUpdateClass_Click(object sender, EventArgs e)
         {
             //Create Class Object
-            Classes updateClass = new Classes();
+            Session updateClass = new Session();
 
             //change the data
             updateClass.setClassId(Convert.ToInt32(txtClassId.Text));

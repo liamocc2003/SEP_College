@@ -116,12 +116,14 @@ namespace GymSYS
             this.updateClassToolStripMenuItem.Name = "updateClassToolStripMenuItem";
             this.updateClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateClassToolStripMenuItem.Text = "Update Class";
+            this.updateClassToolStripMenuItem.Click += new System.EventHandler(this.updateClassToolStripMenuItem_Click);
             // 
             // cancelClassToolStripMenuItem
             // 
             this.cancelClassToolStripMenuItem.Name = "cancelClassToolStripMenuItem";
             this.cancelClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cancelClassToolStripMenuItem.Text = "Cancel Class";
+            this.cancelClassToolStripMenuItem.Click += new System.EventHandler(this.cancelClassToolStripMenuItem_Click);
             // 
             // bookingsToolStripMenuItem
             // 
@@ -135,14 +137,16 @@ namespace GymSYS
             // makeBookingToolStripMenuItem
             // 
             this.makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
-            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.makeBookingToolStripMenuItem.Text = "Make Booking";
+            this.makeBookingToolStripMenuItem.Click += new System.EventHandler(this.makeBookingToolStripMenuItem_Click);
             // 
             // cancelBookingToolStripMenuItem
             // 
             this.cancelBookingToolStripMenuItem.Name = "cancelBookingToolStripMenuItem";
-            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cancelBookingToolStripMenuItem.Text = "Cancel Booking";
+            this.cancelBookingToolStripMenuItem.Click += new System.EventHandler(this.cancelBookingToolStripMenuItem_Click);
             // 
             // analysisToolStripMenuItem
             // 
@@ -158,6 +162,7 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem.Name = "yearlyRevenueAnalysisToolStripMenuItem";
             this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
+            this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
             // 
             // yearlyClassReviewToolStripMenuItem
             // 

@@ -8,14 +8,14 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace GymSYS
 {
-    class Classes
+    class Session
     {
         private int classId;
         private String className;
         private String classTeacher;
         private int classFee;
 
-        public Classes()
+        public Session()
         {
             this.classId = 100;
             this.className = "";
@@ -23,7 +23,7 @@ namespace GymSYS
             this.classFee = 0;
         }
 
-        public Classes(int classId, String className, String classTeacher, int classFee)
+        public Session(int classId, String className, String classTeacher, int classFee)
         {
             this.classId = classId;
             this.className = className;

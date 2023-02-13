@@ -58,6 +58,8 @@ namespace GymSYS
             this.label3 = new System.Windows.Forms.Label();
             this.txtMemberId = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.dtpDOB = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -211,7 +213,7 @@ namespace GymSYS
             // txtEircode
             // 
             this.txtEircode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtEircode.Location = new System.Drawing.Point(157, 185);
+            this.txtEircode.Location = new System.Drawing.Point(157, 230);
             this.txtEircode.Name = "txtEircode";
             this.txtEircode.Size = new System.Drawing.Size(150, 23);
             this.txtEircode.TabIndex = 23;
@@ -220,7 +222,7 @@ namespace GymSYS
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(31, 185);
+            this.label4.Location = new System.Drawing.Point(31, 230);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 20);
             this.label4.TabIndex = 24;
@@ -240,7 +242,7 @@ namespace GymSYS
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label5.Location = new System.Drawing.Point(31, 254);
+            this.label5.Location = new System.Drawing.Point(31, 299);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 20);
             this.label5.TabIndex = 26;
@@ -249,7 +251,7 @@ namespace GymSYS
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtEmail.Location = new System.Drawing.Point(157, 251);
+            this.txtEmail.Location = new System.Drawing.Point(157, 296);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(150, 23);
             this.txtEmail.TabIndex = 27;
@@ -258,7 +260,7 @@ namespace GymSYS
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label6.Location = new System.Drawing.Point(31, 319);
+            this.label6.Location = new System.Drawing.Point(31, 364);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 20);
             this.label6.TabIndex = 28;
@@ -272,7 +274,7 @@ namespace GymSYS
             "Cash",
             "Credit Card",
             "Revolut"});
-            this.cboPaymentType.Location = new System.Drawing.Point(157, 315);
+            this.cboPaymentType.Location = new System.Drawing.Point(157, 360);
             this.cboPaymentType.Name = "cboPaymentType";
             this.cboPaymentType.Size = new System.Drawing.Size(150, 24);
             this.cboPaymentType.TabIndex = 29;
@@ -317,11 +319,31 @@ namespace GymSYS
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // dtpDOB
+            // 
+            this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDOB.Location = new System.Drawing.Point(157, 174);
+            this.dtpDOB.Name = "dtpDOB";
+            this.dtpDOB.Size = new System.Drawing.Size(150, 20);
+            this.dtpDOB.TabIndex = 38;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label7.Location = new System.Drawing.Point(31, 174);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 20);
+            this.label7.TabIndex = 37;
+            this.label7.Text = "Date of Birth:";
+            // 
             // frmUpdateMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dtpDOB);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtMemberId);
             this.Controls.Add(this.label3);
@@ -377,5 +399,7 @@ namespace GymSYS
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMemberId;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DateTimePicker dtpDOB;
+        private System.Windows.Forms.Label label7;
     }
 }

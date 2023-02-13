@@ -44,5 +44,40 @@ namespace GymSYS
             frmScheduleClass scheduleClass = new frmScheduleClass();
             scheduleClass.Show();
         }
+
+        private void updateClassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmUpdateClass updateClass = new frmUpdateClass();
+            updateClass.Show();
+        }
+
+        private void cancelClassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCancelClass cancelClass = new frmCancelClass();
+            cancelClass.Show();
+        }
+
+        private void makeBookingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmMakeBooking makeBooking = new frmMakeBooking();
+            makeBooking.Show();
+        }
+
+        private void cancelBookingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCancelBooking cancelBooking = new frmCancelBooking();
+            cancelBooking.Show();
+        }
+
+        private void yearlyRevenueAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmYearlyRevenueAnalysis yearlyRevenueAnalysis = new frmYearlyRevenueAnalysis();
+            yearlyRevenueAnalysis.Show();
+        }
     }
 }

@@ -119,7 +119,7 @@ namespace GymSYS
             //End of Validation
 
             //Create Member instance with values from form
-            Classes scheduleClass = new Classes(Convert.ToInt32(txtClassId.Text), txtClassName.Text,
+            Session scheduleClass = new Session(Convert.ToInt32(txtClassId.Text), txtClassName.Text,
                 txtClassTeacher.Text, Convert.ToInt32(txtClassFee.Text));
 
             //invoke method to add data to Members Table
@@ -130,7 +130,7 @@ namespace GymSYS
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //reset UI
-            txtClassId.Text = Classes.getNextClassId().ToString("000");
+            txtClassId.Text = Session.getNextClassId().ToString("000");
             txtClassName.Clear();
             txtClassTeacher.Clear();
             txtClassFee.Clear();
@@ -139,7 +139,7 @@ namespace GymSYS
         private void frmScheduleClass_Load(object sender, EventArgs e)
         {
             //get next ClassId
-            txtClassId.Text = Classes.getNextClassId().ToString("000");
+            txtClassId.Text = Session.getNextClassId().ToString("000");
         }
     }
 }
