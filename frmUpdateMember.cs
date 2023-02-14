@@ -178,7 +178,8 @@ namespace GymSYS
             updateMember.setEircode(txtEircode.Text);
             updateMember.setEmail(txtEmail.Text);
             updateMember.setPaymentType(cboPaymentType.Text);
-            updateMember.setMemberWallet(Convert.ToInt32(updateMember.getMemberWallet()));
+            updateMember.setMemberWallet(0);
+            updateMember.setMemberPoints(0);
 
             //update the data
             updateMember.updateMember();
@@ -195,6 +196,7 @@ namespace GymSYS
             txtEircode.Clear();
             txtEmail.Clear();
             cboPaymentType.SelectedIndex = -1;
+            txtMemberId.Focus();
         }
     }
 }

@@ -120,7 +120,7 @@ namespace GymSYS
 
             //Create Member instance with values from form
             Member registerMember = new Member(Convert.ToInt32(txtMemberId.Text), txtForename.Text, txtSurname.Text,
-                dtpDOB.Value.ToString("dd-MMM-yyyy"), txtEircode.Text, txtEmail.Text, cboPaymentType.Text, 0);
+                dtpDOB.Value.ToString("dd-MMM-yyyy"), txtEircode.Text, txtEmail.Text, cboPaymentType.Text, 0, 0);
 
             //invoke method to add data to Members Table
             registerMember.addMember();

@@ -18,6 +18,7 @@ namespace GymSYS
         private String email;
         private String paymentType;
         private int memberWallet;
+        private int memberPoints;
 
         public Member()
         {
@@ -29,9 +30,10 @@ namespace GymSYS
             this.email = "";
             this.paymentType = "";
             this.memberWallet = 0;
-        }
+            this.memberPoints = 0;
+    }
 
-        public Member(int memberId, String forename, String surname, String dateOfBirth, String eircode, String email, String paymentType, int memberWallet)
+        public Member(int memberId, String forename, String surname, String dateOfBirth, String eircode, String email, String paymentType, int memberWallet, int memberPoints)
         {
             this.memberId = memberId;
             this.forename = forename;
@@ -41,6 +43,7 @@ namespace GymSYS
             this.email = email;
             this.paymentType = paymentType;
             this.memberWallet = memberWallet;
+            this.memberPoints = memberPoints;
         }
 
         public int getMemberId()
@@ -75,6 +78,10 @@ namespace GymSYS
         {
             return this.memberWallet;
         }
+        public int getMemberPoints()
+        {
+            return this.memberPoints;
+        }
 
         public void setMemberId(int MemberId)
         {
@@ -108,6 +115,10 @@ namespace GymSYS
         {
             memberWallet = MemberWallet;
         }
+        public void setMemberPoints(int MemberPoints)
+        {
+            memberPoints = MemberPoints;
+        }
 
         public void addMember()
         {
@@ -123,7 +134,8 @@ namespace GymSYS
                 this.eircode + "','" +
                 this.email + "','" +
                 this.paymentType + "'," +
-                this.memberWallet + ")";
+                this.memberWallet + "," +
+                this.memberPoints + ")";
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -149,7 +161,8 @@ namespace GymSYS
                 "Eircode = '" + this.eircode + "'," +
                 "Email = '" + this.email + "'," +
                 "Payment_Type = '" + this.paymentType + "'," +
-                "Member_Wallet = " + this.memberWallet +
+                "Member_Wallet = " + this.memberWallet + "," +
+                "Member_Points = " + this.memberPoints +
                 "WHERE Member_Id = " + this.memberId;
 
             //execute query
