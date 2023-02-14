@@ -87,7 +87,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //sql query
-            String sqlQuery = "SELECT * FROM Classes WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
+            String sqlQuery = "SELECT * FROM SESSIONS WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
 
             //create Class Object
             Session cancelClass = new Session();

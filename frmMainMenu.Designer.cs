@@ -43,7 +43,6 @@ namespace GymSYS
             this.cancelBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.yearlyClassReviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pboLogo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -107,21 +106,21 @@ namespace GymSYS
             // scheduleClassToolStripMenuItem
             // 
             this.scheduleClassToolStripMenuItem.Name = "scheduleClassToolStripMenuItem";
-            this.scheduleClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.scheduleClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.scheduleClassToolStripMenuItem.Text = "Schedule Class";
             this.scheduleClassToolStripMenuItem.Click += new System.EventHandler(this.scheduleClassToolStripMenuItem_Click);
             // 
             // updateClassToolStripMenuItem
             // 
             this.updateClassToolStripMenuItem.Name = "updateClassToolStripMenuItem";
-            this.updateClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.updateClassToolStripMenuItem.Text = "Update Class";
             this.updateClassToolStripMenuItem.Click += new System.EventHandler(this.updateClassToolStripMenuItem_Click);
             // 
             // cancelClassToolStripMenuItem
             // 
             this.cancelClassToolStripMenuItem.Name = "cancelClassToolStripMenuItem";
-            this.cancelClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cancelClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cancelClassToolStripMenuItem.Text = "Cancel Class";
             this.cancelClassToolStripMenuItem.Click += new System.EventHandler(this.cancelClassToolStripMenuItem_Click);
             // 
@@ -137,22 +136,21 @@ namespace GymSYS
             // makeBookingToolStripMenuItem
             // 
             this.makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
-            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.makeBookingToolStripMenuItem.Text = "Make Booking";
             this.makeBookingToolStripMenuItem.Click += new System.EventHandler(this.makeBookingToolStripMenuItem_Click);
             // 
             // cancelBookingToolStripMenuItem
             // 
             this.cancelBookingToolStripMenuItem.Name = "cancelBookingToolStripMenuItem";
-            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.cancelBookingToolStripMenuItem.Text = "Cancel Booking";
             this.cancelBookingToolStripMenuItem.Click += new System.EventHandler(this.cancelBookingToolStripMenuItem_Click);
             // 
             // analysisToolStripMenuItem
             // 
             this.analysisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.yearlyRevenueAnalysisToolStripMenuItem,
-            this.yearlyClassReviewToolStripMenuItem});
+            this.yearlyRevenueAnalysisToolStripMenuItem});
             this.analysisToolStripMenuItem.Name = "analysisToolStripMenuItem";
             this.analysisToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.analysisToolStripMenuItem.Text = "Analysis";
@@ -163,12 +161,6 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
             this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
-            // 
-            // yearlyClassReviewToolStripMenuItem
-            // 
-            this.yearlyClassReviewToolStripMenuItem.Name = "yearlyClassReviewToolStripMenuItem";
-            this.yearlyClassReviewToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.yearlyClassReviewToolStripMenuItem.Text = "Yearly Class Review";
             // 
             // pboLogo
             // 
@@ -224,7 +216,6 @@ namespace GymSYS
         private System.Windows.Forms.ToolStripMenuItem makeBookingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelBookingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yearlyRevenueAnalysisToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem yearlyClassReviewToolStripMenuItem;
         private System.Windows.Forms.PictureBox pboLogo;
         private System.Windows.Forms.Label label1;
     }

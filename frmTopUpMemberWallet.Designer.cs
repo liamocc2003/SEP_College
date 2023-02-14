@@ -53,6 +53,11 @@ namespace GymSYS
             this.btnSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.txtForename = new System.Windows.Forms.TextBox();
+            this.cboPaymentType = new System.Windows.Forms.ComboBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtEircode = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -229,6 +234,7 @@ namespace GymSYS
             this.txtCurrentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentAmount.Location = new System.Drawing.Point(194, 149);
             this.txtCurrentAmount.Name = "txtCurrentAmount";
+            this.txtCurrentAmount.ReadOnly = true;
             this.txtCurrentAmount.Size = new System.Drawing.Size(101, 22);
             this.txtCurrentAmount.TabIndex = 25;
             // 
@@ -262,11 +268,66 @@ namespace GymSYS
             this.dtpDOB.TabIndex = 39;
             this.dtpDOB.Visible = false;
             // 
+            // txtSurname
+            // 
+            this.txtSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtSurname.Location = new System.Drawing.Point(624, 368);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(150, 23);
+            this.txtSurname.TabIndex = 41;
+            this.txtSurname.Visible = false;
+            // 
+            // txtForename
+            // 
+            this.txtForename.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtForename.Location = new System.Drawing.Point(624, 326);
+            this.txtForename.Name = "txtForename";
+            this.txtForename.Size = new System.Drawing.Size(150, 23);
+            this.txtForename.TabIndex = 40;
+            this.txtForename.Visible = false;
+            // 
+            // cboPaymentType
+            // 
+            this.cboPaymentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cboPaymentType.FormattingEnabled = true;
+            this.cboPaymentType.Items.AddRange(new object[] {
+            "Cash",
+            "Credit Card",
+            "Revolut"});
+            this.cboPaymentType.Location = new System.Drawing.Point(624, 283);
+            this.cboPaymentType.Name = "cboPaymentType";
+            this.cboPaymentType.Size = new System.Drawing.Size(150, 24);
+            this.cboPaymentType.TabIndex = 44;
+            this.cboPaymentType.Visible = false;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtEmail.Location = new System.Drawing.Point(624, 233);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(150, 23);
+            this.txtEmail.TabIndex = 43;
+            this.txtEmail.Visible = false;
+            // 
+            // txtEircode
+            // 
+            this.txtEircode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtEircode.Location = new System.Drawing.Point(624, 186);
+            this.txtEircode.Name = "txtEircode";
+            this.txtEircode.Size = new System.Drawing.Size(150, 23);
+            this.txtEircode.TabIndex = 42;
+            this.txtEircode.Visible = false;
+            // 
             // frmTopUpMemberWallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cboPaymentType);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtEircode);
+            this.Controls.Add(this.txtSurname);
+            this.Controls.Add(this.txtForename);
             this.Controls.Add(this.dtpDOB);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSearch);
@@ -312,5 +373,10 @@ namespace GymSYS
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpDOB;
+        private System.Windows.Forms.TextBox txtSurname;
+        private System.Windows.Forms.TextBox txtForename;
+        private System.Windows.Forms.ComboBox cboPaymentType;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtEircode;
     }
 }

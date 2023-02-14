@@ -117,10 +117,12 @@ namespace GymSYS
 
             //change data
             topUpMemberWallet.setMemberId(Convert.ToInt32(txtMemberId.Text));
-            string forename = topUpMemberWallet.getForename();
-            topUpMemberWallet.setForename(forename);
-            string surname = topUpMemberWallet.getSurname();
-            topUpMemberWallet.setSurname(surname);
+            topUpMemberWallet.setForename(txtForename.Text);
+            topUpMemberWallet.setSurname(txtSurname.Text);
+            topUpMemberWallet.setDateOfBirth(dtpDOB.Value.ToString("dd-MMM-yyyy"));
+            topUpMemberWallet.setEircode(txtEircode.Text);
+            topUpMemberWallet.setEmail(txtEmail.Text);
+            topUpMemberWallet.setPaymentType(cboPaymentType.Text);
             topUpMemberWallet.setMemberWallet(Convert.ToInt32(txtCurrentAmount.Text) + Convert.ToInt32(txtAmount.Text));
 
             //update the data
@@ -134,6 +136,7 @@ namespace GymSYS
             txtMemberId.Clear();
             txtAmount.Clear();
             txtCurrentAmount.Clear();
+            dtpDOB.Text = string.Empty;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -173,8 +176,13 @@ namespace GymSYS
             }
             else
             {
-                txtCurrentAmount.Text = Convert.ToString(dr.GetInt32(7));
+                txtForename.Text = dr.GetString(1);
+                txtSurname.Text = dr.GetString(2);
                 dtpDOB.Value = dr.GetDateTime(3);
+                txtEircode.Text = dr.GetString(4);
+                txtEmail.Text = dr.GetString(5);
+                cboPaymentType.Text = dr.GetString(6);
+                txtCurrentAmount.Text = Convert.ToString(dr.GetInt32(7));
             }
 
             conn.Close();

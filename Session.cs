@@ -71,7 +71,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query
-            String sqlQuery = "INSERT INTO CLASSES VALUES (" +
+            String sqlQuery = "INSERT INTO SESSIONS VALUES (" +
                 this.classId + ",'" +
                 this.className + "','" +
                 this.classTeacher + "'," +
@@ -93,7 +93,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query
-            String sqlQuery = "UPDATE Classes SET " +
+            String sqlQuery = "UPDATE SESSIONS SET " +
                 "Class_Id = " + this.classId + "," +
                 "Class_Name = '" + this.className + "'," +
                 "Class_Teacher = '" + this.classTeacher + "'," +
@@ -116,7 +116,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query
-            String sqlQuery = "SELECT MAX(Class_Id) FROM Classes";
+            String sqlQuery = "SELECT MAX(Class_Id) FROM SESSIONS";
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -149,7 +149,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query
-            String sqlQuery = "DELETE FROM Classes WHERE Class_Id = " + this.classId;
+            String sqlQuery = "DELETE FROM SESSIONS WHERE Class_Id = " + this.classId;
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);

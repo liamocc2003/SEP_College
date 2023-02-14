@@ -106,7 +106,7 @@ namespace GymSYS
 
             //define sql query
             String sqlQuery = "SELECT * " +
-                "FROM Classes WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
+                "FROM SESSIONS WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);

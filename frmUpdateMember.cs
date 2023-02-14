@@ -178,8 +178,7 @@ namespace GymSYS
             updateMember.setEircode(txtEircode.Text);
             updateMember.setEmail(txtEmail.Text);
             updateMember.setPaymentType(cboPaymentType.Text);
-            int membWallet = Convert.ToInt32(updateMember.getMemberWallet());
-            updateMember.setMemberWallet(membWallet);
+            updateMember.setMemberWallet(Convert.ToInt32(updateMember.getMemberWallet()));
 
             //update the data
             updateMember.updateMember();
@@ -192,6 +191,7 @@ namespace GymSYS
             txtMemberId.Clear();
             txtForename.Clear();
             txtSurname.Clear();
+            dtpDOB.Text = string.Empty;
             txtEircode.Clear();
             txtEmail.Clear();
             cboPaymentType.SelectedIndex = -1;
