@@ -47,10 +47,10 @@ namespace GymSYS
             this.label7 = new System.Windows.Forms.Label();
             this.txtMemberId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtClassName = new System.Windows.Forms.TextBox();
             this.btnBookClass = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBookingId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cboClassName = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,13 +142,13 @@ namespace GymSYS
             // makeBookingToolStripMenuItem
             // 
             this.makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
-            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.makeBookingToolStripMenuItem.Text = "Make Booking";
             // 
             // cancelBookingToolStripMenuItem
             // 
             this.cancelBookingToolStripMenuItem.Name = "cancelBookingToolStripMenuItem";
-            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.cancelBookingToolStripMenuItem.Text = "Cancel Booking";
             this.cancelBookingToolStripMenuItem.Click += new System.EventHandler(this.cancelBookingToolStripMenuItem_Click);
             // 
@@ -199,17 +199,9 @@ namespace GymSYS
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(44, 240);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.Size = new System.Drawing.Size(98, 20);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Class ID:";
-            // 
-            // txtClassName
-            // 
-            this.txtClassName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtClassName.Location = new System.Drawing.Point(167, 237);
-            this.txtClassName.Name = "txtClassName";
-            this.txtClassName.Size = new System.Drawing.Size(150, 23);
-            this.txtClassName.TabIndex = 22;
+            this.label1.Text = "Class Name:";
             // 
             // btnBookClass
             // 
@@ -220,14 +212,16 @@ namespace GymSYS
             this.btnBookClass.TabIndex = 23;
             this.btnBookClass.Text = "Book";
             this.btnBookClass.UseVisualStyleBackColor = true;
+            this.btnBookClass.Click += new System.EventHandler(this.btnBookClass_Click);
             // 
-            // textBox1
+            // txtBookingId
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox1.Location = new System.Drawing.Point(167, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 23);
-            this.textBox1.TabIndex = 25;
+            this.txtBookingId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtBookingId.Location = new System.Drawing.Point(167, 69);
+            this.txtBookingId.Name = "txtBookingId";
+            this.txtBookingId.ReadOnly = true;
+            this.txtBookingId.Size = new System.Drawing.Size(150, 23);
+            this.txtBookingId.TabIndex = 25;
             // 
             // label2
             // 
@@ -239,21 +233,30 @@ namespace GymSYS
             this.label2.TabIndex = 24;
             this.label2.Text = "Booking ID:";
             // 
+            // cboClassName
+            // 
+            this.cboClassName.FormattingEnabled = true;
+            this.cboClassName.Location = new System.Drawing.Point(167, 239);
+            this.cboClassName.Name = "cboClassName";
+            this.cboClassName.Size = new System.Drawing.Size(150, 21);
+            this.cboClassName.TabIndex = 26;
+            // 
             // frmMakeBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cboClassName);
+            this.Controls.Add(this.txtBookingId);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBookClass);
-            this.Controls.Add(this.txtClassName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMemberId);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmMakeBooking";
             this.Text = "frmMakeBooking";
+            this.Load += new System.EventHandler(this.frmMakeBooking_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -281,9 +284,9 @@ namespace GymSYS
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtMemberId;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtClassName;
         private System.Windows.Forms.Button btnBookClass;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBookingId;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cboClassName;
     }
 }

@@ -79,5 +79,41 @@ namespace GymSYS
             frmYearlyRevenueAnalysis yearlyRevenueAnalysis = new frmYearlyRevenueAnalysis();
             yearlyRevenueAnalysis.Show();
         }
+
+        private void frmMakeBooking_Load(object sender, EventArgs e)
+        {
+            //get next BookingId
+            txtBookingId.Text = Booking.getNextBookingId().ToString("000");
+
+            //load classNames into comboBox
+            DataSet ds = Session.getClassNames();
+            
+            for(int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                cboClassName.Items.Add(ds.Tables[0].Rows[i][0] + " - " + ds.Tables[0].Rows[i][1]);
+            }
+        }
+
+        private void btnBookClass_Click(object sender, EventArgs e)
+        {
+            //Validate all data
+
+            //End of Validation
+
+            //Create Booking instance with values from form
+            Booking bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(txtMemberId.Text), cboClassName.Text);
+
+            //invoke method to add data to Booking Table
+            bookClass.addBooking();
+
+            //Confirmation Message
+            MessageBox.Show("Booking has been completed successfully", "Success",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //reset UI
+            txtBookingId.Text = Booking.getNextBookingId().ToString("000");
+            txtMemberId.Clear();
+            cboClassName.SelectedIndex = -1;
+        }
     }
 }

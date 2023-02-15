@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,20 +11,20 @@ namespace GymSYS
     {
         private int bookingId;
         private int memberId;
-        private int classId;
+        private String className;
 
         public Booking()
         {
             this.bookingId = 100;
             this.memberId = 10000;
-            this.classId. = 100;
+            this.className = "";
         }
 
-        public Booking(int bookingId, int memberId, int classId)
+        public Booking(int bookingId, int memberId, String className)
         {
             this.bookingId = bookingId;
             this.memberId = memberId;
-            this.classId = classId;
+            this.className = className;
         }
 
         public int getBookingId()
@@ -35,9 +36,9 @@ namespace GymSYS
         {
             return this.memberId;
         }
-        public int getClassId()
+        public String getClassName()
         {
-            return this.classId;
+            return this.className;
         }
 
         public void setBookingId(int BookingId)
@@ -48,19 +49,21 @@ namespace GymSYS
         {
             memberId = MemberId;
         }
-        public void setClassId(int ClassId)
+        public void setClassName(String ClassName)
         {
-            classId = ClassId;
+            className = ClassName;
         }
 
-        public void bookClass()
+        public void addBooking()
         {
             //conect to database
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query
             String sqlQuery = "INSERT INTO Bookings VALUES (" +
-                this.bookingId
+                this.bookingId + "," +
+                this.memberId + ",'" +
+                this.className + "')";
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -72,7 +75,7 @@ namespace GymSYS
             conn.Close();
         }
 
-        public void cancelClass()
+        public void cancelBooking()
         {
             //connect to database
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
@@ -88,6 +91,39 @@ namespace GymSYS
 
             //close database
             conn.Close();
+        }
+
+        public static int getNextBookingId()
+        {
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+            String sqlQuery = "SELECT MAX(Booking_Id) FROM Bookings";
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int nextId;
+            dr.Read();
+
+            if (dr.IsDBNull(0))
+            {
+                nextId = 100;
+            }
+            else
+            {
+                nextId = dr.GetInt32(0) + 1;
+            }
+
+            //close database
+            conn.Close();
+
+            return nextId;
         }
     }
 }
