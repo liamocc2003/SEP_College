@@ -207,5 +207,27 @@ namespace GymSYS
 
             return nextId;
         }
+
+        public static DataSet getMemberIds()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Member_Id FROM Members ORDER BY Member_Id ASC";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "membIds");
+
+            //close db connection
+            conn.Close();
+
+            return ds;
+        }
     }
 }

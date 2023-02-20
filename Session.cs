@@ -161,13 +161,13 @@ namespace GymSYS
             conn.Close();
         }
 
-        public static DataSet getClassNames()
+        public static DataSet getClassIds()
         {
             //open a db connection
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query to execute
-            String sqlQuery = "SELECT Class_Name FROM Sessions ORDER BY Class_Name DESC";
+            String sqlQuery = "SELECT Class_Id FROM Sessions ORDER BY Class_Id ASC";
 
             //execute sql query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -175,7 +175,7 @@ namespace GymSYS
             OracleDataAdapter da = new OracleDataAdapter(cmd);
 
             DataSet ds = new DataSet();
-            da.Fill(ds, "classNames");
+            da.Fill(ds, "classIds");
 
             //close db connection
             conn.Close();

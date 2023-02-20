@@ -11,20 +11,20 @@ namespace GymSYS
     {
         private int bookingId;
         private int memberId;
-        private String className;
+        private int classId;
 
         public Booking()
         {
             this.bookingId = 100;
             this.memberId = 10000;
-            this.className = "";
+            this.classId = 100;
         }
 
-        public Booking(int bookingId, int memberId, String className)
+        public Booking(int bookingId, int memberId, int classId)
         {
             this.bookingId = bookingId;
             this.memberId = memberId;
-            this.className = className;
+            this.classId = classId;
         }
 
         public int getBookingId()
@@ -36,9 +36,9 @@ namespace GymSYS
         {
             return this.memberId;
         }
-        public String getClassName()
+        public int getClassId()
         {
-            return this.className;
+            return this.classId;
         }
 
         public void setBookingId(int BookingId)
@@ -49,9 +49,9 @@ namespace GymSYS
         {
             memberId = MemberId;
         }
-        public void setClassName(String ClassName)
+        public void setClassId(int ClassId)
         {
-            className = ClassName;
+            classId = ClassId;
         }
 
         public void addBooking()
@@ -63,7 +63,7 @@ namespace GymSYS
             String sqlQuery = "INSERT INTO Bookings VALUES (" +
                 this.bookingId + "," +
                 this.memberId + ",'" +
-                this.className + "')";
+                this.classId + "')";
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);

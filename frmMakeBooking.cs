@@ -85,12 +85,20 @@ namespace GymSYS
             //get next BookingId
             txtBookingId.Text = Booking.getNextBookingId().ToString("000");
 
-            //load classNames into comboBox
-            DataSet ds = Session.getClassNames();
+            //load classIds into comboBox
+            DataSet dsC = Session.getClassIds();
             
-            for(int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            for(int i = 0; i < dsC.Tables[0].Rows.Count; i++)
             {
-                cboClassName.Items.Add(ds.Tables[0].Rows[i][0] + " - " + ds.Tables[0].Rows[i][1]);
+                cboClassId.Items.Add(dsC.Tables[0].Rows[i][0]);
+            }
+
+            //load memberIds into comboBox
+            DataSet dsM = Member.getMemberIds();
+
+            for(int i = 0; i < dsM.Tables[0].Rows.Count; i++)
+            {
+                cboMemberId.Items.Add(dsM.Tables[0].Rows[i][0]);
             }
         }
 
@@ -101,7 +109,7 @@ namespace GymSYS
             //End of Validation
 
             //Create Booking instance with values from form
-            Booking bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(txtMemberId.Text), cboClassName.Text);
+            Booking bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text));
 
             //invoke method to add data to Booking Table
             bookClass.addBooking();
@@ -112,8 +120,8 @@ namespace GymSYS
 
             //reset UI
             txtBookingId.Text = Booking.getNextBookingId().ToString("000");
-            txtMemberId.Clear();
-            cboClassName.SelectedIndex = -1;
+            cboMemberId.SelectedIndex = -1;
+            cboClassId.SelectedIndex = -1;
         }
     }
 }

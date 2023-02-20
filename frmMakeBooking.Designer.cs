@@ -45,12 +45,12 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtMemberId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBookClass = new System.Windows.Forms.Button();
             this.txtBookingId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cboClassName = new System.Windows.Forms.ComboBox();
+            this.cboClassId = new System.Windows.Forms.ComboBox();
+            this.cboMemberId = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -185,23 +185,15 @@ namespace GymSYS
             this.label7.TabIndex = 19;
             this.label7.Text = "Member ID:";
             // 
-            // txtMemberId
-            // 
-            this.txtMemberId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtMemberId.Location = new System.Drawing.Point(167, 176);
-            this.txtMemberId.Name = "txtMemberId";
-            this.txtMemberId.Size = new System.Drawing.Size(150, 23);
-            this.txtMemberId.TabIndex = 20;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(44, 240);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Class Name:";
+            this.label1.Text = "Class ID:";
             // 
             // btnBookClass
             // 
@@ -233,25 +225,33 @@ namespace GymSYS
             this.label2.TabIndex = 24;
             this.label2.Text = "Booking ID:";
             // 
-            // cboClassName
+            // cboClassId
             // 
-            this.cboClassName.FormattingEnabled = true;
-            this.cboClassName.Location = new System.Drawing.Point(167, 239);
-            this.cboClassName.Name = "cboClassName";
-            this.cboClassName.Size = new System.Drawing.Size(150, 21);
-            this.cboClassName.TabIndex = 26;
+            this.cboClassId.FormattingEnabled = true;
+            this.cboClassId.Location = new System.Drawing.Point(167, 239);
+            this.cboClassId.Name = "cboClassId";
+            this.cboClassId.Size = new System.Drawing.Size(150, 21);
+            this.cboClassId.TabIndex = 26;
+            // 
+            // cboMemberId
+            // 
+            this.cboMemberId.FormattingEnabled = true;
+            this.cboMemberId.Location = new System.Drawing.Point(167, 178);
+            this.cboMemberId.Name = "cboMemberId";
+            this.cboMemberId.Size = new System.Drawing.Size(150, 21);
+            this.cboMemberId.TabIndex = 27;
             // 
             // frmMakeBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cboClassName);
+            this.Controls.Add(this.cboMemberId);
+            this.Controls.Add(this.cboClassId);
             this.Controls.Add(this.txtBookingId);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBookClass);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtMemberId);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmMakeBooking";
@@ -282,11 +282,11 @@ namespace GymSYS
         private System.Windows.Forms.ToolStripMenuItem yearlyRevenueAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtMemberId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBookClass;
         private System.Windows.Forms.TextBox txtBookingId;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cboClassName;
+        private System.Windows.Forms.ComboBox cboClassId;
+        private System.Windows.Forms.ComboBox cboMemberId;
     }
 }
