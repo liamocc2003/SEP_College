@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -80,15 +81,42 @@ namespace GymSYS
             yearlyRevenueAnalysis.Show();
         }
 
-        private void frmCancelBooking_Load(object sender, EventArgs e)
+        private void btnCancelClass_Click(object sender, EventArgs e)
         {
-            //load classIds into comboBox
-            DataSet dsC = Session.getClassIds();
+            //connect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
-            for (int i = 0; i < dsC.Tables[0].Rows.Count; i++)
+            //sql query
+            String sqlQuery = "SELECT * FROM Bookings WHERE Booking_Id = " + Convert.ToInt32(txtBookingId.Text);
+
+            //create Booking Object
+            Booking cancelBooking = new Booking();
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+            OracleDataReader dr = cmd.ExecuteReader();
+            if (!dr.Read())
             {
-                cboClassId.Items.Add(dsC.Tables[0].Rows[i][0]);
+                MessageBox.Show("There are no bookings found with that Booking ID");
+                return;
             }
+            else
+            {
+                cancelBooking.setBookingId(Convert.ToInt32(txtBookingId.Text));
+            }
+
+            //remove the data
+            cancelBooking.cancelBooking();
+
+            //Display Confirmation Message
+            MessageBox.Show("Booking has cancelled successfully", "Success",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Reset UI
+            txtBookingId.Clear();
+
+            conn.Close();
         }
     }
 }

@@ -120,7 +120,10 @@ namespace GymSYS
             {
                 txtClassName.Text = dr.GetString(1);
                 txtClassTeacher.Text = dr.GetString(2);
-                txtClassFee.Text = dr.GetString(3);
+                txtClassSize.Text = Convert.ToString(dr.GetString(3));
+                dtpClassDate.Value = dr.GetDateTime(4);
+                txtClassDuration.Text = Convert.ToString(dr.GetInt32(5));
+                txtClassFee.Text = dr.GetString(6);
             }
 
             conn.Close();
@@ -135,6 +138,9 @@ namespace GymSYS
             updateClass.setClassId(Convert.ToInt32(txtClassId.Text));
             updateClass.setClassName(txtClassName.Text);
             updateClass.setClassTeacher(txtClassTeacher.Text);
+            updateClass.setClassSize(Convert.ToInt32(txtClassSize.Text));
+            updateClass.setClassDate(dtpClassDate.Value.ToString("dd-MMM-yyyy"));
+            updateClass.setClassDuration(Convert.ToInt32(txtClassDuration.Text));
             updateClass.setClassFee(Convert.ToInt32(txtClassFee.Text));
 
             //update the data
@@ -148,6 +154,9 @@ namespace GymSYS
             txtClassId.Clear();
             txtClassName.Clear();
             txtClassTeacher.Clear();
+            txtClassSize.Clear();
+            dtpClassDate.Text = string.Empty;
+            txtClassDuration.Clear();
             txtClassFee.Clear();
         }
     }

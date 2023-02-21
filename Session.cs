@@ -13,6 +13,9 @@ namespace GymSYS
         private int classId;
         private String className;
         private String classTeacher;
+        private int classSize;
+        private String classDate;
+        private int classDuration;
         private int classFee;
 
         public Session()
@@ -20,14 +23,20 @@ namespace GymSYS
             this.classId = 100;
             this.className = "";
             this.classTeacher = "";
+            this.classSize = 0;
+            this.classDate = Convert.ToString(DateTime.Today);
+            this.classDuration = 0;
             this.classFee = 0;
         }
 
-        public Session(int classId, String className, String classTeacher, int classFee)
+        public Session(int classId, String className, String classTeacher, int classSize, String classDate, int classDuration, int classFee)
         {
             this.classId = classId;
             this.className = className;
             this.classTeacher = classTeacher;
+            this.classSize = classSize;
+            this.classDate = classDate;
+            this.classDuration = classDuration;
             this.classFee = classFee;
         }
 
@@ -42,6 +51,18 @@ namespace GymSYS
         public String getClassTeacher()
         {
             return this.classTeacher;
+        }
+        public int getClassSize()
+        {
+            return this.classSize;
+        }
+        public String getClassDate()
+        {
+            return this.classDate;
+        }
+        public int getClassDuration()
+        {
+            return this.classDuration;
         }
         public int getClassFee()
         {
@@ -60,6 +81,18 @@ namespace GymSYS
         {
             classTeacher = ClassTeacher;
         }
+        public void setClassSize(int ClassSize)
+        {
+            classSize = ClassSize;
+        }
+        public void setClassDate(String ClassDate)
+        {
+            classDate = ClassDate;
+        }
+        public void setClassDuration(int ClassDuration)
+        {
+            classDuration = ClassDuration;
+        }
         public void setClassFee(int ClassFee)
         {
             classFee = ClassFee;
@@ -75,6 +108,9 @@ namespace GymSYS
                 this.classId + ",'" +
                 this.className + "','" +
                 this.classTeacher + "'," +
+                this.classSize + ",'" +
+                this.classDate + "'," +
+                this.classDuration + "," +
                 this.classFee + ")";
 
             //execute query
@@ -97,6 +133,9 @@ namespace GymSYS
                 "Class_Id = " + this.classId + "," +
                 "Class_Name = '" + this.className + "'," +
                 "Class_Teacher = '" + this.classTeacher + "'," +
+                "Class_Size = " + this.classSize + "," +
+                "Class_Date = '" + this.classDate + "'," +
+                "Class_Duration = " + this.classDuration + "," +
                 "Class_Fee = " + this.classFee +
                 "WHERE Class_Id = " + this.classId;
 

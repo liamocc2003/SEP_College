@@ -54,6 +54,12 @@ namespace GymSYS
             this.txtClassId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.dtpClassDate = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtClassDuration = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtClassSize = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -202,7 +208,7 @@ namespace GymSYS
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(40, 188);
+            this.label3.Location = new System.Drawing.Point(40, 367);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 20);
             this.label3.TabIndex = 22;
@@ -224,7 +230,7 @@ namespace GymSYS
             // 
             // txtClassFee
             // 
-            this.txtClassFee.Location = new System.Drawing.Point(172, 188);
+            this.txtClassFee.Location = new System.Drawing.Point(172, 367);
             this.txtClassFee.Name = "txtClassFee";
             this.txtClassFee.Size = new System.Drawing.Size(163, 20);
             this.txtClassFee.TabIndex = 25;
@@ -268,11 +274,69 @@ namespace GymSYS
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // dtpClassDate
+            // 
+            this.dtpClassDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpClassDate.Location = new System.Drawing.Point(171, 243);
+            this.dtpClassDate.Name = "dtpClassDate";
+            this.dtpClassDate.Size = new System.Drawing.Size(150, 20);
+            this.dtpClassDate.TabIndex = 37;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label7.Location = new System.Drawing.Point(40, 243);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 20);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Date of Class:";
+            // 
+            // txtClassDuration
+            // 
+            this.txtClassDuration.Location = new System.Drawing.Point(171, 305);
+            this.txtClassDuration.Name = "txtClassDuration";
+            this.txtClassDuration.Size = new System.Drawing.Size(163, 20);
+            this.txtClassDuration.TabIndex = 35;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(40, 305);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(117, 20);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Class Duration:";
+            // 
+            // txtClassSize
+            // 
+            this.txtClassSize.Location = new System.Drawing.Point(171, 186);
+            this.txtClassSize.Name = "txtClassSize";
+            this.txtClassSize.Size = new System.Drawing.Size(163, 20);
+            this.txtClassSize.TabIndex = 33;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(40, 186);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(87, 20);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Class Size:";
+            // 
             // frmUpdateClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dtpClassDate);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtClassDuration);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtClassSize);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtClassId);
             this.Controls.Add(this.label4);
@@ -320,5 +384,11 @@ namespace GymSYS
         private System.Windows.Forms.TextBox txtClassId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DateTimePicker dtpClassDate;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtClassDuration;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtClassSize;
+        private System.Windows.Forms.Label label6;
     }
 }

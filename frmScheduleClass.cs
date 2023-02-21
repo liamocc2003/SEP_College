@@ -83,44 +83,13 @@ namespace GymSYS
         private void btnSchedule_Click(object sender, EventArgs e)
         {
             //Validate all data
-            //Validate forename
-            /*if (txtForename.Text.Equals(""))
-            {
-                MessageBox.Show("Forename must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtForename.Focus();
-                return;
-            }
-            for (int i = 0; i < txtForename.TextLength; i++)
-            {
-                if (txtForename.Text.Any(char.IsDigit) == true)
-                {
-                    MessageBox.Show("Forename contains a digit", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtForename.Focus();
-                    return;
-                }
-            }
 
-            //Validate surname
-            if (txtSurname.Text.Equals(""))
-            {
-                MessageBox.Show("Surname must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSurname.Focus();
-                return;
-            }
-            for (int i = 0; i < txtSurname.TextLength; i++)
-            {
-                if (txtSurname.Text.Any(char.IsDigit) == true)
-                {
-                    MessageBox.Show("Surname contains a digit", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtSurname.Focus();
-                    return;
-                }
-            }*/
             //End of Validation
 
             //Create Member instance with values from form
             Session scheduleClass = new Session(Convert.ToInt32(txtClassId.Text), txtClassName.Text,
-                txtClassTeacher.Text, Convert.ToInt32(txtClassFee.Text));
+                txtClassTeacher.Text, Convert.ToInt32(txtClassSize.Text), dtpClassDate.Value.ToString("dd-MMM-yyyy"),
+                Convert.ToInt32(txtClassDuration.Text), Convert.ToInt32(txtClassFee.Text));
 
             //invoke method to add data to Members Table
             scheduleClass.addClass();
@@ -133,6 +102,9 @@ namespace GymSYS
             txtClassId.Text = Session.getNextClassId().ToString("000");
             txtClassName.Clear();
             txtClassTeacher.Clear();
+            txtClassSize.Clear();
+            dtpClassDate.Text = string.Empty;
+            txtClassDuration.Clear();
             txtClassFee.Clear();
         }
 
