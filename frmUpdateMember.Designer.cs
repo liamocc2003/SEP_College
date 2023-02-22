@@ -56,10 +56,10 @@ namespace GymSYS
             this.cboPaymentType = new System.Windows.Forms.ComboBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtMemberId = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
+            this.cboMemberId = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -300,14 +300,6 @@ namespace GymSYS
             this.label3.TabIndex = 34;
             this.label3.Text = "Member Id:";
             // 
-            // txtMemberId
-            // 
-            this.txtMemberId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtMemberId.Location = new System.Drawing.Point(562, 77);
-            this.txtMemberId.Name = "txtMemberId";
-            this.txtMemberId.Size = new System.Drawing.Size(150, 23);
-            this.txtMemberId.TabIndex = 35;
-            // 
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -337,15 +329,23 @@ namespace GymSYS
             this.label7.TabIndex = 37;
             this.label7.Text = "Date of Birth:";
             // 
+            // cboMemberId
+            // 
+            this.cboMemberId.FormattingEnabled = true;
+            this.cboMemberId.Location = new System.Drawing.Point(552, 79);
+            this.cboMemberId.Name = "cboMemberId";
+            this.cboMemberId.Size = new System.Drawing.Size(160, 21);
+            this.cboMemberId.TabIndex = 39;
+            // 
             // frmUpdateMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cboMemberId);
             this.Controls.Add(this.dtpDOB);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtMemberId);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.cboPaymentType);
@@ -361,6 +361,7 @@ namespace GymSYS
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmUpdateMember";
             this.Text = "Update Member";
+            this.Load += new System.EventHandler(this.frmUpdateMember_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -397,9 +398,9 @@ namespace GymSYS
         private System.Windows.Forms.ComboBox cboPaymentType;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtMemberId;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cboMemberId;
     }
 }

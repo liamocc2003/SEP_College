@@ -83,22 +83,8 @@ namespace GymSYS
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //valiadte memberId
-            if (txtMemberId.Text.Equals(""))
-            {
-                MessageBox.Show("Member ID must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMemberId.Focus();
-                return;
-            }
-            for(int i = 0; i < txtMemberId.TextLength; i++)
-            {
-                if(txtMemberId.Text.Any(char.IsLetter) == true)
-                {
-                    MessageBox.Show("Member ID contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtMemberId.Focus();
-                    return;
-                }
-            }
+            //Validation
+
             //end of validation
 
             //conect to database
@@ -106,7 +92,7 @@ namespace GymSYS
 
             //define sql query
             String sqlQuery = "SELECT * " +
-                "FROM Members WHERE Member_Id = " + Convert.ToInt32(txtMemberId.Text);
+                "FROM Members WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text);
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -171,7 +157,7 @@ namespace GymSYS
             Member updateMember = new Member();
 
             //change the data
-            updateMember.setMemberId(Convert.ToInt32(txtMemberId.Text));
+            updateMember.setMemberId(Convert.ToInt32(cboMemberId.Text));
             updateMember.setForename(txtForename.Text);
             updateMember.setSurname(txtSurname.Text);
             updateMember.setDateOfBirth(dtpDOB.Value.ToString("dd-MMM-yyyy"));
@@ -189,14 +175,20 @@ namespace GymSYS
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
-            txtMemberId.Clear();
+            cboMemberId.SelectedIndex = -1;
             txtForename.Clear();
             txtSurname.Clear();
             dtpDOB.Text = string.Empty;
             txtEircode.Clear();
             txtEmail.Clear();
             cboPaymentType.SelectedIndex = -1;
-            txtMemberId.Focus();
+            cboMemberId.Focus();
+        }
+
+        private void frmUpdateMember_Load(object sender, EventArgs e)
+        {
+            //load memberIds in combobox
+
         }
     }
 }
