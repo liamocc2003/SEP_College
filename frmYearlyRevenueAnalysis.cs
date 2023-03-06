@@ -79,5 +79,16 @@ namespace GymSYS
             frmCancelBooking cancelBooking = new frmCancelBooking();
             cancelBooking.Show();
         }
+
+        private void frmYearlyRevenueAnalysis_Load(object sender, EventArgs e)
+        {
+            //load memberIds into combobox
+            DataSet dsM = Member.getMemberIds();
+
+            for (int i = 0; i < dsM.Tables[0].Rows.Count; i++)
+            {
+                cboViewAllMembers.Items.Add(dsM.Tables[0].Rows[i][0]);
+            }
+        }
     }
 }

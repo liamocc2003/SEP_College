@@ -84,18 +84,18 @@ namespace GymSYS
         private void btnSearch_Click(object sender, EventArgs e)
         {
             //valiadte memberId
-            if (txtClassId.Text.Equals(""))
+            if (cboClassId.Text.Equals(""))
             {
                 MessageBox.Show("Class ID must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtClassId.Focus();
+                cboClassId.Focus();
                 return;
             }
-            for (int i = 0; i < txtClassId.TextLength; i++)
+            for (int i = 0; i < 3; i++)
             {
-                if (txtClassId.Text.Any(char.IsLetter) == true)
+                if (cboClassId.Text.Any(char.IsLetter) == true)
                 {
                     MessageBox.Show("Class ID contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtClassId.Focus();
+                    cboClassId.Focus();
                     return;
                 }
             }
@@ -106,7 +106,7 @@ namespace GymSYS
 
             //define sql query
             String sqlQuery = "SELECT * " +
-                "FROM SESSIONS WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
+                "FROM SESSIONS WHERE Class_Id = " + Convert.ToInt32(cboClassId.Text);
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -135,7 +135,7 @@ namespace GymSYS
             Session updateClass = new Session();
 
             //change the data
-            updateClass.setClassId(Convert.ToInt32(txtClassId.Text));
+            updateClass.setClassId(Convert.ToInt32(cboClassId.Text));
             updateClass.setClassName(txtClassName.Text);
             updateClass.setClassTeacher(txtClassTeacher.Text);
             updateClass.setClassSize(Convert.ToInt32(txtClassSize.Text));
@@ -151,13 +151,27 @@ namespace GymSYS
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
-            txtClassId.Clear();
+            cboClassId.SelectedIndex = -1;
             txtClassName.Clear();
             txtClassTeacher.Clear();
             txtClassSize.Clear();
             dtpClassDate.Text = string.Empty;
             txtClassDuration.Clear();
             txtClassFee.Clear();
+        }
+
+        private void frmUpdateClass_Load(object sender, EventArgs e)
+        {
+            //set classDate min to today
+            dtpClassDate.MinDate = DateTime.Today;
+
+            //load classIds into combobox
+            DataSet dsC = Session.getClassIds();
+
+            for (int i = 0; i < dsC.Tables[0].Rows.Count; i++)
+            {
+                cboClassId.Items.Add(dsC.Tables[0].Rows[i][0]);
+            }
         }
     }
 }

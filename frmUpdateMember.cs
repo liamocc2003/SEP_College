@@ -188,7 +188,12 @@ namespace GymSYS
         private void frmUpdateMember_Load(object sender, EventArgs e)
         {
             //load memberIds in combobox
+            DataSet dsM = Member.getMemberIds();
 
+            for (int i = 0; i < dsM.Tables[0].Rows.Count; i++)
+            {
+                cboMemberId.Items.Add(dsM.Tables[0].Rows[i][0]);
+            }
         }
     }
 }

@@ -45,7 +45,6 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtMemberId = new System.Windows.Forms.TextBox();
             this.btnAddMoney = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
@@ -58,6 +57,7 @@ namespace GymSYS
             this.cboPaymentType = new System.Windows.Forms.ComboBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtEircode = new System.Windows.Forms.TextBox();
+            this.cboMemberId = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,14 +192,6 @@ namespace GymSYS
             this.label1.TabIndex = 18;
             this.label1.Text = "Member Id:";
             // 
-            // txtMemberId
-            // 
-            this.txtMemberId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMemberId.Location = new System.Drawing.Point(162, 65);
-            this.txtMemberId.Name = "txtMemberId";
-            this.txtMemberId.Size = new System.Drawing.Size(133, 22);
-            this.txtMemberId.TabIndex = 19;
-            // 
             // btnAddMoney
             // 
             this.btnAddMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -318,11 +310,20 @@ namespace GymSYS
             this.txtEircode.TabIndex = 42;
             this.txtEircode.Visible = false;
             // 
+            // cboMemberId
+            // 
+            this.cboMemberId.FormattingEnabled = true;
+            this.cboMemberId.Location = new System.Drawing.Point(162, 67);
+            this.cboMemberId.Name = "cboMemberId";
+            this.cboMemberId.Size = new System.Drawing.Size(133, 21);
+            this.cboMemberId.TabIndex = 45;
+            // 
             // frmTopUpMemberWallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cboMemberId);
             this.Controls.Add(this.cboPaymentType);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtEircode);
@@ -335,11 +336,11 @@ namespace GymSYS
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAddMoney);
-            this.Controls.Add(this.txtMemberId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmTopUpMemberWallet";
             this.Text = "Top-Up Member Wallet";
+            this.Load += new System.EventHandler(this.frmTopUpMemberWallet_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -365,7 +366,6 @@ namespace GymSYS
         private System.Windows.Forms.ToolStripMenuItem yearlyRevenueAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtMemberId;
         private System.Windows.Forms.Button btnAddMoney;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtAmount;
@@ -378,5 +378,6 @@ namespace GymSYS
         private System.Windows.Forms.ComboBox cboPaymentType;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtEircode;
+        private System.Windows.Forms.ComboBox cboMemberId;
     }
 }

@@ -112,6 +112,9 @@ namespace GymSYS
         {
             //get next ClassId
             txtClassId.Text = Session.getNextClassId().ToString("000");
+
+            //set classDate to a minuimum of today
+            dtpClassDate.MinDate = DateTime.Today;
         }
     }
 }

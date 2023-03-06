@@ -116,7 +116,7 @@ namespace GymSYS
             Member topUpMemberWallet = new Member();
 
             //change data
-            topUpMemberWallet.setMemberId(Convert.ToInt32(txtMemberId.Text));
+            topUpMemberWallet.setMemberId(Convert.ToInt32(cboMemberId.Text));
             topUpMemberWallet.setForename(txtForename.Text);
             topUpMemberWallet.setSurname(txtSurname.Text);
             topUpMemberWallet.setDateOfBirth(dtpDOB.Value.ToString("dd-MMM-yyyy"));
@@ -133,7 +133,7 @@ namespace GymSYS
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
-            txtMemberId.Clear();
+            cboMemberId.SelectedIndex=-1;
             txtAmount.Clear();
             txtCurrentAmount.Clear();
             dtpDOB.Text = string.Empty;
@@ -143,18 +143,18 @@ namespace GymSYS
         {
             //Validate data
             //Validate MemberId
-            if (txtMemberId.Text.Equals(""))
+            if (cboMemberId.Text.Equals(""))
             {
                 MessageBox.Show("MemberId must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMemberId.Focus();
+                cboMemberId.Focus();
                 return;
             }
-            for (int i = 0; i < txtMemberId.TextLength; i++)
+            for (int i = 0; i < 5; i++)
             {
-                if (txtMemberId.Text.Any(char.IsLetter) == true)
+                if (cboMemberId.Text.Any(char.IsLetter) == true)
                 {
                     MessageBox.Show("MemberId contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtMemberId.Focus();
+                    cboMemberId.Focus();
                     return;
                 }
             }
@@ -164,7 +164,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //sql query
-            String sqlQuery = "SELECT * FROM Members WHERE Member_Id = " + Convert.ToInt32(txtMemberId.Text);
+            String sqlQuery = "SELECT * FROM Members WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text);
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -186,6 +186,17 @@ namespace GymSYS
             }
 
             conn.Close();
+        }
+
+        private void frmTopUpMemberWallet_Load(object sender, EventArgs e)
+        {
+            //load memberIds into combobox
+            DataSet dsM = Member.getMemberIds();
+
+            for (int i = 0; i < dsM.Tables[0].Rows.Count; i++)
+            {
+                cboMemberId.Items.Add(dsM.Tables[0].Rows[i][0]);
+            }
         }
     }
 }
