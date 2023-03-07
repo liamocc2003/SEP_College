@@ -229,5 +229,60 @@ namespace GymSYS
 
             return ds;
         }
+
+        public static DataSet getMemberDetails()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Member_Id,Member_Wallet FROM Members ORDER BY Member_Id ASC";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "membAll");
+
+            //close db connection
+            conn.Close();
+
+            return ds;
+        }
+
+        public static int getWalletTotal()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT SUM(Member_Wallet) FROM Members";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int walletTotal;
+            dr.Read();
+
+            if (dr.IsDBNull(0))
+            {
+                walletTotal = 0;
+            }
+            else
+            {
+                walletTotal = dr.GetInt32(0);
+            }
+
+            //close db connection
+            conn.Close();
+
+            return walletTotal;
+        }
     }
 }

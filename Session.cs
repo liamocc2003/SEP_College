@@ -221,5 +221,60 @@ namespace GymSYS
 
             return ds;
         }
+
+        public static DataSet getClassDetails()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Class_Id,Class_Size,Class_Fee FROM Sessions ORDER BY Class_Id ASC";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "classIds");
+
+            //close db connection
+            conn.Close();
+
+            return ds;
+        }
+
+        public static int getFeeTotal()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Class_Fee*Class_Size FROM Sessions";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int feeTotal;
+            dr.Read();
+
+            if (dr.IsDBNull(0))
+            {
+                feeTotal = 0;
+            }
+            else
+            {
+                feeTotal = dr.GetInt32(0);
+            }
+
+            //close db connection
+            conn.Close();
+
+            return feeTotal;
+        }
     }
 }

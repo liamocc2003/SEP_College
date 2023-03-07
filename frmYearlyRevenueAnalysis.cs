@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -82,13 +83,29 @@ namespace GymSYS
 
         private void frmYearlyRevenueAnalysis_Load(object sender, EventArgs e)
         {
-            //load memberIds into combobox
-            DataSet dsM = Member.getMemberIds();
+            //load member details into member grid
+            DataSet dsM = Member.getMemberDetails();
 
             for (int i = 0; i < dsM.Tables[0].Rows.Count; i++)
             {
-                cboViewAllMembers.Items.Add(dsM.Tables[0].Rows[i][0]);
+                dgvMemberAnalysis.Rows.Add(dsM.Tables[0].Rows[i][0],
+                    dsM.Tables[0].Rows[i][1]);
             }
+
+            //load booking details into booking chart
+            DataSet dsC = Session.getClassDetails();
+
+            for (int i = 0; i < dsC.Tables[0].Rows.Count; i++)
+            {
+                dgvClassAnalysis.Rows.Add(dsC.Tables[0].Rows[i][0],
+                    dsC.Tables[0].Rows[i][1], dsC.Tables[0].Rows[i][2]);
+            }
+
+            //load total in member wallet box
+            txtWalletTotal.Text = Convert.ToString(Member.getWalletTotal());
+
+            //load total in class fees box
+            txtFeeTotal.Text = Convert.ToString(Session.getFeeTotal());
         }
     }
 }
