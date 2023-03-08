@@ -80,6 +80,12 @@ namespace GymSYS
             frmYearlyRevenueAnalysis yearlyRevenueAnalysis = new frmYearlyRevenueAnalysis();
             yearlyRevenueAnalysis.Show();
         }
+        private void yearlyClassAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmYearlyClassAnalysis yearlyClassAnalysis = new frmYearlyClassAnalysis();
+            yearlyClassAnalysis.Show();
+        }
 
         private void btnAddMoney_Click(object sender, EventArgs e)
         {

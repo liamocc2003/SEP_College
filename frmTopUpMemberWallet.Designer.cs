@@ -58,6 +58,7 @@ namespace GymSYS
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtEircode = new System.Windows.Forms.TextBox();
             this.cboMemberId = new System.Windows.Forms.ComboBox();
+            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,7 +163,8 @@ namespace GymSYS
             // analysisToolStripMenuItem
             // 
             this.analysisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.yearlyRevenueAnalysisToolStripMenuItem});
+            this.yearlyRevenueAnalysisToolStripMenuItem,
+            this.yearlyClassAnalysisToolStripMenuItem});
             this.analysisToolStripMenuItem.Name = "analysisToolStripMenuItem";
             this.analysisToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.analysisToolStripMenuItem.Text = "Analysis";
@@ -318,6 +320,13 @@ namespace GymSYS
             this.cboMemberId.Size = new System.Drawing.Size(133, 21);
             this.cboMemberId.TabIndex = 45;
             // 
+            // yearlyClassAnalysisToolStripMenuItem
+            // 
+            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
+            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
+            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
+            // 
             // frmTopUpMemberWallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,5 +388,6 @@ namespace GymSYS
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtEircode;
         private System.Windows.Forms.ComboBox cboMemberId;
+        private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
     }
 }

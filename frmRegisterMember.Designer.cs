@@ -59,6 +59,7 @@ namespace GymSYS
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.txtMemberId = new System.Windows.Forms.TextBox();
+            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -268,7 +269,8 @@ namespace GymSYS
             // analysisToolStripMenuItem
             // 
             this.analysisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.yearlyRevenueAnalysisToolStripMenuItem});
+            this.yearlyRevenueAnalysisToolStripMenuItem,
+            this.yearlyClassAnalysisToolStripMenuItem});
             this.analysisToolStripMenuItem.Name = "analysisToolStripMenuItem";
             this.analysisToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.analysisToolStripMenuItem.Text = "Analysis";
@@ -326,6 +328,13 @@ namespace GymSYS
             this.txtMemberId.ReadOnly = true;
             this.txtMemberId.Size = new System.Drawing.Size(150, 22);
             this.txtMemberId.TabIndex = 1;
+            // 
+            // yearlyClassAnalysisToolStripMenuItem
+            // 
+            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
+            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
+            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
             // 
             // frmRegisterMember
             // 
@@ -390,6 +399,7 @@ namespace GymSYS
         private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtMemberId;
+        private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
     }
 }
 

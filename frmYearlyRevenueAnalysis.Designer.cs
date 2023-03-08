@@ -57,6 +57,7 @@ namespace GymSYS
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtFeeTotal = new System.Windows.Forms.TextBox();
+            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMemberAnalysis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassAnalysis)).BeginInit();
@@ -164,7 +165,8 @@ namespace GymSYS
             // analysisToolStripMenuItem
             // 
             this.analysisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.yearlyRevenueAnalysisToolStripMenuItem});
+            this.yearlyRevenueAnalysisToolStripMenuItem,
+            this.yearlyClassAnalysisToolStripMenuItem});
             this.analysisToolStripMenuItem.Name = "analysisToolStripMenuItem";
             this.analysisToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.analysisToolStripMenuItem.Text = "Analysis";
@@ -292,6 +294,13 @@ namespace GymSYS
             this.txtFeeTotal.Size = new System.Drawing.Size(91, 22);
             this.txtFeeTotal.TabIndex = 37;
             // 
+            // yearlyClassAnalysisToolStripMenuItem
+            // 
+            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
+            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
+            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
+            // 
             // frmYearlyRevenueAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,5 +357,6 @@ namespace GymSYS
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtFeeTotal;
+        private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
     }
 }

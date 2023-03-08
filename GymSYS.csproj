@@ -81,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Booking.cs" />
+    <Compile Include="frmYearlyClassAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmYearlyClassAnalysis.Designer.cs">
+      <DependentUpon>frmYearlyClassAnalysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="frmCancelBooking.cs">
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegisterMember.resx">
       <DependentUpon>frmRegisterMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYearlyClassAnalysis.resx">
+      <DependentUpon>frmYearlyClassAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmYearlyRevenueAnalysis.resx">
       <DependentUpon>frmYearlyRevenueAnalysis.cs</DependentUpon>

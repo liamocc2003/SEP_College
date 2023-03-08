@@ -37,3 +37,4 @@ C:\Users\T00226053\Source\Repos\SEP_College\obj\Debug\GymSYS.csproj.CoreCompileI
 C:\Users\T00226053\Source\Repos\SEP_College\obj\Debug\GymSYS.csproj.CopyComplete
 C:\Users\T00226053\Source\Repos\SEP_College\obj\Debug\GymSYS.exe
 C:\Users\T00226053\Source\Repos\SEP_College\obj\Debug\GymSYS.pdb
+C:\Users\T00226053\Source\Repos\SEP_College\obj\Debug\GymSYS.frmYearlyClassAnalysis.resources

@@ -79,5 +79,12 @@ namespace GymSYS
             frmYearlyRevenueAnalysis yearlyRevenueAnalysis = new frmYearlyRevenueAnalysis();
             yearlyRevenueAnalysis.Show();
         }
+
+        private void yearlyClassAnalysisToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmYearlyClassAnalysis yearlyClassAnalysis = new frmYearlyClassAnalysis();
+            yearlyClassAnalysis.Show();
+        }
     }
 }

@@ -81,6 +81,13 @@ namespace GymSYS
             yearlyRevenueAnalysis.Show();
         }
 
+        private void yearlyClassAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmYearlyClassAnalysis yearlyClassAnalysis = new frmYearlyClassAnalysis();
+            yearlyClassAnalysis.Show();
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             //valiadte memberId

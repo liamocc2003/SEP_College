@@ -81,6 +81,13 @@ namespace GymSYS
             cancelBooking.Show();
         }
 
+        private void yearlyClassAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmYearlyClassAnalysis yearlyClassAnalysis = new frmYearlyClassAnalysis();
+            yearlyClassAnalysis.Show();
+        }
+
         private void frmYearlyRevenueAnalysis_Load(object sender, EventArgs e)
         {
             //load member details into member grid
