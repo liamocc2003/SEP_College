@@ -43,6 +43,7 @@ namespace GymSYS
             this.cancelBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMemberAnalysis = new System.Windows.Forms.DataGridView();
             this.MemberIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +58,8 @@ namespace GymSYS
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtFeeTotal = new System.Windows.Forms.TextBox();
-            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCompleteTotal = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMemberAnalysis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassAnalysis)).BeginInit();
@@ -177,6 +179,13 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
             // 
+            // yearlyClassAnalysisToolStripMenuItem
+            // 
+            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
+            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
+            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
+            // 
             // backToolStripMenuItem
             // 
             this.backToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -261,7 +270,7 @@ namespace GymSYS
             // txtWalletTotal
             // 
             this.txtWalletTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWalletTotal.Location = new System.Drawing.Point(223, 382);
+            this.txtWalletTotal.Location = new System.Drawing.Point(223, 337);
             this.txtWalletTotal.Name = "txtWalletTotal";
             this.txtWalletTotal.Size = new System.Drawing.Size(91, 22);
             this.txtWalletTotal.TabIndex = 34;
@@ -270,7 +279,7 @@ namespace GymSYS
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(35, 384);
+            this.label3.Location = new System.Drawing.Point(35, 339);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(182, 20);
             this.label3.TabIndex = 35;
@@ -280,7 +289,7 @@ namespace GymSYS
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(405, 384);
+            this.label4.Location = new System.Drawing.Point(405, 339);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(147, 20);
             this.label4.TabIndex = 36;
@@ -289,23 +298,36 @@ namespace GymSYS
             // txtFeeTotal
             // 
             this.txtFeeTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFeeTotal.Location = new System.Drawing.Point(558, 382);
+            this.txtFeeTotal.Location = new System.Drawing.Point(558, 339);
             this.txtFeeTotal.Name = "txtFeeTotal";
             this.txtFeeTotal.Size = new System.Drawing.Size(91, 22);
             this.txtFeeTotal.TabIndex = 37;
             // 
-            // yearlyClassAnalysisToolStripMenuItem
+            // label5
             // 
-            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
-            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
-            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(219, 408);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(120, 20);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Complete Total:";
+            // 
+            // txtCompleteTotal
+            // 
+            this.txtCompleteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompleteTotal.Location = new System.Drawing.Point(345, 406);
+            this.txtCompleteTotal.Name = "txtCompleteTotal";
+            this.txtCompleteTotal.Size = new System.Drawing.Size(91, 22);
+            this.txtCompleteTotal.TabIndex = 39;
             // 
             // frmYearlyRevenueAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtCompleteTotal);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtFeeTotal);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -358,5 +380,7 @@ namespace GymSYS
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtFeeTotal;
         private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCompleteTotal;
     }
 }

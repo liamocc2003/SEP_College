@@ -113,6 +113,9 @@ namespace GymSYS
 
             //load total in class fees box
             txtFeeTotal.Text = Convert.ToString(Session.getFeeTotal());
+
+            //put complete total in text box
+            txtCompleteTotal.Text = Convert.ToString(Member.getWalletTotal() + Session.getFeeTotal());
         }
     }
 }

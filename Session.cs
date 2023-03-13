@@ -276,5 +276,27 @@ namespace GymSYS
 
             return feeTotal;
         }
+
+        public static DataSet getClassNames()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Class_Name,Class_Size FROM Sessions ORDER BY Class_Name ASC";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "classNames");
+
+            //close db connection
+            conn.Close();
+
+            return ds;
+        }
     }
 }

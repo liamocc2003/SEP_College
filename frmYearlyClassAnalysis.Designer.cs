@@ -29,6 +29,10 @@ namespace GymSYS
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuMembers = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRegisterMember = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +48,9 @@ namespace GymSYS
             this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chartClassAnalysis = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartClassAnalysis)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -82,12 +88,14 @@ namespace GymSYS
             this.mnuUpdateMember.Name = "mnuUpdateMember";
             this.mnuUpdateMember.Size = new System.Drawing.Size(196, 22);
             this.mnuUpdateMember.Text = "Update Member";
+            this.mnuUpdateMember.Click += new System.EventHandler(this.mnuUpdateMember_Click);
             // 
             // mnuTopUpMemberWallet
             // 
             this.mnuTopUpMemberWallet.Name = "mnuTopUpMemberWallet";
             this.mnuTopUpMemberWallet.Size = new System.Drawing.Size(196, 22);
             this.mnuTopUpMemberWallet.Text = "Top-up Member Wallet";
+            this.mnuTopUpMemberWallet.Click += new System.EventHandler(this.mnuTopUpMemberWallet_Click);
             // 
             // classesToolStripMenuItem
             // 
@@ -102,20 +110,23 @@ namespace GymSYS
             // scheduleClassToolStripMenuItem
             // 
             this.scheduleClassToolStripMenuItem.Name = "scheduleClassToolStripMenuItem";
-            this.scheduleClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.scheduleClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scheduleClassToolStripMenuItem.Text = "Schedule Class";
+            this.scheduleClassToolStripMenuItem.Click += new System.EventHandler(this.scheduleClassToolStripMenuItem_Click);
             // 
             // updateClassToolStripMenuItem
             // 
             this.updateClassToolStripMenuItem.Name = "updateClassToolStripMenuItem";
-            this.updateClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updateClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateClassToolStripMenuItem.Text = "Update Class";
+            this.updateClassToolStripMenuItem.Click += new System.EventHandler(this.updateClassToolStripMenuItem_Click);
             // 
             // cancelClassToolStripMenuItem
             // 
             this.cancelClassToolStripMenuItem.Name = "cancelClassToolStripMenuItem";
-            this.cancelClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cancelClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cancelClassToolStripMenuItem.Text = "Cancel Class";
+            this.cancelClassToolStripMenuItem.Click += new System.EventHandler(this.cancelClassToolStripMenuItem_Click);
             // 
             // bookingsToolStripMenuItem
             // 
@@ -129,14 +140,16 @@ namespace GymSYS
             // makeBookingToolStripMenuItem
             // 
             this.makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
-            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.makeBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.makeBookingToolStripMenuItem.Text = "Make Booking";
+            this.makeBookingToolStripMenuItem.Click += new System.EventHandler(this.makeBookingToolStripMenuItem_Click);
             // 
             // cancelBookingToolStripMenuItem
             // 
             this.cancelBookingToolStripMenuItem.Name = "cancelBookingToolStripMenuItem";
-            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.cancelBookingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cancelBookingToolStripMenuItem.Text = "Cancel Booking";
+            this.cancelBookingToolStripMenuItem.Click += new System.EventHandler(this.cancelBookingToolStripMenuItem_Click);
             // 
             // analysisToolStripMenuItem
             // 
@@ -152,6 +165,7 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem.Name = "yearlyRevenueAnalysisToolStripMenuItem";
             this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
+            this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
             // 
             // yearlyClassAnalysisToolStripMenuItem
             // 
@@ -159,16 +173,38 @@ namespace GymSYS
             this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
             // 
+            // chartClassAnalysis
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartClassAnalysis.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartClassAnalysis.Legends.Add(legend1);
+            this.chartClassAnalysis.Location = new System.Drawing.Point(239, 63);
+            this.chartClassAnalysis.Name = "chartClassAnalysis";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Class";
+            this.chartClassAnalysis.Series.Add(series1);
+            this.chartClassAnalysis.Size = new System.Drawing.Size(300, 300);
+            this.chartClassAnalysis.TabIndex = 2;
+            this.chartClassAnalysis.Text = "chart1";
+            title1.Name = "Title1";
+            title1.Text = "Class Analysis";
+            this.chartClassAnalysis.Titles.Add(title1);
+            // 
             // frmYearlyClassAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chartClassAnalysis);
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmYearlyClassAnalysis";
             this.Text = "Yearly Class Analysis";
+            this.Load += new System.EventHandler(this.frmYearlyClassAnalysis_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartClassAnalysis)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,5 +227,6 @@ namespace GymSYS
         private System.Windows.Forms.ToolStripMenuItem analysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yearlyRevenueAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartClassAnalysis;
     }
 }
