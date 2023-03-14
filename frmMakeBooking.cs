@@ -121,6 +121,12 @@ namespace GymSYS
             //invoke method to add data to Booking Table
             bookClass.addBooking();
 
+            //create Session instance
+            Session regChange = new Session();
+
+            //invoke method to change reg
+            regChange.getNextRegistered();
+
             //Confirmation Message
             MessageBox.Show("Booking has been completed successfully", "Success",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);

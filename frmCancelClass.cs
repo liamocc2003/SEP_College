@@ -94,7 +94,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //sql query
-            String sqlQuery = "SELECT * FROM SESSIONS WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
+            String sqlQuery = "SELECT * FROM SESSIONS WHERE Class_Id = " + Convert.ToInt32(cboClassId.Text);
 
             //create Class Object
             Session cancelClass = new Session();
@@ -110,7 +110,7 @@ namespace GymSYS
             }
             else
             {
-                cancelClass.setClassId(Convert.ToInt32(txtClassId.Text));
+                cancelClass.setClassId(Convert.ToInt32(cboClassId.Text));
             }
 
             //remove the data
@@ -121,9 +121,20 @@ namespace GymSYS
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
-            txtClassId.Clear();
+            cboClassId.SelectedIndex = -1;
 
+            //close connection
             conn.Close();
+        }
+
+        private void frmCancelClass_Load(object sender, EventArgs e)
+        {
+            DataSet dsC = Session.getClassIds();
+
+            for (int i = 0; i < dsC.Tables[0].Rows.Count; i++)
+            {
+                cboClassId.Items.Add(dsC.Tables[0].Rows[i][0]);
+            }
         }
     }
 }

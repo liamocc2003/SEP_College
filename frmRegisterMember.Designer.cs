@@ -54,12 +54,12 @@ namespace GymSYS
             this.cancelBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRegister = new System.Windows.Forms.Button();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.txtMemberId = new System.Windows.Forms.TextBox();
-            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -282,6 +282,13 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
             this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
             // 
+            // yearlyClassAnalysisToolStripMenuItem
+            // 
+            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
+            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
+            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
+            // 
             // backToolStripMenuItem
             // 
             this.backToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -328,13 +335,6 @@ namespace GymSYS
             this.txtMemberId.ReadOnly = true;
             this.txtMemberId.Size = new System.Drawing.Size(150, 22);
             this.txtMemberId.TabIndex = 1;
-            // 
-            // yearlyClassAnalysisToolStripMenuItem
-            // 
-            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
-            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
-            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
             // 
             // frmRegisterMember
             // 

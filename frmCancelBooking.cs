@@ -94,7 +94,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //sql query
-            String sqlQuery = "SELECT * FROM Bookings WHERE Booking_Id = " + Convert.ToInt32(txtBookingId.Text);
+            String sqlQuery = "SELECT * FROM Bookings WHERE Booking_Id = " + Convert.ToInt32(cboBookingId.Text);
 
             //create Booking Object
             Booking cancelBooking = new Booking();
@@ -110,20 +110,36 @@ namespace GymSYS
             }
             else
             {
-                cancelBooking.setBookingId(Convert.ToInt32(txtBookingId.Text));
+                cancelBooking.setBookingId(Convert.ToInt32(cboBookingId.Text));
             }
 
             //remove the data
             cancelBooking.cancelBooking();
+
+            //create session object
+            Session changeReg = new Session();
+
+            //invoke method
+            changeReg.removeRegister();
 
             //Display Confirmation Message
             MessageBox.Show("Booking has cancelled successfully", "Success",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
-            txtBookingId.Clear();
+            cboBookingId.SelectedIndex = -1;
 
             conn.Close();
+        }
+
+        private void frmCancelBooking_Load(object sender, EventArgs e)
+        {
+            DataSet dsB = Booking.getAllBookingIds();
+
+            for (int i = 0; i < dsB.Tables[0].Rows.Count; i++)
+            {
+                cboBookingId.Items.Add(dsB.Tables[0].Rows[i][0]);
+            }
         }
     }
 }

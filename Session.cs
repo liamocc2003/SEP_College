@@ -314,13 +314,13 @@ namespace GymSYS
             return ds;
         }
 
-        public static int getNextRegistered()
+        public void getNextRegistered()
         {
             //open a db connection
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query to execute
-            String sqlQuery = "SELECT Class_Size,Class_Reg FROM Sessions";
+            String sqlQuery = "SELECT Class_Reg FROM Sessions";
 
             //execute sql query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -329,32 +329,86 @@ namespace GymSYS
             OracleDataReader dr = cmd.ExecuteReader();
 
             //is dr null
-            int classSize;
             int regTotal;
+            dr.Read();
+            regTotal = Convert.ToInt32(dr.GetInt32(0)) + 1;
+
+            //update classReg
+            sqlQuery = "Update Sessions SET " +
+                "Class_Reg = " + regTotal + 
+                "Where Class_Id = " + this.classId;
+
+            //execute query
+            OracleCommand newCmd = new OracleCommand(sqlQuery, conn);
+            newCmd.ExecuteNonQuery();
+
+            //close db connection
+            conn.Close();
+        }
+
+        public void removeRegister()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Class_Reg FROM Sessions";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int regTotal;
+            dr.Read();
+            regTotal = Convert.ToInt32(dr.GetInt32(0)) - 1;
+
+            //update classReg
+            sqlQuery = "Update Sessions SET " +
+                "Class_Reg = " + regTotal +
+                "Where Class_Id = " + this.classId;
+
+            //execute query
+            OracleCommand newCmd = new OracleCommand(sqlQuery, conn);
+            newCmd.ExecuteNonQuery();
+
+            //close db connection
+            conn.Close();
+        }
+
+        public static int getTotalSessions()
+        {
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+            String sqlQuery = "SELECT count(*) FROM SESSIONS";
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int totalClasses;
             dr.Read();
 
             if (dr.IsDBNull(0))
             {
-                regTotal = 0;
+                totalClasses = 0;
             }
             else
             {
-                classSize = dr.GetInt32(3);
-                regTotal = dr.GetInt32(4);
-                if(regTotal == classSize)
-                {
-                    return classSize;
-                }
-                else
-                {
-                    regTotal = dr.GetInt32(4) + 1;
-                }
+                totalClasses = dr.GetInt32(0);
             }
 
-            //close db connection
+            //close database
             conn.Close();
 
-            return regTotal;
+            return totalClasses;
         }
     }
 }

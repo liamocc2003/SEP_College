@@ -43,6 +43,7 @@ namespace GymSYS
             this.cancelBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.txtClassName = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@ namespace GymSYS
             this.label6 = new System.Windows.Forms.Label();
             this.dtpClassDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,6 +176,13 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
             this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
+            // 
+            // yearlyClassAnalysisToolStripMenuItem
+            // 
+            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
+            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
+            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
             // 
             // backToolStripMenuItem
             // 
@@ -304,7 +311,7 @@ namespace GymSYS
             this.dtpClassDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpClassDate.Location = new System.Drawing.Point(186, 300);
             this.dtpClassDate.Name = "dtpClassDate";
-            this.dtpClassDate.Size = new System.Drawing.Size(150, 20);
+            this.dtpClassDate.Size = new System.Drawing.Size(163, 20);
             this.dtpClassDate.TabIndex = 31;
             // 
             // label7
@@ -316,13 +323,6 @@ namespace GymSYS
             this.label7.Size = new System.Drawing.Size(109, 20);
             this.label7.TabIndex = 30;
             this.label7.Text = "Date of Class:";
-            // 
-            // yearlyClassAnalysisToolStripMenuItem
-            // 
-            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
-            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
-            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
             // 
             // frmScheduleClass
             // 

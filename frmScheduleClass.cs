@@ -95,7 +95,7 @@ namespace GymSYS
 
             //Create Member instance with values from form
             Session scheduleClass = new Session(Convert.ToInt32(txtClassId.Text), txtClassName.Text,
-                txtClassTeacher.Text, Convert.ToInt32(txtClassSize.Text), Session.getNextRegistered(), dtpClassDate.Value.ToString("dd-MMM-yyyy"),
+                txtClassTeacher.Text, Convert.ToInt32(txtClassSize.Text), 0, dtpClassDate.Value.ToString("dd-MMM-yyyy"),
                 Convert.ToInt32(txtClassDuration.Text), Convert.ToInt32(txtClassFee.Text));
 
             //invoke method to add data to Members Table

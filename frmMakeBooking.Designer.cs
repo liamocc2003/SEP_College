@@ -43,6 +43,7 @@ namespace GymSYS
             this.cancelBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@ namespace GymSYS
             this.label2 = new System.Windows.Forms.Label();
             this.cboClassId = new System.Windows.Forms.ComboBox();
             this.cboMemberId = new System.Windows.Forms.ComboBox();
-            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -169,6 +169,13 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
             this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
             // 
+            // yearlyClassAnalysisToolStripMenuItem
+            // 
+            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
+            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
+            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
+            // 
             // backToolStripMenuItem
             // 
             this.backToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -243,13 +250,6 @@ namespace GymSYS
             this.cboMemberId.Size = new System.Drawing.Size(150, 21);
             this.cboMemberId.TabIndex = 27;
             // 
-            // yearlyClassAnalysisToolStripMenuItem
-            // 
-            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
-            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
-            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
-            // 
             // frmMakeBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,7 +264,7 @@ namespace GymSYS
             this.Controls.Add(this.label7);
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmMakeBooking";
-            this.Text = "frmMakeBooking";
+            this.Text = "Make Booking";
             this.Load += new System.EventHandler(this.frmMakeBooking_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

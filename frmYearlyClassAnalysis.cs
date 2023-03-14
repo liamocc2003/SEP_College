@@ -90,6 +90,9 @@ namespace GymSYS
                 chartClassAnalysis.Series["Class"].Points.AddXY(dsC.Tables[0].Rows[i][0],
                     dsC.Tables[0].Rows[i][1]);
             }
+
+            //load total classes
+            txtTotalClasses.Text = Convert.ToString(Session.getTotalSessions());
         }
     }
 }

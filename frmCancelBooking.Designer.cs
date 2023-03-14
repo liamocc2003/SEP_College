@@ -30,7 +30,6 @@ namespace GymSYS
         private void InitializeComponent()
         {
             this.btnCancelClass = new System.Windows.Forms.Button();
-            this.txtBookingId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuMembers = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +45,9 @@ namespace GymSYS
             this.cancelBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cboBookingId = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,14 +61,6 @@ namespace GymSYS
             this.btnCancelClass.Text = "Cancel";
             this.btnCancelClass.UseVisualStyleBackColor = true;
             this.btnCancelClass.Click += new System.EventHandler(this.btnCancelClass_Click);
-            // 
-            // txtBookingId
-            // 
-            this.txtBookingId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtBookingId.Location = new System.Drawing.Point(399, 170);
-            this.txtBookingId.Name = "txtBookingId";
-            this.txtBookingId.Size = new System.Drawing.Size(150, 23);
-            this.txtBookingId.TabIndex = 26;
             // 
             // label7
             // 
@@ -194,6 +186,13 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
             this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
             // 
+            // yearlyClassAnalysisToolStripMenuItem
+            // 
+            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
+            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
+            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
+            // 
             // backToolStripMenuItem
             // 
             this.backToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -202,24 +201,26 @@ namespace GymSYS
             this.backToolStripMenuItem.Text = "<--Back";
             this.backToolStripMenuItem.Click += new System.EventHandler(this.backToolStripMenuItem_Click);
             // 
-            // yearlyClassAnalysisToolStripMenuItem
+            // cboBookingId
             // 
-            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
-            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
-            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
+            this.cboBookingId.FormattingEnabled = true;
+            this.cboBookingId.Location = new System.Drawing.Point(374, 172);
+            this.cboBookingId.Name = "cboBookingId";
+            this.cboBookingId.Size = new System.Drawing.Size(117, 21);
+            this.cboBookingId.TabIndex = 30;
             // 
             // frmCancelBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cboBookingId);
             this.Controls.Add(this.btnCancelClass);
-            this.Controls.Add(this.txtBookingId);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmCancelBooking";
             this.Text = "Cancel Booking";
+            this.Load += new System.EventHandler(this.frmCancelBooking_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -230,7 +231,6 @@ namespace GymSYS
         #endregion
 
         private System.Windows.Forms.Button btnCancelClass;
-        private System.Windows.Forms.TextBox txtBookingId;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuMembers;
@@ -248,5 +248,6 @@ namespace GymSYS
         private System.Windows.Forms.ToolStripMenuItem yearlyRevenueAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cboBookingId;
     }
 }

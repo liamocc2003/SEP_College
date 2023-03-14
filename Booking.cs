@@ -1,6 +1,7 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -124,6 +125,28 @@ namespace GymSYS
             conn.Close();
 
             return nextId;
+        }
+
+        public static DataSet getAllBookingIds()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Booking_Id FROM Bookings ORDER BY Booking_Id ASC";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "BookingIds");
+
+            //close db connection
+            conn.Close();
+
+            return ds;
         }
     }
 }

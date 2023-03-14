@@ -52,7 +52,7 @@ namespace GymSYS
             this.label2 = new System.Windows.Forms.Label();
             this.dgvClassAnalysis = new System.Windows.Forms.DataGridView();
             this.ClassIdsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClassSizesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClassRegColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassFeesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtWalletTotal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -242,7 +242,7 @@ namespace GymSYS
             this.dgvClassAnalysis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClassAnalysis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClassIdsColumn,
-            this.ClassSizesColumn,
+            this.ClassRegColumn,
             this.ClassFeesColumn});
             this.dgvClassAnalysis.Location = new System.Drawing.Point(409, 89);
             this.dgvClassAnalysis.Name = "dgvClassAnalysis";
@@ -255,11 +255,11 @@ namespace GymSYS
             this.ClassIdsColumn.Name = "ClassIdsColumn";
             this.ClassIdsColumn.ReadOnly = true;
             // 
-            // ClassSizesColumn
+            // ClassRegColumn
             // 
-            this.ClassSizesColumn.HeaderText = "Class Sizes";
-            this.ClassSizesColumn.Name = "ClassSizesColumn";
-            this.ClassSizesColumn.ReadOnly = true;
+            this.ClassRegColumn.HeaderText = "Class Registered";
+            this.ClassRegColumn.Name = "ClassRegColumn";
+            this.ClassRegColumn.ReadOnly = true;
             // 
             // ClassFeesColumn
             // 
@@ -272,6 +272,7 @@ namespace GymSYS
             this.txtWalletTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWalletTotal.Location = new System.Drawing.Point(223, 337);
             this.txtWalletTotal.Name = "txtWalletTotal";
+            this.txtWalletTotal.ReadOnly = true;
             this.txtWalletTotal.Size = new System.Drawing.Size(91, 22);
             this.txtWalletTotal.TabIndex = 34;
             // 
@@ -300,6 +301,7 @@ namespace GymSYS
             this.txtFeeTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFeeTotal.Location = new System.Drawing.Point(558, 339);
             this.txtFeeTotal.Name = "txtFeeTotal";
+            this.txtFeeTotal.ReadOnly = true;
             this.txtFeeTotal.Size = new System.Drawing.Size(91, 22);
             this.txtFeeTotal.TabIndex = 37;
             // 
@@ -318,6 +320,7 @@ namespace GymSYS
             this.txtCompleteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompleteTotal.Location = new System.Drawing.Point(345, 406);
             this.txtCompleteTotal.Name = "txtCompleteTotal";
+            this.txtCompleteTotal.ReadOnly = true;
             this.txtCompleteTotal.Size = new System.Drawing.Size(91, 22);
             this.txtCompleteTotal.TabIndex = 39;
             // 
@@ -372,9 +375,6 @@ namespace GymSYS
         private System.Windows.Forms.DataGridViewTextBoxColumn MemberWalletColumn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvClassAnalysis;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClassIdsColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClassSizesColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClassFeesColumn;
         private System.Windows.Forms.TextBox txtWalletTotal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -382,5 +382,8 @@ namespace GymSYS
         private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCompleteTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClassIdsColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClassRegColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClassFeesColumn;
     }
 }
