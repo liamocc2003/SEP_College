@@ -103,6 +103,7 @@ namespace GymSYS
             // 
             this.txtEircode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtEircode.Location = new System.Drawing.Point(157, 281);
+            this.txtEircode.MaxLength = 7;
             this.txtEircode.Name = "txtEircode";
             this.txtEircode.Size = new System.Drawing.Size(150, 23);
             this.txtEircode.TabIndex = 5;

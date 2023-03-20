@@ -123,6 +123,23 @@ namespace GymSYS
                     return;
                 }
             }
+
+            //Validate Eircode
+            if (txtEircode.Text.Equals(""))
+            {
+                MessageBox.Show("Eircode must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEircode.Focus();
+                return;
+            }
+            for (int i = 0; i <txtEircode.TextLength; i++)
+            {
+                if (Char.IsLetter(txtEircode.Text[0]) || Char.IsDigit(txtEircode.Text[1]) ||
+                    Char.IsDigit(txtEircode.Text[2]) || Char.IsLetter(txtEircode.Text[3]))
+                {
+                    
+                }
+            }
+
             //End of Validation
 
             //Create Member instance with values from form
