@@ -90,7 +90,12 @@ namespace GymSYS
         private void btnSearch_Click(object sender, EventArgs e)
         {
             //Validation
-
+            if (cboMemberId.Text.Equals(""))
+            {
+                MessageBox.Show("Member ID must be selected", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboMemberId.Focus();
+                return;
+            }
             //end of validation
 
             //conect to database
@@ -124,6 +129,14 @@ namespace GymSYS
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //Validate data
+            //Validate memberId
+            if (cboMemberId.Text.Equals(""))
+            {
+                MessageBox.Show("Member ID must be selected", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboMemberId.Focus();
+                return;
+            }
+
             //Validate forename
             if (txtForename.Text.Equals(""))
             {
@@ -156,6 +169,48 @@ namespace GymSYS
                     txtSurname.Focus();
                     return;
                 }
+            }
+
+            //Validate Eircode
+            if (txtEircode.Text.Equals(""))
+            {
+                MessageBox.Show("Eircode must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEircode.Focus();
+                return;
+            }
+            for (int i = 0; i < txtEircode.TextLength; i++)
+            {
+                if (Char.IsDigit(txtEircode.Text[0]) || Char.IsLetter(txtEircode.Text[1]) ||
+                    Char.IsLetter(txtEircode.Text[2]) || Char.IsDigit(txtEircode.Text[3]) ||
+                    Char.IsDigit(txtEircode.Text[4]) || Char.IsLetter(txtEircode.Text[6]))
+                {
+                    MessageBox.Show("Eircode is invalid", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEircode.Focus();
+                    return;
+                }
+            }
+
+            //Validate Email
+            if (txtEmail.Text.Equals(""))
+            {
+                MessageBox.Show("Email must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return;
+            }
+            else if (txtEmail.Text.Contains("@") == false || txtEmail.Text.Contains(".com") == false ||
+                     txtEmail.Text.Contains(".ie") == false)
+            {
+                MessageBox.Show("Email is not valid", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return;
+            }
+
+            //Validate paymentType
+            if (cboPaymentType.Text == "")
+            {
+                MessageBox.Show("Payment Type must be selected", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboPaymentType.Focus();
+                return;
             }
             //End of Validation
 

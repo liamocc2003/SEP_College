@@ -112,7 +112,21 @@ namespace GymSYS
         private void btnBookClass_Click(object sender, EventArgs e)
         {
             //Validate all data
+            //valiadte MemberId
+            if (cboMemberId.Text.Equals(""))
+            {
+                MessageBox.Show("Member ID must be selected ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboMemberId.Focus();
+                return;
+            }
 
+            //valiadte ClassId
+            if (cboClassId.Text.Equals(""))
+            {
+                MessageBox.Show("Class ID must be selected ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboClassId.Focus();
+                return;
+            }
             //End of Validation
 
             //Create Booking instance with values from form

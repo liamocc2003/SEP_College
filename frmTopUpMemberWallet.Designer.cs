@@ -43,6 +43,7 @@ namespace GymSYS
             this.cancelBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyRevenueAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddMoney = new System.Windows.Forms.Button();
@@ -58,7 +59,6 @@ namespace GymSYS
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtEircode = new System.Windows.Forms.TextBox();
             this.cboMemberId = new System.Windows.Forms.ComboBox();
-            this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,6 +176,13 @@ namespace GymSYS
             this.yearlyRevenueAnalysisToolStripMenuItem.Text = "Yearly Revenue Analysis";
             this.yearlyRevenueAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyRevenueAnalysisToolStripMenuItem_Click);
             // 
+            // yearlyClassAnalysisToolStripMenuItem
+            // 
+            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
+            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
+            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
+            // 
             // backToolStripMenuItem
             // 
             this.backToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -197,9 +204,9 @@ namespace GymSYS
             // btnAddMoney
             // 
             this.btnAddMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddMoney.Location = new System.Drawing.Point(44, 352);
+            this.btnAddMoney.Location = new System.Drawing.Point(678, 398);
             this.btnAddMoney.Name = "btnAddMoney";
-            this.btnAddMoney.Size = new System.Drawing.Size(77, 34);
+            this.btnAddMoney.Size = new System.Drawing.Size(110, 40);
             this.btnAddMoney.TabIndex = 20;
             this.btnAddMoney.Text = "Add Money";
             this.btnAddMoney.UseVisualStyleBackColor = true;
@@ -256,7 +263,7 @@ namespace GymSYS
             // dtpDOB
             // 
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDOB.Location = new System.Drawing.Point(624, 402);
+            this.dtpDOB.Location = new System.Drawing.Point(638, 85);
             this.dtpDOB.Name = "dtpDOB";
             this.dtpDOB.Size = new System.Drawing.Size(150, 20);
             this.dtpDOB.TabIndex = 39;
@@ -265,7 +272,7 @@ namespace GymSYS
             // txtSurname
             // 
             this.txtSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtSurname.Location = new System.Drawing.Point(624, 368);
+            this.txtSurname.Location = new System.Drawing.Point(638, 56);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(150, 23);
             this.txtSurname.TabIndex = 41;
@@ -274,7 +281,7 @@ namespace GymSYS
             // txtForename
             // 
             this.txtForename.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtForename.Location = new System.Drawing.Point(624, 326);
+            this.txtForename.Location = new System.Drawing.Point(638, 27);
             this.txtForename.Name = "txtForename";
             this.txtForename.Size = new System.Drawing.Size(150, 23);
             this.txtForename.TabIndex = 40;
@@ -288,7 +295,7 @@ namespace GymSYS
             "Cash",
             "Credit Card",
             "Revolut"});
-            this.cboPaymentType.Location = new System.Drawing.Point(624, 283);
+            this.cboPaymentType.Location = new System.Drawing.Point(638, 169);
             this.cboPaymentType.Name = "cboPaymentType";
             this.cboPaymentType.Size = new System.Drawing.Size(150, 24);
             this.cboPaymentType.TabIndex = 44;
@@ -297,7 +304,7 @@ namespace GymSYS
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtEmail.Location = new System.Drawing.Point(624, 233);
+            this.txtEmail.Location = new System.Drawing.Point(638, 140);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(150, 23);
             this.txtEmail.TabIndex = 43;
@@ -306,7 +313,7 @@ namespace GymSYS
             // txtEircode
             // 
             this.txtEircode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtEircode.Location = new System.Drawing.Point(624, 186);
+            this.txtEircode.Location = new System.Drawing.Point(638, 111);
             this.txtEircode.Name = "txtEircode";
             this.txtEircode.Size = new System.Drawing.Size(150, 23);
             this.txtEircode.TabIndex = 42;
@@ -314,18 +321,12 @@ namespace GymSYS
             // 
             // cboMemberId
             // 
+            this.cboMemberId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMemberId.FormattingEnabled = true;
             this.cboMemberId.Location = new System.Drawing.Point(162, 67);
             this.cboMemberId.Name = "cboMemberId";
             this.cboMemberId.Size = new System.Drawing.Size(133, 21);
             this.cboMemberId.TabIndex = 45;
-            // 
-            // yearlyClassAnalysisToolStripMenuItem
-            // 
-            this.yearlyClassAnalysisToolStripMenuItem.Name = "yearlyClassAnalysisToolStripMenuItem";
-            this.yearlyClassAnalysisToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.yearlyClassAnalysisToolStripMenuItem.Text = "Yearly Class Analysis";
-            this.yearlyClassAnalysisToolStripMenuItem.Click += new System.EventHandler(this.yearlyClassAnalysisToolStripMenuItem_Click);
             // 
             // frmTopUpMemberWallet
             // 

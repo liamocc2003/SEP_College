@@ -184,7 +184,7 @@ namespace GymSYS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(297, 174);
+            this.label1.Location = new System.Drawing.Point(296, 151);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 19;
@@ -193,9 +193,9 @@ namespace GymSYS
             // btnCancelClass
             // 
             this.btnCancelClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelClass.Location = new System.Drawing.Point(359, 356);
+            this.btnCancelClass.Location = new System.Drawing.Point(345, 250);
             this.btnCancelClass.Name = "btnCancelClass";
-            this.btnCancelClass.Size = new System.Drawing.Size(82, 35);
+            this.btnCancelClass.Size = new System.Drawing.Size(110, 40);
             this.btnCancelClass.TabIndex = 27;
             this.btnCancelClass.Text = "Cancel";
             this.btnCancelClass.UseVisualStyleBackColor = true;
@@ -203,8 +203,9 @@ namespace GymSYS
             // 
             // cboClassId
             // 
+            this.cboClassId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboClassId.FormattingEnabled = true;
-            this.cboClassId.Location = new System.Drawing.Point(376, 173);
+            this.cboClassId.Location = new System.Drawing.Point(375, 150);
             this.cboClassId.Name = "cboClassId";
             this.cboClassId.Size = new System.Drawing.Size(129, 21);
             this.cboClassId.TabIndex = 28;

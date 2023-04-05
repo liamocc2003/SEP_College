@@ -236,6 +236,7 @@ namespace GymSYS
             // 
             // cboClassId
             // 
+            this.cboClassId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboClassId.FormattingEnabled = true;
             this.cboClassId.Location = new System.Drawing.Point(167, 239);
             this.cboClassId.Name = "cboClassId";
@@ -244,6 +245,7 @@ namespace GymSYS
             // 
             // cboMemberId
             // 
+            this.cboMemberId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMemberId.FormattingEnabled = true;
             this.cboMemberId.Location = new System.Drawing.Point(167, 178);
             this.cboMemberId.Name = "cboMemberId";

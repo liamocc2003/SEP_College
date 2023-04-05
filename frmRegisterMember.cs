@@ -133,13 +133,38 @@ namespace GymSYS
             }
             for (int i = 0; i <txtEircode.TextLength; i++)
             {
-                if (Char.IsLetter(txtEircode.Text[0]) || Char.IsDigit(txtEircode.Text[1]) ||
-                    Char.IsDigit(txtEircode.Text[2]) || Char.IsLetter(txtEircode.Text[3]))
+                if (Char.IsDigit(txtEircode.Text[0]) || Char.IsLetter(txtEircode.Text[1]) ||
+                    Char.IsLetter(txtEircode.Text[2]) || Char.IsDigit(txtEircode.Text[3]) ||
+                    Char.IsDigit(txtEircode.Text[4]) || Char.IsLetter(txtEircode.Text[6]))
                 {
-                    
+                    MessageBox.Show("Eircode is invalid", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEircode.Focus();
+                    return;
                 }
             }
 
+            //Validate Email
+            if (txtEmail.Text.Equals(""))
+            {
+                MessageBox.Show("Email must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return;
+            }
+            else if (txtEmail.Text.Contains("@") == false || txtEmail.Text.Contains(".com") == false||
+                     txtEmail.Text.Contains(".ie") == false)
+            {
+                MessageBox.Show("Email is not valid", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return;
+            }
+
+            //Validate paymentType
+            if (cboPaymentType.Text.Equals(""))
+            {
+                MessageBox.Show("Payment Type must be selected", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboPaymentType.Focus();
+                return;
+            }
             //End of Validation
 
             //Create Member instance with values from form

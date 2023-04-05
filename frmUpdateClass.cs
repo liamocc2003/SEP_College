@@ -90,21 +90,12 @@ namespace GymSYS
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //valiadte memberId
+            //valiadte ClassId
             if (cboClassId.Text.Equals(""))
             {
-                MessageBox.Show("Class ID must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Class ID must be selected ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboClassId.Focus();
                 return;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                if (cboClassId.Text.Any(char.IsLetter) == true)
-                {
-                    MessageBox.Show("Class ID contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    cboClassId.Focus();
-                    return;
-                }
             }
             //end of validation
 
@@ -138,6 +129,111 @@ namespace GymSYS
 
         private void btnUpdateClass_Click(object sender, EventArgs e)
         {
+            //Validate all data
+            //valiadte ClassId
+            if (cboClassId.Text.Equals(""))
+            {
+                MessageBox.Show("Class ID must be selected", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboClassId.Focus();
+                return;
+            }
+            //Validate ClassName
+            if (txtClassName.Text.Equals(""))
+            {
+                MessageBox.Show("Class Name must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClassName.Focus();
+                return;
+            }
+            for (int i = 0; i < txtClassName.TextLength; i++)
+            {
+                if (txtClassName.Text.Any(char.IsDigit) == true)
+                {
+                    MessageBox.Show("Class Name contains a digit", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClassName.Focus();
+                    return;
+                }
+            }
+
+            //Validate ClassTeacher
+            if (txtClassTeacher.Text.Equals(""))
+            {
+                MessageBox.Show("Class Teacher must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClassTeacher.Focus();
+                return;
+            }
+            for (int i = 0; i < txtClassTeacher.TextLength; i++)
+            {
+                if (txtClassTeacher.Text.Any(char.IsDigit) == true)
+                {
+                    MessageBox.Show("Class Teacher contains a digit", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClassTeacher.Focus();
+                    return;
+                }
+            }
+
+            //Validate Class Size
+            if (txtClassSize.Text.Equals(""))
+            {
+                MessageBox.Show("Class Size must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClassSize.Focus();
+                return;
+            }
+            for (int i = 0; i < txtClassSize.TextLength; i++)
+            {
+                if (txtClassSize.Text.Any(char.IsLetter) == true)
+                {
+                    MessageBox.Show("Class Size contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClassSize.Focus();
+                    return;
+                }
+            }
+
+            //Validate Class Duration
+            if (txtClassDuration.Text.Equals(""))
+            {
+                MessageBox.Show("Class Duration must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClassDuration.Focus();
+                return;
+            }
+            for (int i = 0; i < txtClassDuration.TextLength; i++)
+            {
+                if (txtClassDuration.Text.Any(char.IsLetter) == true)
+                {
+                    MessageBox.Show("Class Duration contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClassDuration.Focus();
+                    return;
+                }
+            }
+
+            //Validate Class Fee
+            if (txtClassFee.Text.Equals(""))
+            {
+                MessageBox.Show("Class Fee must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClassFee.Focus();
+                return;
+            }
+            int count = 0;
+            for (int i = 0; i < txtClassFee.TextLength; i++)
+            {
+                if (txtClassFee.Text.Any(char.IsLetter) == true)
+                {
+                    MessageBox.Show("Class Fee must be numerical", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClassFee.Focus();
+                    return;
+                }
+                if (txtClassFee.Text.Any(char.IsPunctuation) == true)
+                {
+                    count++;
+                }
+                if (count > 1)
+                {
+                    MessageBox.Show("Class Fee cannot have more than 1 punctuation", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClassFee.Focus();
+                    return;
+                }
+            }
+            //End of Validation
+
             //Create Class Object
             Session updateClass = new Session();
 

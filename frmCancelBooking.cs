@@ -90,6 +90,15 @@ namespace GymSYS
 
         private void btnCancelClass_Click(object sender, EventArgs e)
         {
+            //valiadte ClassId
+            if (cboBookingId.Text.Equals(""))
+            {
+                MessageBox.Show("Booking ID must be selected ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboBookingId.Focus();
+                return;
+            }
+            //End of validation
+
             //connect to database
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 

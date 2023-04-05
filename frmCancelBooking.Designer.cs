@@ -54,7 +54,7 @@ namespace GymSYS
             // btnCancelClass
             // 
             this.btnCancelClass.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelClass.Location = new System.Drawing.Point(339, 258);
+            this.btnCancelClass.Location = new System.Drawing.Point(345, 244);
             this.btnCancelClass.Name = "btnCancelClass";
             this.btnCancelClass.Size = new System.Drawing.Size(110, 40);
             this.btnCancelClass.TabIndex = 29;
@@ -66,7 +66,7 @@ namespace GymSYS
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label7.Location = new System.Drawing.Point(276, 173);
+            this.label7.Location = new System.Drawing.Point(293, 139);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 20);
             this.label7.TabIndex = 25;
@@ -203,8 +203,9 @@ namespace GymSYS
             // 
             // cboBookingId
             // 
+            this.cboBookingId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBookingId.FormattingEnabled = true;
-            this.cboBookingId.Location = new System.Drawing.Point(374, 172);
+            this.cboBookingId.Location = new System.Drawing.Point(391, 138);
             this.cboBookingId.Name = "cboBookingId";
             this.cboBookingId.Size = new System.Drawing.Size(117, 21);
             this.cboBookingId.TabIndex = 30;

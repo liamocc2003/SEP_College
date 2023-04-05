@@ -90,6 +90,22 @@ namespace GymSYS
         private void btnAddMoney_Click(object sender, EventArgs e)
         {
             //Validate data
+            //Validate MemberId
+            if (cboMemberId.Text.Equals(""))
+            {
+                MessageBox.Show("Member ID must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboMemberId.Focus();
+                return;
+            }
+
+            //Validate CurrentAmount
+            if (txtCurrentAmount.Text.Equals(""))
+            {
+                MessageBox.Show("You must search if the Member ID exists", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCurrentAmount.Focus();
+                return;
+            }
+            //Validate Amount
             int count = 0;
             if (txtAmount.Text.Equals(""))
             {
@@ -151,18 +167,9 @@ namespace GymSYS
             //Validate MemberId
             if (cboMemberId.Text.Equals(""))
             {
-                MessageBox.Show("MemberId must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Member ID must be entered", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboMemberId.Focus();
                 return;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                if (cboMemberId.Text.Any(char.IsLetter) == true)
-                {
-                    MessageBox.Show("MemberId contains a letter", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    cboMemberId.Focus();
-                    return;
-                }
             }
             //end of validation
 

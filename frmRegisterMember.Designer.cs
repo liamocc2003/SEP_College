@@ -158,6 +158,7 @@ namespace GymSYS
             // 
             // cboPaymentType
             // 
+            this.cboPaymentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPaymentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cboPaymentType.FormattingEnabled = true;
             this.cboPaymentType.Items.AddRange(new object[] {
