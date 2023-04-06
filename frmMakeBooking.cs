@@ -127,7 +127,70 @@ namespace GymSYS
                 cboClassId.Focus();
                 return;
             }
+
+            //validate radio button
+            if (rdbMemberWallet.Checked == false || rdbMemberPoints.Checked == false)
+            {
+                MessageBox.Show("An option for payment must be selected ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                rdbMemberWallet.Focus();
+                return;
+            }
             //End of Validation
+
+            //create Member and Session instance
+            Member member = new Member();
+            Session session = new Session();
+
+            //set member wallet, points and class fee
+            int wallet = member.getMemberWallet();
+            int points = member.getMemberPoints();
+            int fee = session.getClassFee();
+            int reg = session.getClassReg();
+            int size = session.getClassSize();
+
+            //check if registered is lower than class size
+            if (reg < size)
+            {
+                //check which payment option is chosen
+                if (rdbMemberWallet.Checked)
+                {
+                    //check amount in account is greater than or equal to class fee
+                    if (wallet < fee)
+                    {
+                        MessageBox.Show("Member does not have enough money in Member Wallet to book for Class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        //reduce member wallet by class fee and increase member points
+                        int newWallet = wallet - fee;
+                        member.setMemberWallet(newWallet);
+
+                        int newPoints = points + fee;
+                        member.setMemberPoints(newPoints);
+                    }
+                }
+                else
+                {
+                    //check points in account is greater than or equal to class fee
+                    if (points < fee)
+                    {
+                        MessageBox.Show("Member does not have enough points in Member Points to register for Class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        //reduce member points by class fee
+                        int newPoints = points - fee;
+                        member.setMemberPoints(newPoints);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("The class is currenty fully booked", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             //Create Booking instance with values from form
             Booking bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text));

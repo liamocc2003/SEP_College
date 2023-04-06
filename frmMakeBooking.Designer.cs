@@ -52,6 +52,9 @@ namespace GymSYS
             this.label2 = new System.Windows.Forms.Label();
             this.cboClassId = new System.Windows.Forms.ComboBox();
             this.cboMemberId = new System.Windows.Forms.ComboBox();
+            this.rdbMemberWallet = new System.Windows.Forms.RadioButton();
+            this.rdbMemberPoints = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -252,11 +255,48 @@ namespace GymSYS
             this.cboMemberId.Size = new System.Drawing.Size(150, 21);
             this.cboMemberId.TabIndex = 27;
             // 
+            // rdbMemberWallet
+            // 
+            this.rdbMemberWallet.AutoSize = true;
+            this.rdbMemberWallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rdbMemberWallet.Location = new System.Drawing.Point(48, 319);
+            this.rdbMemberWallet.Name = "rdbMemberWallet";
+            this.rdbMemberWallet.Size = new System.Drawing.Size(120, 21);
+            this.rdbMemberWallet.TabIndex = 28;
+            this.rdbMemberWallet.TabStop = true;
+            this.rdbMemberWallet.Text = "Member Wallet";
+            this.rdbMemberWallet.UseVisualStyleBackColor = true;
+            // 
+            // rdbMemberPoints
+            // 
+            this.rdbMemberPoints.AutoSize = true;
+            this.rdbMemberPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rdbMemberPoints.Location = new System.Drawing.Point(48, 342);
+            this.rdbMemberPoints.Name = "rdbMemberPoints";
+            this.rdbMemberPoints.Size = new System.Drawing.Size(120, 21);
+            this.rdbMemberPoints.TabIndex = 29;
+            this.rdbMemberPoints.TabStop = true;
+            this.rdbMemberPoints.Text = "Member Points";
+            this.rdbMemberPoints.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label3.Location = new System.Drawing.Point(44, 296);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 20);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Select a payment option:";
+            // 
             // frmMakeBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.rdbMemberPoints);
+            this.Controls.Add(this.rdbMemberWallet);
             this.Controls.Add(this.cboMemberId);
             this.Controls.Add(this.cboClassId);
             this.Controls.Add(this.txtBookingId);
@@ -300,5 +340,8 @@ namespace GymSYS
         private System.Windows.Forms.ComboBox cboClassId;
         private System.Windows.Forms.ComboBox cboMemberId;
         private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
+        private System.Windows.Forms.RadioButton rdbMemberWallet;
+        private System.Windows.Forms.RadioButton rdbMemberPoints;
+        private System.Windows.Forms.Label label3;
     }
 }
