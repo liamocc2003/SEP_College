@@ -191,7 +191,7 @@ namespace GymSYS
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label7.Location = new System.Drawing.Point(44, 179);
+            this.label7.Location = new System.Drawing.Point(44, 161);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 20);
             this.label7.TabIndex = 19;
@@ -201,7 +201,7 @@ namespace GymSYS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(44, 240);
+            this.label1.Location = new System.Drawing.Point(44, 222);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 21;
@@ -241,7 +241,7 @@ namespace GymSYS
             // 
             this.cboClassId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboClassId.FormattingEnabled = true;
-            this.cboClassId.Location = new System.Drawing.Point(167, 239);
+            this.cboClassId.Location = new System.Drawing.Point(167, 221);
             this.cboClassId.Name = "cboClassId";
             this.cboClassId.Size = new System.Drawing.Size(150, 21);
             this.cboClassId.TabIndex = 26;
@@ -250,7 +250,7 @@ namespace GymSYS
             // 
             this.cboMemberId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMemberId.FormattingEnabled = true;
-            this.cboMemberId.Location = new System.Drawing.Point(167, 178);
+            this.cboMemberId.Location = new System.Drawing.Point(167, 160);
             this.cboMemberId.Name = "cboMemberId";
             this.cboMemberId.Size = new System.Drawing.Size(150, 21);
             this.cboMemberId.TabIndex = 27;
@@ -259,7 +259,7 @@ namespace GymSYS
             // 
             this.rdbMemberWallet.AutoSize = true;
             this.rdbMemberWallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rdbMemberWallet.Location = new System.Drawing.Point(48, 319);
+            this.rdbMemberWallet.Location = new System.Drawing.Point(48, 301);
             this.rdbMemberWallet.Name = "rdbMemberWallet";
             this.rdbMemberWallet.Size = new System.Drawing.Size(120, 21);
             this.rdbMemberWallet.TabIndex = 28;
@@ -271,7 +271,7 @@ namespace GymSYS
             // 
             this.rdbMemberPoints.AutoSize = true;
             this.rdbMemberPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rdbMemberPoints.Location = new System.Drawing.Point(48, 342);
+            this.rdbMemberPoints.Location = new System.Drawing.Point(48, 324);
             this.rdbMemberPoints.Name = "rdbMemberPoints";
             this.rdbMemberPoints.Size = new System.Drawing.Size(120, 21);
             this.rdbMemberPoints.TabIndex = 29;
@@ -283,7 +283,7 @@ namespace GymSYS
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(44, 296);
+            this.label3.Location = new System.Drawing.Point(44, 278);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(184, 20);
             this.label3.TabIndex = 30;

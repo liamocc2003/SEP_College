@@ -148,5 +148,30 @@ namespace GymSYS
 
             return ds;
         }
+
+        public static DataSet getBookingsForClassId()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //create booking object
+            Booking booking = new Booking();
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Booking_Id FROM Bookings Where Class_Id = " + booking.getClassId();
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "BookingIds");
+
+            //close db connection
+            conn.Close();
+
+            return ds;
+        }
     }
 }

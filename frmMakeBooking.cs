@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -137,25 +138,67 @@ namespace GymSYS
             }
             //End of Validation
 
-            //create Member and Session instance
-            Member member = new Member();
-            Session session = new Session();
+            //define variables
+            Member memberDetails = new Member();
+            Session sessionDetails = new Session();
 
-            //set member wallet, points and class fee
-            int wallet = member.getMemberWallet();
-            int points = member.getMemberPoints();
-            int fee = session.getClassFee();
-            int reg = session.getClassReg();
-            int size = session.getClassSize();
+            int wallet = 0;
+            int points = 0;
+            int classSize = 0;
+            int classReg = 0;
+            int classFee = 0;
+
+            int newWallet = 0;
+            int newPoints = 0;
+
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define Member sql query
+            String sqlQuery = "SELECT MemberWallet,MemberPoints " +
+                "FROM Members WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text);
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+            OracleDataReader dr = cmd.ExecuteReader();
+            if (!dr.Read())
+            {
+                MessageBox.Show("There are no members found with that Member ID");
+            }
+            else
+            {
+                wallet = dr.GetInt32(0);
+                points = dr.GetInt32(1);
+            }
+
+            //define Session sql query
+            sqlQuery = "SELECT ClassSize,ClassReg,ClassFee " +
+                "FROM Sessions WHERE Class_Id = " + Convert.ToInt32(cboClassId.Text);
+
+            //execute query
+            cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+            dr = cmd.ExecuteReader();
+            if (!dr.Read())
+            {
+                MessageBox.Show("There are no classes found with that Class ID");
+            }
+            else
+            {
+                classSize = dr.GetInt32(0);
+                classReg = dr.GetInt32(1);
+                classFee = dr.GetInt32(2);
+            }
 
             //check if registered is lower than class size
-            if (reg < size)
+            if (classReg < classSize)
             {
                 //check which payment option is chosen
                 if (rdbMemberWallet.Checked)
                 {
                     //check amount in account is greater than or equal to class fee
-                    if (wallet < fee)
+                    if (wallet < classFee)
                     {
                         MessageBox.Show("Member does not have enough money in Member Wallet to book for Class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -163,17 +206,19 @@ namespace GymSYS
                     else
                     {
                         //reduce member wallet by class fee and increase member points
-                        int newWallet = wallet - fee;
-                        member.setMemberWallet(newWallet);
+                        newWallet = wallet - classFee;
+                        memberDetails.setMemberWallet(newWallet);
 
-                        int newPoints = points + fee;
-                        member.setMemberPoints(newPoints);
+                        newPoints = points + classFee;
+                        memberDetails.setMemberPoints(newPoints);
+
+                        sessionDetails.getNextRegistered();
                     }
                 }
-                else
+                else if (rdbMemberPoints.Checked)
                 {
                     //check points in account is greater than or equal to class fee
-                    if (points < fee)
+                    if (points < classFee)
                     {
                         MessageBox.Show("Member does not have enough points in Member Points to register for Class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -181,8 +226,10 @@ namespace GymSYS
                     else
                     {
                         //reduce member points by class fee
-                        int newPoints = points - fee;
-                        member.setMemberPoints(newPoints);
+                        newPoints = points - classFee;
+                        memberDetails.setMemberPoints(newPoints);
+
+                        sessionDetails.getNextRegistered();
                     }
                 }
             }

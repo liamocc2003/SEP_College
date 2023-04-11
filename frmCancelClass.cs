@@ -99,14 +99,32 @@ namespace GymSYS
             }
             //end of validation
 
+            //load bookingIds into comboBox
+            DataSet dsB = Booking.getBookingsForClassId();
+
+            for (int i = 0; i < dsB.Tables[0].Rows.Count; i++)
+            {
+                cboClassId.Items.Add(dsB.Tables[0].Rows[i][0]);
+            }
+
+            //create Booking Object
+            Booking cancelBooking = new Booking();
+
+            //remove all bookings with classId
+            for (int i = cboBookings.Items.Count; i > 0; i--)
+            {
+                int bookingId = Convert.ToInt32(cboBookings.SelectedIndex.ToString());
+                cancelBooking.cancelBooking();
+            }
+
             //connect to database
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
+            //create Session object
+            Session cancelClass = new Session();
+
             //sql query
             String sqlQuery = "SELECT * FROM SESSIONS WHERE Class_Id = " + Convert.ToInt32(cboClassId.Text);
-
-            //create Class Object
-            Session cancelClass = new Session();
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
