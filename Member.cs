@@ -284,5 +284,26 @@ namespace GymSYS
 
             return walletTotal;
         }
+
+        public void bookedClass()
+        {
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query
+            String sqlQuery = "UPDATE Members SET " +
+                "Member_Wallet = " + this.memberWallet + "," +
+                "Member_Points = " + this.memberPoints +
+                "WHERE Member_Id = " + this.memberId;
+
+            //execute query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            //close database
+            conn.Close();
+        }
     }
 }

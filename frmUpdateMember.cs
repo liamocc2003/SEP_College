@@ -197,13 +197,14 @@ namespace GymSYS
                 txtEmail.Focus();
                 return;
             }
-            else if (txtEmail.Text.Contains("@") == false || txtEmail.Text.Contains(".com") == false ||
-                     txtEmail.Text.Contains(".ie") == false)
+            else if (txtEmail.Text.Contains('@') == false && (txtEmail.Text.EndsWith(".com") == false ||
+                     txtEmail.Text.EndsWith(".ie") == false))
             {
                 MessageBox.Show("Email is not valid", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Focus();
                 return;
             }
+
 
             //Validate paymentType
             if (cboPaymentType.Text == "")

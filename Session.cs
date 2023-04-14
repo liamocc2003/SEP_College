@@ -148,7 +148,6 @@ namespace GymSYS
                 "Class_Name = '" + this.className + "'," +
                 "Class_Teacher = '" + this.classTeacher + "'," +
                 "Class_Size = " + this.classSize + "," +
-                "Class_Reg = " + this.classReg + ",'" +
                 "Class_Date = '" + this.classDate + "'," +
                 "Class_Duration = " + this.classDuration + "," +
                 "Class_Fee = " + this.classFee +
@@ -158,6 +157,7 @@ namespace GymSYS
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
             conn.Open();
 
+            //Breaks update class not add class
             cmd.ExecuteNonQuery();
 
             //close database
@@ -276,7 +276,7 @@ namespace GymSYS
             //is dr null
             int feeTotal;
             dr.Read();
-
+//Breaks if ran first
             if (dr.IsDBNull(0))
             {
                 feeTotal = 0;

@@ -130,7 +130,7 @@ namespace GymSYS
             }
 
             //validate radio button
-            if (rdbMemberWallet.Checked == false || rdbMemberPoints.Checked == false)
+            if (rdbMemberWallet.Checked == false && rdbMemberPoints.Checked == false)
             {
                 MessageBox.Show("An option for payment must be selected ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 rdbMemberWallet.Focus();
@@ -141,6 +141,7 @@ namespace GymSYS
             //define variables
             Member memberDetails = new Member();
             Session sessionDetails = new Session();
+            Booking bookClass = new Booking();
 
             int wallet = 0;
             int points = 0;
@@ -148,14 +149,11 @@ namespace GymSYS
             int classReg = 0;
             int classFee = 0;
 
-            int newWallet = 0;
-            int newPoints = 0;
-
             //conect to database
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define Member sql query
-            String sqlQuery = "SELECT MemberWallet,MemberPoints " +
+            String sqlQuery = "SELECT Member_Wallet,Member_Points " +
                 "FROM Members WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text);
 
             //execute query
@@ -173,12 +171,11 @@ namespace GymSYS
             }
 
             //define Session sql query
-            sqlQuery = "SELECT ClassSize,ClassReg,ClassFee " +
+            sqlQuery = "SELECT Class_Size,Class_Reg,Class_Fee " +
                 "FROM Sessions WHERE Class_Id = " + Convert.ToInt32(cboClassId.Text);
 
             //execute query
             cmd = new OracleCommand(sqlQuery, conn);
-            conn.Open();
             dr = cmd.ExecuteReader();
             if (!dr.Read())
             {
@@ -206,13 +203,22 @@ namespace GymSYS
                     else
                     {
                         //reduce member wallet by class fee and increase member points
-                        newWallet = wallet - classFee;
+                        int newWallet = wallet - classFee;
                         memberDetails.setMemberWallet(newWallet);
 
-                        newPoints = points + classFee;
+                        int newPoints = points + classFee;
                         memberDetails.setMemberPoints(newPoints);
 
+                        memberDetails.bookedClass();
+
+                        //increment classReg
                         sessionDetails.getNextRegistered();
+
+                        //Create Booking instance with values from form
+                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P');
+
+                        //invoke method to add data to Booking Table
+                        bookClass.addBooking();
                     }
                 }
                 else if (rdbMemberPoints.Checked)
@@ -226,10 +232,21 @@ namespace GymSYS
                     else
                     {
                         //reduce member points by class fee
-                        newPoints = points - classFee;
+                        memberDetails.setMemberWallet(wallet);
+
+                        int newPoints = points - classFee;
                         memberDetails.setMemberPoints(newPoints);
 
+                        memberDetails.bookedClass();
+
+                        //incremenr classReg
                         sessionDetails.getNextRegistered();
+
+                        //Create Booking instance with values from form
+                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P');
+
+                        //invoke method to add data to Booking Table
+                        bookClass.addBooking();
                     }
                 }
             }
@@ -238,18 +255,6 @@ namespace GymSYS
                 MessageBox.Show("The class is currenty fully booked", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            //Create Booking instance with values from form
-            Booking bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text));
-
-            //invoke method to add data to Booking Table
-            bookClass.addBooking();
-
-            //create Session instance
-            Session regChange = new Session();
-
-            //invoke method to change reg
-            regChange.getNextRegistered();
 
             //Confirmation Message
             MessageBox.Show("Booking has been completed successfully", "Success",

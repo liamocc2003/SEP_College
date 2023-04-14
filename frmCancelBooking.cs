@@ -90,7 +90,7 @@ namespace GymSYS
 
         private void btnCancelClass_Click(object sender, EventArgs e)
         {
-            //valiadte ClassId
+            //valiadte BookingId
             if (cboBookingId.Text.Equals(""))
             {
                 MessageBox.Show("Booking ID must be selected ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -105,8 +105,9 @@ namespace GymSYS
             //sql query
             String sqlQuery = "SELECT * FROM Bookings WHERE Booking_Id = " + Convert.ToInt32(cboBookingId.Text);
 
-            //create Booking Object
+            //create Objects
             Booking cancelBooking = new Booking();
+            Session changeClass = new Session();
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -122,91 +123,24 @@ namespace GymSYS
                 cancelBooking.setBookingId(Convert.ToInt32(cboBookingId.Text));
             }
 
-            //remove the data
-            cancelBooking.cancelBooking();
-
-            //create session object
-            Session changeClass = new Session();
-
-            //invoke method
-            changeClass.removeRegister();
-
-            //Display Confirmation Message
-            MessageBox.Show("Booking has cancelled successfully", "Success",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //check current time against class time
+            //check current time against class time for refund
             int currentDateYear = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
-            int currentDateMonth = Convert.ToInt32(DateTime.Now.ToString("M"));
+            int currentDateMonth = DateTime.Now.Month;
             int currentDateDay = Convert.ToInt32(DateTime.Now.ToString("dd"));
 
-            String classDate = changeClass.getClassDate();
+            String classDate = Convert.ToDateTime(changeClass.getClassDate()).ToString("dd-MM-yyyy");
             Console.WriteLine(classDate);
 
-            int classDateMonth;
+            int classDateMonth = Convert.ToInt32(classDate.Substring(3,2));
 
-            if (classDate.Contains("JAN"))
-            {
-                classDateMonth = 1;
-            }
-            else if (classDate.Contains("FEB"))
-            {
-                classDateMonth = 2;
-            }
-            else if (classDate.Contains("MAR"))
-            {
-                classDateMonth = 3;
-            }
-            else if (classDate.Contains("APR"))
-            {
-                classDateMonth = 4;
-            }
-            else if (classDate.Contains("MAY"))
-            {
-                classDateMonth = 5;
-            }
-            else if (classDate.Contains("JUN"))
-            {
-                classDateMonth = 6;
-            }
-            else if (classDate.Contains("JUL"))
-            {
-                classDateMonth = 7;
-            }
-            else if (classDate.Contains("AUG"))
-            {
-                classDateMonth = 8;
-            }
-            else if (classDate.Contains("SEP"))
-            {
-                classDateMonth = 9;
-            }
-            else if (classDate.Contains("OCT"))
-            {
-                classDateMonth = 10;
-            }
-            else if (classDate.Contains("NOV"))
-            {
-                classDateMonth = 11;
-            }
-            else if (classDate.Contains("DEC"))
-            {
-                classDateMonth = 12;
-            }
-            else
-            {
-                MessageBox.Show("Error retrieving the Class Date", "Error!",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (classDate.EndsWith(Convert.ToString(currentDateYear)) || classDate.EndsWith(Convert.ToString(currentDateYear + 1)))
+            if (Convert.ToInt32(classDate.Substring(classDate.Length - 4)) == currentDateYear || Convert.ToInt32(classDate.Substring(classDate.Length - 4))  > currentDateYear)
             {
                 if(currentDateMonth == classDateMonth)
                 {
-                    if (currentDateDay < Convert.ToInt32(classDate.Substring(0, 2)))
+                    if (currentDateDay < Convert.ToInt32(classDate.Substring(0, 2) + 1))
                     {
-                        //include return of money
+                        //Refund money
+                        refundMoney();
                         MessageBox.Show("Payment has been refunded to account", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -214,14 +148,14 @@ namespace GymSYS
                     {
                         MessageBox.Show("Payment cannot be refunded as it is past the 24 hour refund time", "Error!",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
                     }
                 }
                 else if (currentDateMonth < classDateMonth)
                 {
                     if (classDateMonth - currentDateMonth > 1)
                     {
-                        //include return of money
+                        //Refund money
+                        refundMoney();
                         MessageBox.Show("Payment has been refunded to account", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -229,7 +163,8 @@ namespace GymSYS
                     {
                         if (currentDateDay != 1)
                         {
-                            //include return of money
+                            //Refund money
+                            refundMoney();
                             MessageBox.Show("Payment has been refunded to account", "Success",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -237,7 +172,6 @@ namespace GymSYS
                         {
                             MessageBox.Show("Payment cannot be refunded as it is past the 24 hour refund time", "Error!",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
                         }
                     }
                 }
@@ -245,15 +179,23 @@ namespace GymSYS
                 {
                     MessageBox.Show("Payment cannot be refunded as it is past the 24 hour refund time", "Error!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
                 }
             }
             else
             {
                 MessageBox.Show("Payment cannot be refunded as it is past the 24 hour refund time", "Error!",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
+
+            //remove the data
+            cancelBooking.cancelBooking();
+
+            //invoke method
+            changeClass.removeRegister();
+
+            //Display Confirmation Message
+            MessageBox.Show("Booking has cancelled successfully", "Success",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
             cboBookingId.SelectedIndex = -1;
@@ -275,6 +217,8 @@ namespace GymSYS
         {
             //connect to database
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+            conn.Close();
+            conn.Open();
 
             //create Booking object
             Booking booking = new Booking();
@@ -289,7 +233,6 @@ namespace GymSYS
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-            conn.Open();
             OracleDataReader dr = cmd.ExecuteReader();
             if (!dr.Read())
             {
@@ -310,7 +253,6 @@ namespace GymSYS
 
             //execute query
             cmd = new OracleCommand(sqlQuery, conn);
-            conn.Open();
             dr = cmd.ExecuteReader();
             if (!dr.Read())
             {
@@ -326,14 +268,19 @@ namespace GymSYS
             Member refundMember = new Member();
 
             //change the data
-            //find a way to check what payment option was selected
-            if (true/*memberWallet is selected*/)
+            if (booking.getPaymentChoice() == 'W')
             {
                 refundMember.setMemberWallet(memberWallet + classFee);
+                refundMember.setMemberPoints(memberPoints);
+
+                refundMember.bookedClass();
             }
             else
             {
+                refundMember.setMemberWallet(memberWallet);
                 refundMember.setMemberPoints(memberPoints + classFee);
+
+                refundMember.bookedClass();
             }
         }
     }

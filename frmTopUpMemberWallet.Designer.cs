@@ -226,6 +226,7 @@ namespace GymSYS
             // 
             this.txtAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.Location = new System.Drawing.Point(162, 240);
+            this.txtAmount.MaxLength = 2;
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(133, 22);
             this.txtAmount.TabIndex = 23;

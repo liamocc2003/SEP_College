@@ -221,6 +221,7 @@ namespace GymSYS
                     txtClassFee.Focus();
                     return;
                 }
+
                 if (txtClassFee.Text.Any(char.IsPunctuation) == true)
                 {
                     count++;
@@ -265,9 +266,6 @@ namespace GymSYS
 
         private void frmUpdateClass_Load(object sender, EventArgs e)
         {
-            //set classDate min to today
-            dtpClassDate.MinDate = DateTime.Today;
-
             //load classIds into combobox
             DataSet dsC = Session.getClassIds();
 
@@ -275,6 +273,12 @@ namespace GymSYS
             {
                 cboClassId.Items.Add(dsC.Tables[0].Rows[i][0]);
             }
+        }
+
+        private void dtpClassDate_DropDown(object sender, EventArgs e)
+        {
+            //set classDate to a minuimum of today
+            dtpClassDate.MinDate = DateTime.Today;
         }
     }
 }

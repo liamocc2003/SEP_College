@@ -131,16 +131,19 @@ namespace GymSYS
                 txtEircode.Focus();
                 return;
             }
-            for (int i = 0; i <txtEircode.TextLength; i++)
+            else if (txtEircode.Text.Length != 7)
             {
-                if (Char.IsDigit(txtEircode.Text[0]) || Char.IsLetter(txtEircode.Text[1]) ||
+                MessageBox.Show("Eircode must be 7 characters long", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEircode.Focus();
+                return;
+            }
+            if (Char.IsDigit(txtEircode.Text[0]) || Char.IsLetter(txtEircode.Text[1]) ||
                     Char.IsLetter(txtEircode.Text[2]) || Char.IsDigit(txtEircode.Text[3]) ||
-                    Char.IsDigit(txtEircode.Text[4]) || Char.IsLetter(txtEircode.Text[6]))
-                {
-                    MessageBox.Show("Eircode is invalid", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtEircode.Focus();
-                    return;
-                }
+                    Char.IsLetter(txtEircode.Text[6]))
+            {
+                MessageBox.Show("Eircode is invalid", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEircode.Focus();
+                return;
             }
 
             //Validate Email
@@ -150,8 +153,8 @@ namespace GymSYS
                 txtEmail.Focus();
                 return;
             }
-            else if (txtEmail.Text.Contains("@") == false || txtEmail.Text.Contains(".com") == false||
-                     txtEmail.Text.Contains(".ie") == false)
+            else if (txtEmail.Text.Contains('@') == false && (txtEmail.Text.EndsWith(".com") == false ||
+                     txtEmail.Text.EndsWith(".ie") == false))
             {
                 MessageBox.Show("Email is not valid", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Focus();
@@ -182,7 +185,7 @@ namespace GymSYS
             txtMemberId.Text = Member.getNextMemberId().ToString("00000");
             txtForename.Clear();
             txtSurname.Clear();
-            dtpDOB.Text = string.Empty;
+            dtpDOB.Text = Convert.ToString(DateTime.Today.AddYears(-16));
             txtEircode.Clear();
             txtEmail.Clear();
             cboPaymentType.SelectedIndex = -1;
