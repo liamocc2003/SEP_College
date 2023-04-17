@@ -50,6 +50,7 @@ namespace GymSYS
             this.cboBookingId = new System.Windows.Forms.ComboBox();
             this.cboMemberId = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,7 +219,7 @@ namespace GymSYS
             // 
             this.cboMemberId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMemberId.FormattingEnabled = true;
-            this.cboMemberId.Location = new System.Drawing.Point(391, 108);
+            this.cboMemberId.Location = new System.Drawing.Point(342, 108);
             this.cboMemberId.Name = "cboMemberId";
             this.cboMemberId.Size = new System.Drawing.Size(117, 21);
             this.cboMemberId.TabIndex = 32;
@@ -227,17 +228,29 @@ namespace GymSYS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(293, 109);
+            this.label1.Location = new System.Drawing.Point(244, 109);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 20);
             this.label1.TabIndex = 31;
             this.label1.Text = "Member ID:";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(481, 108);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 33;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // frmCancelBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cboMemberId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboBookingId);
@@ -277,5 +290,6 @@ namespace GymSYS
         private System.Windows.Forms.ComboBox cboBookingId;
         private System.Windows.Forms.ComboBox cboMemberId;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

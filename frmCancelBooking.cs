@@ -212,14 +212,6 @@ namespace GymSYS
             {
                 cboMemberId.Items.Add(dsM.Tables[0].Rows[i][0]);
             }
-
-            //load all bookingIDs
-            DataSet dsB = Booking.getAllBookingIds();
-
-            for (int i = 0; i < dsB.Tables[0].Rows.Count; i++)
-            {
-                cboBookingId.Items.Add(dsB.Tables[0].Rows[i][0]);
-            }
         }
 
         private static void refundMoney()
@@ -291,6 +283,23 @@ namespace GymSYS
 
                 refundMember.bookedClass();
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            //reset cbo
+            cboBookingId.Items.Clear();
+
+            //load all bookingIDs
+            DataSet dsB = Booking.getAllBookingIds();
+
+            for (int i = 0; i < dsB.Tables[0].Rows.Count; i++)
+            {
+                cboBookingId.Items.Add(dsB.Tables[0].Rows[i][0]);
+            }
+
+            label7.Visible = true;
+            cboBookingId.Visible = true;
         }
     }
 }

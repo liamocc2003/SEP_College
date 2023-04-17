@@ -82,8 +82,8 @@ namespace GymSYS
             String sqlQuery = "INSERT INTO Bookings VALUES (" +
                 this.bookingId + "," +
                 this.memberId + "," +
-                this.classId + "," + 
-                this.paymentChoice + ",'" +
+                this.classId + ",'" + 
+                this.paymentChoice + "','" +
                 this.classDate + "')";
 
             //execute query
@@ -156,6 +156,7 @@ namespace GymSYS
             Booking booking = new Booking();
 
             //define sql query to execute
+            Console.WriteLine(booking.getMemberId());
             String sqlQuery = "SELECT Booking_Id FROM Bookings " +
                 "WHERE Member_Id = " + booking.getMemberId() +
                 "ORDER BY Booking_Id ASC";

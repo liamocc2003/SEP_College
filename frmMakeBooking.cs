@@ -138,7 +138,11 @@ namespace GymSYS
             }
 
             //validate if member has already booked the class
-            Booking.checkIfBooked();
+            if (Booking.checkIfBooked() == true)
+            {
+                MessageBox.Show("The member has already booked this class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             //End of Validation
 
             //define variables
@@ -148,7 +152,7 @@ namespace GymSYS
 
             int wallet = 0;
             int points = 0;
-            DateTime classDate = DateTime.Today;
+            String classDate = "";
             int classSize = 0;
             int classReg = 0;
             int classFee = 0;
@@ -188,7 +192,7 @@ namespace GymSYS
             }
             else
             {
-                classDate = dr.GetDateTime(0);
+                classDate = dr.GetDateTime(0).ToString("dd-MMM-yyyy");
                 classSize = dr.GetInt32(1);
                 classReg = dr.GetInt32(2);
                 classFee = dr.GetInt32(3);
@@ -221,7 +225,7 @@ namespace GymSYS
                         sessionDetails.getNextRegistered();
 
                         //Create Booking instance with values from form
-                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', Convert.ToString(classDate));
+                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', classDate);
 
                         //invoke method to add data to Booking Table
                         bookClass.addBooking();
@@ -249,7 +253,7 @@ namespace GymSYS
                         sessionDetails.getNextRegistered();
 
                         //Create Booking instance with values from form
-                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', Convert.ToString(classDate));
+                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', classDate);
 
                         //invoke method to add data to Booking Table
                         bookClass.addBooking();
@@ -270,6 +274,21 @@ namespace GymSYS
             txtBookingId.Text = Booking.getNextBookingId().ToString("000");
             cboMemberId.SelectedIndex = -1;
             cboClassId.SelectedIndex = -1;
+        }
+
+        private void cboMemberId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //conect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //create booking object
+            Booking booking = new Booking();
+
+            //set memberID and ClassID
+            booking.setMemberId(Convert.ToInt32(cboMemberId.Text));
+            booking.setClassId(Convert.ToInt32(cboClassId.Text));
+
+
         }
     }
 }
