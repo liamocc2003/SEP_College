@@ -157,7 +157,7 @@ namespace GymSYS
 
             //define sql query to execute
             String sqlQuery = "SELECT Booking_Id FROM Bookings " +
-                "WHERE Class_Date >= CURDATE() AND Member_Id = " + booking.getMemberId() +
+                "WHERE Member_Id = " + booking.getMemberId() +
                 "ORDER BY Booking_Id ASC";
 
             //execute sql query

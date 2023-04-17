@@ -143,6 +143,7 @@ namespace GymSYS
             //remove the data
             cancelClass.cancelClass();
 
+
             //Display Confirmation Message
             MessageBox.Show("Class has cancelled successfully", "Success",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
