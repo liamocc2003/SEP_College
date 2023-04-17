@@ -136,6 +136,9 @@ namespace GymSYS
                 rdbMemberWallet.Focus();
                 return;
             }
+
+            //validate if member has already booked the class
+            Booking.checkIfBooked();
             //End of Validation
 
             //define variables
@@ -145,6 +148,7 @@ namespace GymSYS
 
             int wallet = 0;
             int points = 0;
+            String classDate = "";
             int classSize = 0;
             int classReg = 0;
             int classFee = 0;
@@ -171,7 +175,7 @@ namespace GymSYS
             }
 
             //define Session sql query
-            sqlQuery = "SELECT Class_Size,Class_Reg,Class_Fee " +
+            sqlQuery = "SELECT Class_Date,Class_Size,Class_Reg,Class_Fee " +
                 "FROM Sessions WHERE Class_Id = " + Convert.ToInt32(cboClassId.Text);
 
             //execute query
@@ -180,12 +184,14 @@ namespace GymSYS
             if (!dr.Read())
             {
                 MessageBox.Show("There are no classes found with that Class ID");
+                return;
             }
             else
             {
-                classSize = dr.GetInt32(0);
-                classReg = dr.GetInt32(1);
-                classFee = dr.GetInt32(2);
+                classDate = dr.GetString(0);
+                classSize = dr.GetInt32(1);
+                classReg = dr.GetInt32(2);
+                classFee = dr.GetInt32(3);
             }
 
             //check if registered is lower than class size
@@ -215,7 +221,7 @@ namespace GymSYS
                         sessionDetails.getNextRegistered();
 
                         //Create Booking instance with values from form
-                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P');
+                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', classDate);
 
                         //invoke method to add data to Booking Table
                         bookClass.addBooking();
@@ -243,7 +249,7 @@ namespace GymSYS
                         sessionDetails.getNextRegistered();
 
                         //Create Booking instance with values from form
-                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P');
+                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', classDate);
 
                         //invoke method to add data to Booking Table
                         bookClass.addBooking();

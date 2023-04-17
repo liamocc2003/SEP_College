@@ -205,6 +205,15 @@ namespace GymSYS
 
         private void frmCancelBooking_Load(object sender, EventArgs e)
         {
+            //load all memberIDs
+            DataSet dsM = Member.getMemberIds();
+
+            for (int i = 0; i < dsM.Tables[0].Rows.Count; i++)
+            {
+                cboMemberId.Items.Add(dsM.Tables[0].Rows[i][0]);
+            }
+
+            //load all bookingIDs
             DataSet dsB = Booking.getAllBookingIds();
 
             for (int i = 0; i < dsB.Tables[0].Rows.Count; i++)

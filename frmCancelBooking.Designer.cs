@@ -48,13 +48,15 @@ namespace GymSYS
             this.yearlyClassAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cboBookingId = new System.Windows.Forms.ComboBox();
+            this.cboMemberId = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelClass
             // 
             this.btnCancelClass.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelClass.Location = new System.Drawing.Point(345, 244);
+            this.btnCancelClass.Location = new System.Drawing.Point(345, 263);
             this.btnCancelClass.Name = "btnCancelClass";
             this.btnCancelClass.Size = new System.Drawing.Size(110, 40);
             this.btnCancelClass.TabIndex = 29;
@@ -66,11 +68,12 @@ namespace GymSYS
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label7.Location = new System.Drawing.Point(293, 139);
+            this.label7.Location = new System.Drawing.Point(293, 165);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 20);
             this.label7.TabIndex = 25;
             this.label7.Text = "Booking ID:";
+            this.label7.Visible = false;
             // 
             // menuStrip1
             // 
@@ -205,16 +208,38 @@ namespace GymSYS
             // 
             this.cboBookingId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBookingId.FormattingEnabled = true;
-            this.cboBookingId.Location = new System.Drawing.Point(391, 138);
+            this.cboBookingId.Location = new System.Drawing.Point(391, 164);
             this.cboBookingId.Name = "cboBookingId";
             this.cboBookingId.Size = new System.Drawing.Size(117, 21);
             this.cboBookingId.TabIndex = 30;
+            this.cboBookingId.Visible = false;
+            // 
+            // cboMemberId
+            // 
+            this.cboMemberId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMemberId.FormattingEnabled = true;
+            this.cboMemberId.Location = new System.Drawing.Point(391, 108);
+            this.cboMemberId.Name = "cboMemberId";
+            this.cboMemberId.Size = new System.Drawing.Size(117, 21);
+            this.cboMemberId.TabIndex = 32;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(293, 109);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 20);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Member ID:";
             // 
             // frmCancelBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cboMemberId);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cboBookingId);
             this.Controls.Add(this.btnCancelClass);
             this.Controls.Add(this.label7);
@@ -250,5 +275,7 @@ namespace GymSYS
         private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
         private System.Windows.Forms.ComboBox cboBookingId;
+        private System.Windows.Forms.ComboBox cboMemberId;
+        private System.Windows.Forms.Label label1;
     }
 }

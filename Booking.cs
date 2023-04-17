@@ -14,6 +14,7 @@ namespace GymSYS
         private int memberId;
         private int classId;
         private char paymentChoice;
+        private String classDate;
 
         public Booking()
         {
@@ -21,14 +22,16 @@ namespace GymSYS
             this.memberId = 10000;
             this.classId = 100;
             this.paymentChoice = 'W';
+            this.classDate = DateTime.Now.ToString("dd-MMM-yyyy");
         }
 
-        public Booking(int bookingId, int memberId, int classId, char paymentChoice)
+        public Booking(int bookingId, int memberId, int classId, char paymentChoice, String classDate)
         {
             this.bookingId = bookingId;
             this.memberId = memberId;
             this.classId = classId;
             this.paymentChoice = paymentChoice;
+            this.classDate = classDate;
         }
 
         public int getBookingId()
@@ -48,6 +51,10 @@ namespace GymSYS
         {
             return this.paymentChoice;
         }
+        public String getClassDate()
+        {
+            return this.classDate;
+        }
 
         public void setBookingId(int BookingId)
         {
@@ -61,6 +68,10 @@ namespace GymSYS
         {
             classId = ClassId;
         }
+        public void setClassDate(String ClassDate)
+        {
+            classDate = ClassDate;
+        }
 
         public void addBooking()
         {
@@ -72,7 +83,8 @@ namespace GymSYS
                 this.bookingId + "," +
                 this.memberId + "," +
                 this.classId + "," + 
-                this.paymentChoice + ")";
+                this.paymentChoice + ",'" +
+                this.classDate + "')";
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -140,8 +152,13 @@ namespace GymSYS
             //open a db connection
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
+            //create booking object
+            Booking booking = new Booking();
+
             //define sql query to execute
-            String sqlQuery = "SELECT Booking_Id FROM Bookings ORDER BY Booking_Id ASC";
+            String sqlQuery = "SELECT Booking_Id FROM Bookings " +
+                "WHERE Class_Date >= CURDATE() AND Member_Id = " + booking.getMemberId() +
+                "ORDER BY Booking_Id ASC";
 
             //execute sql query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -180,6 +197,40 @@ namespace GymSYS
             conn.Close();
 
             return ds;
+        }
+
+        public static bool checkIfBooked()
+        {
+            //connect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //create Booking object
+            Booking booking = new Booking();
+
+            //create bool
+            bool isThere = false;
+
+            //define sql query
+            String sqlQuery = "SELECT Class_Id, Member_Id FROM Bookings";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "memberIds");
+
+            //run through all posibilities
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                if (Convert.ToInt32(ds.Tables[0].Rows[i][0]) == booking.getClassId() && Convert.ToInt32(ds.Tables[0].Rows[i][1]) == booking.getMemberId())
+                {
+                    isThere = true;
+                }
+            }
+
+            return isThere;
         }
     }
 }

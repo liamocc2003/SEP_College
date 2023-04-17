@@ -221,7 +221,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query to execute
-            String sqlQuery = "SELECT Class_Id FROM Sessions ORDER BY Class_Id ASC";
+            String sqlQuery = "SELECT Class_Id FROM Sessions WHERE Class_Date >= CURDATE() ORDER BY Class_Id ASC";
 
             //execute sql query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
