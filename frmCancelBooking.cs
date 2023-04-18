@@ -129,7 +129,6 @@ namespace GymSYS
             int currentDateDay = Convert.ToInt32(DateTime.Now.ToString("dd"));
 
             String classDate = Convert.ToDateTime(changeClass.getClassDate()).ToString("dd-MM-yyyy");
-            Console.WriteLine(classDate);
 
             int classDateMonth = Convert.ToInt32(classDate.Substring(3,2));
 
@@ -214,6 +213,23 @@ namespace GymSYS
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            //reset cbo
+            cboBookingId.Items.Clear();
+
+            //load all bookingIDs
+            DataSet dsB = getAllBookingIds();
+
+            for (int i = 0; i < dsB.Tables[0].Rows.Count; i++)
+            {
+                cboBookingId.Items.Add(dsB.Tables[0].Rows[i][0]);
+            }
+
+            label7.Visible = true;
+            cboBookingId.Visible = true;
+        }
+
         private static void refundMoney()
         {
             //connect to database
@@ -285,21 +301,31 @@ namespace GymSYS
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        public DataSet getAllBookingIds()
         {
-            //reset cbo
-            cboBookingId.Items.Clear();
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
-            //load all bookingIDs
-            DataSet dsB = Booking.getAllBookingIds();
+            //create booking object
+            Booking booking = new Booking();
 
-            for (int i = 0; i < dsB.Tables[0].Rows.Count; i++)
-            {
-                cboBookingId.Items.Add(dsB.Tables[0].Rows[i][0]);
-            }
+            //define sql query to execute
+            String sqlQuery = "SELECT Booking_Id FROM Bookings " +
+                "WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text) +
+                "ORDER BY Booking_Id ASC";
 
-            label7.Visible = true;
-            cboBookingId.Visible = true;
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "BookingIds");
+
+            //close db connection
+            conn.Close();
+
+            return ds;
         }
     }
 }

@@ -147,34 +147,6 @@ namespace GymSYS
             return nextId;
         }
 
-        public static DataSet getAllBookingIds()
-        {
-            //open a db connection
-            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
-
-            //create booking object
-            Booking booking = new Booking();
-
-            //define sql query to execute
-            Console.WriteLine(booking.getMemberId());
-            String sqlQuery = "SELECT Booking_Id FROM Bookings " +
-                "WHERE Member_Id = " + booking.getMemberId() +
-                "ORDER BY Booking_Id ASC";
-
-            //execute sql query
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataAdapter da = new OracleDataAdapter(cmd);
-
-            DataSet ds = new DataSet();
-            da.Fill(ds, "BookingIds");
-
-            //close db connection
-            conn.Close();
-
-            return ds;
-        }
-
         public static DataSet getBookingsForClassId()
         {
             //open a db connection
@@ -198,40 +170,6 @@ namespace GymSYS
             conn.Close();
 
             return ds;
-        }
-
-        public static bool checkIfBooked()
-        {
-            //connect to database
-            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
-
-            //create Booking object
-            Booking booking = new Booking();
-
-            //create bool
-            bool isThere = false;
-
-            //define sql query
-            String sqlQuery = "SELECT Class_Id, Member_Id FROM Bookings";
-
-            //execute sql query
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataAdapter da = new OracleDataAdapter(cmd);
-
-            DataSet ds = new DataSet();
-            da.Fill(ds, "memberIds");
-
-            //run through all posibilities
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                if (Convert.ToInt32(ds.Tables[0].Rows[i][0]) == booking.getClassId() && Convert.ToInt32(ds.Tables[0].Rows[i][1]) == booking.getMemberId())
-                {
-                    isThere = true;
-                }
-            }
-
-            return isThere;
         }
     }
 }

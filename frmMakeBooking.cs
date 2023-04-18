@@ -137,8 +137,35 @@ namespace GymSYS
                 return;
             }
 
-            //validate if member has already booked the class
-            if (Booking.checkIfBooked() == true)
+            //Validate if member has already booked the class
+            //connect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //create bool
+            bool isThere = false;
+
+            //define sql query
+            String sqlQuery = "SELECT Class_Id, Member_Id FROM Bookings";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "memberIds");
+
+            //run through all posibilities
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                if (Convert.ToString(ds.Tables[0].Rows[i][0]) == cboClassId.Text && Convert.ToString(ds.Tables[0].Rows[i][1]) == cboMemberId.Text)
+                {
+                    isThere = true;
+                }
+            }
+
+            //if true
+            if (isThere == true)
             {
                 MessageBox.Show("The member has already booked this class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -158,14 +185,14 @@ namespace GymSYS
             int classFee = 0;
 
             //conect to database
-            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+            conn = new OracleConnection(DBConnect.oracledb);
 
             //define Member sql query
-            String sqlQuery = "SELECT Member_Wallet,Member_Points " +
+            sqlQuery = "SELECT Member_Wallet,Member_Points " +
                 "FROM Members WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text);
 
             //execute query
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            cmd = new OracleCommand(sqlQuery, conn);
             conn.Open();
             OracleDataReader dr = cmd.ExecuteReader();
             if (!dr.Read())
@@ -225,7 +252,7 @@ namespace GymSYS
                         sessionDetails.getNextRegistered();
 
                         //Create Booking instance with values from form
-                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', classDate);
+                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'W', classDate);
 
                         //invoke method to add data to Booking Table
                         bookClass.addBooking();
@@ -274,21 +301,6 @@ namespace GymSYS
             txtBookingId.Text = Booking.getNextBookingId().ToString("000");
             cboMemberId.SelectedIndex = -1;
             cboClassId.SelectedIndex = -1;
-        }
-
-        private void cboMemberId_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //conect to database
-            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
-
-            //create booking object
-            Booking booking = new Booking();
-
-            //set memberID and ClassID
-            booking.setMemberId(Convert.ToInt32(cboMemberId.Text));
-            booking.setClassId(Convert.ToInt32(cboClassId.Text));
-
-
         }
     }
 }

@@ -254,7 +254,6 @@ namespace GymSYS
             this.cboMemberId.Name = "cboMemberId";
             this.cboMemberId.Size = new System.Drawing.Size(150, 21);
             this.cboMemberId.TabIndex = 27;
-            this.cboMemberId.SelectedIndexChanged += new System.EventHandler(this.cboMemberId_SelectedIndexChanged);
             // 
             // rdbMemberWallet
             // 

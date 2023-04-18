@@ -273,10 +273,7 @@ namespace GymSYS
             {
                 cboClassId.Items.Add(dsC.Tables[0].Rows[i][0]);
             }
-        }
 
-        private void dtpClassDate_DropDown(object sender, EventArgs e)
-        {
             //set classDate to a minuimum of today
             dtpClassDate.MinDate = DateTime.Today;
         }

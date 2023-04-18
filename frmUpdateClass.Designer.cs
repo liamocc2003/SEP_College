@@ -283,7 +283,6 @@ namespace GymSYS
             this.dtpClassDate.Name = "dtpClassDate";
             this.dtpClassDate.Size = new System.Drawing.Size(150, 20);
             this.dtpClassDate.TabIndex = 37;
-            this.dtpClassDate.DropDown += new System.EventHandler(this.dtpClassDate_DropDown);
             // 
             // label7
             // 

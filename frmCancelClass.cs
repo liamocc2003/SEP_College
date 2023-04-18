@@ -114,6 +114,7 @@ namespace GymSYS
             for (int i = cboBookings.Items.Count; i > 0; i--)
             {
                 int bookingId = Convert.ToInt32(cboBookings.SelectedIndex.ToString());
+                cancelBooking.setBookingId(bookingId);
                 cancelBooking.cancelBooking();
             }
 
@@ -141,12 +142,19 @@ namespace GymSYS
             }
 
             //remove the data
-            cancelClass.cancelClass();
+            if (cboBookings.Items.Count > 0)
+            {
+                MessageBox.Show("Could not cancel Class as members have booked it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                cancelClass.cancelClass();
 
-
-            //Display Confirmation Message
-            MessageBox.Show("Class has cancelled successfully", "Success",
+                //Display Confirmation Message
+                MessageBox.Show("Class has cancelled successfully", "Success",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             //Reset UI
             cboClassId.SelectedIndex = -1;

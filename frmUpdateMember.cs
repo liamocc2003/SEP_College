@@ -121,6 +121,8 @@ namespace GymSYS
                 txtEircode.Text = dr.GetString(4);
                 txtEmail.Text = dr.GetString(5);
                 cboPaymentType.Text = dr.GetString(6);
+                txtWallet.Text = Convert.ToString(dr.GetInt32(7));
+                txtPoints.Text = Convert.ToString(dr.GetInt32(8));
             }
 
             conn.Close();
@@ -226,8 +228,8 @@ namespace GymSYS
             updateMember.setEircode(txtEircode.Text);
             updateMember.setEmail(txtEmail.Text);
             updateMember.setPaymentType(cboPaymentType.Text);
-            updateMember.setMemberWallet(0);
-            updateMember.setMemberPoints(0);
+            updateMember.setMemberWallet(Convert.ToInt32(txtWallet.Text));
+            updateMember.setMemberPoints(Convert.ToInt32(txtPoints));
 
             //update the data
             updateMember.updateMember();

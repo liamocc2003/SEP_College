@@ -60,6 +60,7 @@ namespace GymSYS
             this.label6 = new System.Windows.Forms.Label();
             this.dtpClassDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -232,9 +233,9 @@ namespace GymSYS
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(55, 338);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 20);
+            this.label3.Size = new System.Drawing.Size(133, 20);
             this.label3.TabIndex = 21;
-            this.label3.Text = "Class Fee:";
+            this.label3.Text = "Class Fee:          €";
             // 
             // txtClassFee
             // 
@@ -324,11 +325,22 @@ namespace GymSYS
             this.label7.TabIndex = 30;
             this.label7.Text = "Date of Class:";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(355, 299);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 16);
+            this.label8.TabIndex = 32;
+            this.label8.Text = "Hours";
+            // 
             // frmScheduleClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.dtpClassDate);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtClassDuration);
@@ -388,5 +400,6 @@ namespace GymSYS
         private System.Windows.Forms.DateTimePicker dtpClassDate;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
+        private System.Windows.Forms.Label label8;
     }
 }

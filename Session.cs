@@ -276,7 +276,6 @@ namespace GymSYS
             //is dr null
             int feeTotal;
             dr.Read();
-//Breaks if ran first
             if (dr.IsDBNull(0))
             {
                 feeTotal = 0;
@@ -339,8 +338,8 @@ namespace GymSYS
                 "Where Class_Id = " + this.classId;
 
             //execute query
-            OracleCommand newCmd = new OracleCommand(sqlQuery, conn);
-            newCmd.ExecuteNonQuery();
+            cmd = new OracleCommand(sqlQuery, conn);
+            cmd.ExecuteNonQuery();
 
             //close db connection
             conn.Close();

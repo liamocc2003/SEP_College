@@ -61,6 +61,8 @@ namespace GymSYS
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.cboMemberId = new System.Windows.Forms.ComboBox();
+            this.txtWallet = new System.Windows.Forms.TextBox();
+            this.txtPoints = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -350,11 +352,29 @@ namespace GymSYS
             this.cboMemberId.Size = new System.Drawing.Size(160, 21);
             this.cboMemberId.TabIndex = 39;
             // 
+            // txtWallet
+            // 
+            this.txtWallet.Location = new System.Drawing.Point(688, 334);
+            this.txtWallet.Name = "txtWallet";
+            this.txtWallet.Size = new System.Drawing.Size(100, 20);
+            this.txtWallet.TabIndex = 40;
+            this.txtWallet.Visible = false;
+            // 
+            // txtPoints
+            // 
+            this.txtPoints.Location = new System.Drawing.Point(688, 360);
+            this.txtPoints.Name = "txtPoints";
+            this.txtPoints.Size = new System.Drawing.Size(100, 20);
+            this.txtPoints.TabIndex = 41;
+            this.txtPoints.Visible = false;
+            // 
             // frmUpdateMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtPoints);
+            this.Controls.Add(this.txtWallet);
             this.Controls.Add(this.cboMemberId);
             this.Controls.Add(this.dtpDOB);
             this.Controls.Add(this.label7);
@@ -416,5 +436,7 @@ namespace GymSYS
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboMemberId;
         private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtWallet;
+        private System.Windows.Forms.TextBox txtPoints;
     }
 }
