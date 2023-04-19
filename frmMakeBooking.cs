@@ -249,7 +249,7 @@ namespace GymSYS
                         memberDetails.bookedClass();
 
                         //increment classReg
-                        sessionDetails.getNextRegistered();
+                        getNextRegistered();
 
                         //Create Booking instance with values from form
                         bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'W', classDate);
@@ -277,7 +277,7 @@ namespace GymSYS
                         memberDetails.bookedClass();
 
                         //incremenr classReg
-                        sessionDetails.getNextRegistered();
+                        getNextRegistered();
 
                         //Create Booking instance with values from form
                         bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', classDate);
@@ -301,6 +301,38 @@ namespace GymSYS
             txtBookingId.Text = Booking.getNextBookingId().ToString("000");
             cboMemberId.SelectedIndex = -1;
             cboClassId.SelectedIndex = -1;
+        }
+
+        public void getNextRegistered()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Class_Reg FROM Sessions WHERE Class_Id = " + Convert.ToInt32(cboClassId.Text);
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int regTotal;
+            dr.Read();
+            regTotal = Convert.ToInt32(dr.GetInt32(0)) + 1;
+
+            //update classReg
+            sqlQuery = "Update Sessions SET " +
+                "Class_Reg = " + regTotal +
+                "Where Class_Id = " + Convert.ToInt32(cboClassId.Text);
+
+            //execute query
+            cmd = new OracleCommand(sqlQuery, conn);
+            cmd.ExecuteNonQuery();
+
+            //close db connection
+            conn.Close();
         }
     }
 }

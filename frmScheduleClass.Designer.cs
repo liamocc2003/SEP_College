@@ -331,9 +331,9 @@ namespace GymSYS
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(355, 299);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 16);
+            this.label8.Size = new System.Drawing.Size(52, 16);
             this.label8.TabIndex = 32;
-            this.label8.Text = "Hours";
+            this.label8.Text = "Hour(s)";
             // 
             // frmScheduleClass
             // 

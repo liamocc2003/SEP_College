@@ -121,6 +121,7 @@ namespace GymSYS
             else
             {
                 cancelBooking.setBookingId(Convert.ToInt32(cboBookingId.Text));
+                txtClassId.Text = Convert.ToString(dr.GetInt32(2));
             }
 
             //check current time against class time for refund
@@ -190,7 +191,7 @@ namespace GymSYS
             cancelBooking.cancelBooking();
 
             //invoke method
-            changeClass.removeRegister();
+            removeRegister();
 
             //Display Confirmation Message
             MessageBox.Show("Booking has cancelled successfully", "Success",
@@ -230,7 +231,7 @@ namespace GymSYS
             cboBookingId.Visible = true;
         }
 
-        private static void refundMoney()
+        private void refundMoney()
         {
             //connect to database
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
@@ -262,11 +263,8 @@ namespace GymSYS
                 memberPoints = dr.GetInt32(1);
             }
 
-            //create Class object
-            Session getClassFee = new Session();
-
             //sql query
-            sqlQuery = "SELECT Class_Fee FROM Sessions WHERE Class_Id = " + Convert.ToInt32(booking.getClassId());
+            sqlQuery = "SELECT Class_Fee FROM Sessions WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
 
             //execute query
             cmd = new OracleCommand(sqlQuery, conn);
@@ -326,6 +324,41 @@ namespace GymSYS
             conn.Close();
 
             return ds;
+        }
+
+        public void removeRegister()
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //create booking object
+            Booking booking = new Booking();
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Class_Reg FROM Sessions WHERE Class_Id = " + Convert.ToInt32(txtClassId.Text);
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int regTotal;
+            dr.Read();
+            regTotal = Convert.ToInt32(dr.GetInt32(0)) - 1;
+
+            //update classReg
+            sqlQuery = "Update Sessions SET " +
+                "Class_Reg = " + regTotal +
+                "Where Class_Id = " + Convert.ToInt32(txtClassId.Text);
+
+            //execute query
+            OracleCommand newCmd = new OracleCommand(sqlQuery, conn);
+            newCmd.ExecuteNonQuery();
+
+            //close db connection
+            conn.Close();
         }
     }
 }
