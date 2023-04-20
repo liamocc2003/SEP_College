@@ -119,7 +119,14 @@ namespace GymSYS
                 txtClassName.Text = dr.GetString(1);
                 txtClassTeacher.Text = dr.GetString(2);
                 txtClassSize.Text = Convert.ToString(dr.GetString(3));
-                dtpClassDate.Value = dr.GetDateTime(5);
+                if (dr.GetDateTime(5) >= DateTime.Today)
+                {
+                    dtpClassDate.Value = dr.GetDateTime(5);
+                }
+                else
+                {
+                    dtpClassDate.Value = DateTime.Today;
+                }
                 txtClassDuration.Text = Convert.ToString(dr.GetInt32(6));
                 txtClassFee.Text = dr.GetString(7);
             }

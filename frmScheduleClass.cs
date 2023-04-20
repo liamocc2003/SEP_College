@@ -178,9 +178,9 @@ namespace GymSYS
                 {
                     count++;
                 }
-                if (count > 1)
+                if (count >= 1)
                 {
-                    MessageBox.Show("Class Fee cannot have more than 1 punctuation", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Class Fee must be in Euros(€), no cents", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtClassFee.Focus();
                     return;
                 }
