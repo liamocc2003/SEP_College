@@ -252,6 +252,7 @@ namespace GymSYS
             this.txtClassId.Name = "txtClassId";
             this.txtClassId.Size = new System.Drawing.Size(100, 20);
             this.txtClassId.TabIndex = 34;
+            this.txtClassId.Visible = false;
             // 
             // frmCancelBooking
             // 
