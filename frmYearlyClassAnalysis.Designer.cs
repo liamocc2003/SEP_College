@@ -181,13 +181,13 @@ namespace GymSYS
             this.chartClassAnalysis.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartClassAnalysis.Legends.Add(legend2);
-            this.chartClassAnalysis.Location = new System.Drawing.Point(58, 63);
+            this.chartClassAnalysis.Location = new System.Drawing.Point(12, 63);
             this.chartClassAnalysis.Name = "chartClassAnalysis";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Class";
             this.chartClassAnalysis.Series.Add(series2);
-            this.chartClassAnalysis.Size = new System.Drawing.Size(300, 300);
+            this.chartClassAnalysis.Size = new System.Drawing.Size(776, 300);
             this.chartClassAnalysis.TabIndex = 2;
             this.chartClassAnalysis.Text = "chart1";
             title2.Name = "Title1";
@@ -198,7 +198,7 @@ namespace GymSYS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(469, 132);
+            this.label1.Location = new System.Drawing.Point(316, 409);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 20);
             this.label1.TabIndex = 3;
@@ -206,7 +206,7 @@ namespace GymSYS
             // 
             // txtTotalClasses
             // 
-            this.txtTotalClasses.Location = new System.Drawing.Point(583, 132);
+            this.txtTotalClasses.Location = new System.Drawing.Point(430, 409);
             this.txtTotalClasses.Name = "txtTotalClasses";
             this.txtTotalClasses.ReadOnly = true;
             this.txtTotalClasses.Size = new System.Drawing.Size(100, 20);

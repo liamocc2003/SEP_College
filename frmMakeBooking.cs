@@ -93,9 +93,9 @@ namespace GymSYS
             //get next BookingId
             txtBookingId.Text = Booking.getNextBookingId().ToString("000");
 
-            //load classIds into comboBox
+            //load classIds that are occuring after today into comboBox
             DataSet dsC = Session.getClassIds();
-            
+
             for(int i = 0; i < dsC.Tables[0].Rows.Count; i++)
             {
                 cboClassId.Items.Add(dsC.Tables[0].Rows[i][0]);
@@ -137,35 +137,8 @@ namespace GymSYS
                 return;
             }
 
-            //Validate if member has already booked the class
-            //connect to database
-            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
-
-            //create bool
-            bool isThere = false;
-
-            //define sql query
-            String sqlQuery = "SELECT Class_Id, Member_Id FROM Bookings";
-
-            //execute sql query
-            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
-
-            OracleDataAdapter da = new OracleDataAdapter(cmd);
-
-            DataSet ds = new DataSet();
-            da.Fill(ds, "memberIds");
-
-            //run through all posibilities
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                if (Convert.ToString(ds.Tables[0].Rows[i][0]) == cboClassId.Text && Convert.ToString(ds.Tables[0].Rows[i][1]) == cboMemberId.Text)
-                {
-                    isThere = true;
-                }
-            }
-
-            //if true
-            if (isThere == true)
+            //Validate if member has already bboked class
+            if (memberBookedClass() == true)
             {
                 MessageBox.Show("The member has already booked this class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -179,20 +152,20 @@ namespace GymSYS
 
             int wallet = 0;
             int points = 0;
-            String classDate = "";
+            DateTime classDate;
             int classSize = 0;
             int classReg = 0;
             int classFee = 0;
 
             //conect to database
-            conn = new OracleConnection(DBConnect.oracledb);
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define Member sql query
-            sqlQuery = "SELECT Member_Wallet,Member_Points " +
+            String sqlQuery = "SELECT Member_Wallet,Member_Points " +
                 "FROM Members WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text);
 
             //execute query
-            cmd = new OracleCommand(sqlQuery, conn);
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
             conn.Open();
             OracleDataReader dr = cmd.ExecuteReader();
             if (!dr.Read())
@@ -219,72 +192,81 @@ namespace GymSYS
             }
             else
             {
-                classDate = dr.GetDateTime(0).ToString("dd-MMM-yyyy");
+                classDate = dr.GetDateTime(0);
                 classSize = dr.GetInt32(1);
                 classReg = dr.GetInt32(2);
                 classFee = dr.GetInt32(3);
             }
-
             //check if registered is lower than class size
             if (classReg < classSize)
             {
-                //check which payment option is chosen
-                if (rdbMemberWallet.Checked)
+                if (DateTime.Today < classDate)
                 {
-                    //check amount in account is greater than or equal to class fee
-                    if (wallet < classFee)
+                    Console.WriteLine(DateTime.Today);
+                    Console.WriteLine(classDate);
+                    //check which payment option is chosen
+                    if (rdbMemberWallet.Checked)
                     {
-                        MessageBox.Show("Member does not have enough money in Member Wallet to book for Class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        //check amount in account is greater than or equal to class fee
+                        if (wallet < classFee)
+                        {
+                            MessageBox.Show("Member does not have enough money in Member Wallet to book for Class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            //reduce member wallet by class fee and increase member points
+                            int newWallet = wallet - classFee;
+                            memberDetails.setMemberWallet(newWallet);
+
+                            int newPoints = points + classFee;
+                            memberDetails.setMemberPoints(newPoints);
+
+                            memberDetails.bookedClass();
+
+                            //increment classReg
+                            getNextRegistered();
+
+                            //Create Booking instance with values from form
+                            bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'W', classDate.ToString("dd-MMM-yyyy"));
+
+                            //invoke method to add data to Booking Table
+                            bookClass.addBooking();
+                        }
                     }
-                    else
+                    else if (rdbMemberPoints.Checked)
                     {
-                        //reduce member wallet by class fee and increase member points
-                        int newWallet = wallet - classFee;
-                        memberDetails.setMemberWallet(newWallet);
+                        //check points in account is greater than or equal to class fee
+                        if (points < classFee)
+                        {
+                            MessageBox.Show("Member does not have enough points in Member Points to register for Class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            //reduce member points by class fee
+                            memberDetails.setMemberWallet(wallet);
 
-                        int newPoints = points + classFee;
-                        memberDetails.setMemberPoints(newPoints);
+                            int newPoints = points - classFee;
+                            memberDetails.setMemberPoints(newPoints);
 
-                        memberDetails.bookedClass();
+                            memberDetails.bookedClass();
 
-                        //increment classReg
-                        getNextRegistered();
+                            //incremenr classReg
+                            getNextRegistered();
 
-                        //Create Booking instance with values from form
-                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'W', classDate);
+                            //Create Booking instance with values from form
+                            bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', classDate.ToString("dd-MMM-yyyy"));
 
-                        //invoke method to add data to Booking Table
-                        bookClass.addBooking();
+                            //invoke method to add data to Booking Table
+                            bookClass.addBooking();
+                        }
                     }
                 }
-                else if (rdbMemberPoints.Checked)
+                else
                 {
-                    //check points in account is greater than or equal to class fee
-                    if (points < classFee)
-                    {
-                        MessageBox.Show("Member does not have enough points in Member Points to register for Class", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        //reduce member points by class fee
-                        memberDetails.setMemberWallet(wallet);
-
-                        int newPoints = points - classFee;
-                        memberDetails.setMemberPoints(newPoints);
-
-                        memberDetails.bookedClass();
-
-                        //incremenr classReg
-                        getNextRegistered();
-
-                        //Create Booking instance with values from form
-                        bookClass = new Booking(Convert.ToInt32(txtBookingId.Text), Convert.ToInt32(cboMemberId.Text), Convert.ToInt32(cboClassId.Text), 'P', classDate);
-
-                        //invoke method to add data to Booking Table
-                        bookClass.addBooking();
-                    }
+                    MessageBox.Show("The class has already occured and can no longer be booked", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             else
@@ -333,6 +315,37 @@ namespace GymSYS
 
             //close db connection
             conn.Close();
+        }
+
+        public bool memberBookedClass()
+        {
+            //connect to database
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //create bool
+            bool isThere = false;
+
+            //define sql query
+            String sqlQuery = "SELECT Class_Id, Member_Id FROM Bookings";
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "memberIds");
+
+            //run through all posibilities
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                if (Convert.ToString(ds.Tables[0].Rows[i][0]) == cboClassId.Text && Convert.ToString(ds.Tables[0].Rows[i][1]) == cboMemberId.Text)
+                {
+                    isThere = true;
+                }
+            }
+
+            return isThere;
         }
     }
 }
