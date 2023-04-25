@@ -59,6 +59,7 @@ namespace GymSYS
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtEircode = new System.Windows.Forms.TextBox();
             this.cboMemberId = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +99,7 @@ namespace GymSYS
             this.mnuUpdateMember.Name = "mnuUpdateMember";
             this.mnuUpdateMember.Size = new System.Drawing.Size(196, 22);
             this.mnuUpdateMember.Text = "Update Member";
+            this.mnuUpdateMember.Click += new System.EventHandler(this.mnuUpdateMember_Click);
             // 
             // mnuTopUpMemberWallet
             // 
@@ -216,7 +218,7 @@ namespace GymSYS
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 242);
+            this.label2.Location = new System.Drawing.Point(40, 261);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 20);
             this.label2.TabIndex = 22;
@@ -225,7 +227,7 @@ namespace GymSYS
             // txtAmount
             // 
             this.txtAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmount.Location = new System.Drawing.Point(162, 240);
+            this.txtAmount.Location = new System.Drawing.Point(162, 259);
             this.txtAmount.MaxLength = 2;
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(133, 22);
@@ -234,7 +236,7 @@ namespace GymSYS
             // txtCurrentAmount
             // 
             this.txtCurrentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentAmount.Location = new System.Drawing.Point(194, 149);
+            this.txtCurrentAmount.Location = new System.Drawing.Point(194, 203);
             this.txtCurrentAmount.Name = "txtCurrentAmount";
             this.txtCurrentAmount.ReadOnly = true;
             this.txtCurrentAmount.Size = new System.Drawing.Size(101, 22);
@@ -255,7 +257,7 @@ namespace GymSYS
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(40, 151);
+            this.label3.Location = new System.Drawing.Point(40, 205);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 20);
             this.label3.TabIndex = 27;
@@ -282,11 +284,11 @@ namespace GymSYS
             // txtForename
             // 
             this.txtForename.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtForename.Location = new System.Drawing.Point(638, 27);
+            this.txtForename.Location = new System.Drawing.Point(194, 111);
             this.txtForename.Name = "txtForename";
-            this.txtForename.Size = new System.Drawing.Size(150, 23);
+            this.txtForename.ReadOnly = true;
+            this.txtForename.Size = new System.Drawing.Size(101, 23);
             this.txtForename.TabIndex = 40;
-            this.txtForename.Visible = false;
             // 
             // cboPaymentType
             // 
@@ -329,11 +331,22 @@ namespace GymSYS
             this.cboMemberId.Size = new System.Drawing.Size(133, 21);
             this.cboMemberId.TabIndex = 45;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(40, 114);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(152, 20);
+            this.label4.TabIndex = 47;
+            this.label4.Text = "Member Forename: ";
+            // 
             // frmTopUpMemberWallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.cboMemberId);
             this.Controls.Add(this.cboPaymentType);
             this.Controls.Add(this.txtEmail);
@@ -391,5 +404,6 @@ namespace GymSYS
         private System.Windows.Forms.TextBox txtEircode;
         private System.Windows.Forms.ComboBox cboMemberId;
         private System.Windows.Forms.ToolStripMenuItem yearlyClassAnalysisToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
     }
 }

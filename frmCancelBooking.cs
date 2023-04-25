@@ -247,7 +247,7 @@ namespace GymSYS
             int classFee = 0;
 
             //sql query
-            String sqlQuery = "SELECT Member_Wallet,Member_Points FROM Members WHERE Member_Id = " + Convert.ToInt32(booking.getMemberId());
+            String sqlQuery = "SELECT Member_Wallet,Member_Points FROM Members WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text);
 
             //execute query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);
@@ -285,6 +285,7 @@ namespace GymSYS
             //change the data
             if (booking.getPaymentChoice() == 'W')
             {
+                refundMember.setMemberId(Convert.ToInt32(cboMemberId.Text));
                 refundMember.setMemberWallet(memberWallet + classFee);
                 refundMember.setMemberPoints(memberPoints);
 
@@ -292,6 +293,7 @@ namespace GymSYS
             }
             else
             {
+                refundMember.setMemberId(Convert.ToInt32(cboMemberId.Text));
                 refundMember.setMemberWallet(memberWallet);
                 refundMember.setMemberPoints(memberPoints + classFee);
 
@@ -358,6 +360,38 @@ namespace GymSYS
             newCmd.ExecuteNonQuery();
 
             //close db connection
+            conn.Close();
+        }
+
+        private void cboMemberId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //set things visible
+            label2.Visible = true;
+            txtForename.Visible = true;
+
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Forename FROM Members WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text);
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int forename;
+            if (!dr.Read())
+            {
+                MessageBox.Show("Could not find Members Forename", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtForename.Text = dr.GetString(0);
+            }
+
             conn.Close();
         }
     }

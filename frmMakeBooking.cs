@@ -202,8 +202,6 @@ namespace GymSYS
             {
                 if (DateTime.Today < classDate)
                 {
-                    Console.WriteLine(DateTime.Today);
-                    Console.WriteLine(classDate);
                     //check which payment option is chosen
                     if (rdbMemberWallet.Checked)
                     {
@@ -217,6 +215,7 @@ namespace GymSYS
                         {
                             //reduce member wallet by class fee and increase member points
                             int newWallet = wallet - classFee;
+                            memberDetails.setMemberId(Convert.ToInt32(cboMemberId.Text));
                             memberDetails.setMemberWallet(newWallet);
 
                             int newPoints = points + classFee;
@@ -245,6 +244,7 @@ namespace GymSYS
                         else
                         {
                             //reduce member points by class fee
+                            memberDetails.setMemberId(Convert.ToInt32(cboMemberId.Text));
                             memberDetails.setMemberWallet(wallet);
 
                             int newPoints = points - classFee;
@@ -346,6 +346,62 @@ namespace GymSYS
             }
 
             return isThere;
+        }
+
+        private void cboMemberId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Forename FROM Members WHERE Member_Id = " + Convert.ToInt32(cboMemberId.Text);
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int forename;
+            if (!dr.Read())
+            {
+                MessageBox.Show("Could not find Members Forename", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtForename.Text = dr.GetString(0);
+            }
+
+            conn.Close();
+        }
+
+        private void cboClassId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //open a db connection
+            OracleConnection conn = new OracleConnection(DBConnect.oracledb);
+
+            //define sql query to execute
+            String sqlQuery = "SELECT Class_Name FROM Sessions WHERE Class_Id = " + Convert.ToInt32(cboClassId.Text);
+
+            //execute sql query
+            OracleCommand cmd = new OracleCommand(sqlQuery, conn);
+            conn.Open();
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //is dr null
+            int forename;
+            if (!dr.Read())
+            {
+                MessageBox.Show("Could not find Class Name", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtClassName.Text = dr.GetString(0);
+            }
+
+            conn.Close();
         }
     }
 }

@@ -55,6 +55,10 @@ namespace GymSYS
             this.rdbMemberWallet = new System.Windows.Forms.RadioButton();
             this.rdbMemberPoints = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtForename = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtClassName = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -201,7 +205,7 @@ namespace GymSYS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(44, 222);
+            this.label1.Location = new System.Drawing.Point(394, 162);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 21;
@@ -241,10 +245,11 @@ namespace GymSYS
             // 
             this.cboClassId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboClassId.FormattingEnabled = true;
-            this.cboClassId.Location = new System.Drawing.Point(167, 221);
+            this.cboClassId.Location = new System.Drawing.Point(517, 161);
             this.cboClassId.Name = "cboClassId";
             this.cboClassId.Size = new System.Drawing.Size(150, 21);
             this.cboClassId.TabIndex = 26;
+            this.cboClassId.SelectedIndexChanged += new System.EventHandler(this.cboClassId_SelectedIndexChanged);
             // 
             // cboMemberId
             // 
@@ -254,6 +259,7 @@ namespace GymSYS
             this.cboMemberId.Name = "cboMemberId";
             this.cboMemberId.Size = new System.Drawing.Size(150, 21);
             this.cboMemberId.TabIndex = 27;
+            this.cboMemberId.SelectedIndexChanged += new System.EventHandler(this.cboMemberId_SelectedIndexChanged);
             // 
             // rdbMemberWallet
             // 
@@ -289,11 +295,51 @@ namespace GymSYS
             this.label3.TabIndex = 30;
             this.label3.Text = "Select a payment option:";
             // 
+            // txtForename
+            // 
+            this.txtForename.Location = new System.Drawing.Point(198, 210);
+            this.txtForename.Name = "txtForename";
+            this.txtForename.ReadOnly = true;
+            this.txtForename.Size = new System.Drawing.Size(119, 20);
+            this.txtForename.TabIndex = 31;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label4.Location = new System.Drawing.Point(44, 210);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(148, 20);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Member Forename:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label5.Location = new System.Drawing.Point(394, 208);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 20);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Class Name:";
+            // 
+            // txtClassName
+            // 
+            this.txtClassName.Location = new System.Drawing.Point(517, 208);
+            this.txtClassName.Name = "txtClassName";
+            this.txtClassName.ReadOnly = true;
+            this.txtClassName.Size = new System.Drawing.Size(150, 20);
+            this.txtClassName.TabIndex = 33;
+            // 
             // frmMakeBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtClassName);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtForename);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rdbMemberPoints);
             this.Controls.Add(this.rdbMemberWallet);
@@ -343,5 +389,9 @@ namespace GymSYS
         private System.Windows.Forms.RadioButton rdbMemberWallet;
         private System.Windows.Forms.RadioButton rdbMemberPoints;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtForename;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtClassName;
     }
 }

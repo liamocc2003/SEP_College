@@ -29,10 +29,10 @@ namespace GymSYS
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuMembers = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRegisterMember = new System.Windows.Forms.ToolStripMenuItem();
@@ -177,22 +177,25 @@ namespace GymSYS
             // 
             // chartClassAnalysis
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartClassAnalysis.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartClassAnalysis.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartClassAnalysis.ChartAreas.Add(chartArea1);
+            legend1.ItemColumnSpacing = 10;
+            legend1.Name = "Legend1";
+            this.chartClassAnalysis.Legends.Add(legend1);
             this.chartClassAnalysis.Location = new System.Drawing.Point(12, 63);
             this.chartClassAnalysis.Name = "chartClassAnalysis";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Class";
-            this.chartClassAnalysis.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.MarkerSize = 2;
+            series1.MarkerStep = 5;
+            series1.Name = "Class";
+            this.chartClassAnalysis.Series.Add(series1);
             this.chartClassAnalysis.Size = new System.Drawing.Size(776, 300);
             this.chartClassAnalysis.TabIndex = 2;
             this.chartClassAnalysis.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Class Analysis";
-            this.chartClassAnalysis.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "Class Analysis";
+            this.chartClassAnalysis.Titles.Add(title1);
             // 
             // label1
             // 

@@ -265,7 +265,7 @@ namespace GymSYS
             OracleConnection conn = new OracleConnection(DBConnect.oracledb);
 
             //define sql query to execute
-            String sqlQuery = "SELECT Class_Fee*Class_Reg FROM Sessions";
+            String sqlQuery = "SELECT SUM(Class_Reg) FROM Sessions";
 
             //execute sql query
             OracleCommand cmd = new OracleCommand(sqlQuery, conn);

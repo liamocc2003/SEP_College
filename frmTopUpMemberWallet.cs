@@ -32,6 +32,13 @@ namespace GymSYS
             topUpMember.Show();
         }
 
+        private void mnuUpdateMember_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmUpdateMember updateMember = new frmUpdateMember();
+            updateMember.Show();
+        }
+
         private void mnuRegisterMember_Click(object sender, EventArgs e)
         {
             this.Hide();

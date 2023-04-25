@@ -183,8 +183,7 @@ namespace GymSYS
             for (int i = 0; i < txtEircode.TextLength; i++)
             {
                 if (Char.IsDigit(txtEircode.Text[0]) || Char.IsLetter(txtEircode.Text[1]) ||
-                    Char.IsLetter(txtEircode.Text[2]) || Char.IsDigit(txtEircode.Text[3]) ||
-                    Char.IsDigit(txtEircode.Text[4]) || Char.IsLetter(txtEircode.Text[6]))
+                    Char.IsLetter(txtEircode.Text[2]))
                 {
                     MessageBox.Show("Eircode is invalid", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtEircode.Focus();
@@ -229,7 +228,7 @@ namespace GymSYS
             updateMember.setEmail(txtEmail.Text);
             updateMember.setPaymentType(cboPaymentType.Text);
             updateMember.setMemberWallet(Convert.ToInt32(txtWallet.Text));
-            updateMember.setMemberPoints(Convert.ToInt32(txtPoints));
+            updateMember.setMemberPoints(Convert.ToInt32(txtPoints.Text));
 
             //update the data
             updateMember.updateMember();

@@ -326,7 +326,6 @@ namespace GymSYS
             // dtpDOB
             // 
             this.dtpDOB.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtpDOB.Enabled = false;
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDOB.Location = new System.Drawing.Point(157, 174);
             this.dtpDOB.Name = "dtpDOB";
